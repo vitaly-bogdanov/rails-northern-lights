@@ -1,0 +1,32 @@
+#bottom-modal-cart {
+  overflow: hidden;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  .modal-cart {
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    #cart {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      margin-top: 15px;
+      height: 214px;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 5px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #4a148c;
+      }
+    }
+  }
+  h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+}
+
+.modal.bottom-sheet {
+  max-height: 350px;
+}

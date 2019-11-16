@@ -1,0 +1,73 @@
+<section class="section section--grey section--full-height">
+  <div class="container">
+    <h2 class="section__title">Новые заявки на консультацию</h2>
+    <% if @calls_new.any? %>
+      <% @calls_new.each do |cl| %>
+        <div class="horizontal-grid horizontal-grid--category-elements-position horizontal-grid--margin-top-position">
+          <h3 class="horizontal-grid__item-title"><%= cl.name %></h3>
+          <p class="horizontal-grid__item-telephone"><%= cl.telephone %></p>
+          <p class="horizontal-grid__item-notes"><%= cl.notes %></p>
+          <div class="horizontal-grid__item-check">
+            <%= link_to admin_call_complete_path(cl), method: :patch do %>
+              <i class="material-icons">check_circle</i>
+            <% end %>
+          </div>
+          <div class="horizontal-grid__item-save">
+            <%= link_to admin_call_save_path(cl), method: :patch do %>
+              <i class="material-icons">save</i>
+            <% end %>
+          </div>
+          <div class="horizontal-grid__item-edit">
+            <%= link_to edit_admin_call_path(cl) do %>
+              <i class="material-icons">contacts</i>
+            <% end %>
+          </div>
+          <div class="horizontal-grid__item-delete">
+            <%= link_to admin_call_path(cl), method: :delete do %>
+              <i class="material-icons">delete_forever</i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h3 class="empty-index empty-index--center">Пока что нет заявок</h3>
+    <% end %>
+  </div>
+</section>
+<section class="section section--grey section--full-height">
+  <div class="container">
+    <h2 class="section__title">Сохраненные заявки</h2>
+    <% if @calls_saved.any? %>
+      <% @calls_saved.each do |cl| %>
+        <div class="horizontal-grid horizontal-grid--category-elements-position horizontal-grid--margin-top-position">
+          <h3 class="horizontal-grid__item-title"><%= cl.name %></h3>
+          <p class="horizontal-grid__item-telephone"><%= cl.telephone %></p>
+          <p class="horizontal-grid__item-notes"><%= cl.notes %></p>
+          <div class="horizontal-grid__item-check">
+            <%= link_to admin_call_complete_path(cl), method: :patch, 'data-turbolinks-scroll': false do %>
+              <i class="material-icons">check_circle</i>
+            <% end %>
+          </div>
+          <div class="horizontal-grid__item-save">
+            <%= link_to '#', class: 'disabled' do %>
+              <i class="material-icons">save</i>
+            <% end %>
+          </div>
+          <div class="horizontal-grid__item-edit">
+            <%= link_to edit_admin_call_path(cl) do %>
+              <i class="material-icons">contacts</i>
+            <% end %>
+          </div>
+          <div class="horizontal-grid__item-delete">
+            <%= link_to admin_call_path(cl), method: :delete do %>
+              <i class="material-icons">delete_forever</i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h3 class="empty-index empty-index--center">Пока что нет заявок</h3>
+    <% end %>
+    <%= link_to 'Архив', admin_calls_arhive_path, class: 'waves-effect waves-light btn-large blue-grey-hover-btn arhive-btn' %> 
+  </div>
+</section>

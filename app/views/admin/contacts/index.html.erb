@@ -1,0 +1,29 @@
+<section class="section section--grey section--full-height">
+  <div class="container">
+    <% unless flash[:contacts_update].nil? %>
+      <h2 class="section__title" style="color: green;"><%= flash[:contacts_update] %></h2>
+    <% else %>
+      <h2 class="section__title">Редактирование контактной информации на сайте</h2>
+    <% end %>
+    <%= form_for :contacts, html: {class: 'castom-form castom-form--purple castom-form--margin-top'} do |f| %>
+      <div class="input-field">
+        <%= f.text_field :phone, class: "form-control", value: @contact['phone'] %>
+        <%= f.label :phone, class: 'validate' do %>
+          Телефонный номер
+        <% end %>
+      <div class="input-field">
+        <%= f.text_field :instagram, class: "form-control",  value: @contact['instagram'] %>
+        <%= f.label :instagram, class: 'validate' do %>
+          Instagram
+        <% end %>
+      </div>
+      <div class="input-field">
+        <%= f.text_field :email, class: "form-control", value: @contact['email'] %>
+        <%= f.label :email, class: 'validate' do %>
+          Email
+        <% end %>
+      </div>
+      <%= f.submit 'Сохранить', class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white' %>
+    <% end %>
+  </div>
+</section>

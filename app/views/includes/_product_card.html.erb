@@ -1,0 +1,14 @@
+<div class="product_card">
+  <%= link_to image_tag('products/product_middle.jpg', {alt: 'product'}), shop_product_path(1) %>
+  <div class="product_card__text">
+    <a class="product_card__title_link" href="<%= shop_product_path(1) %>">
+      <h3 class="product_card__title">Название товара тут.</h3>
+    </a>
+    <p class="product_card__description">Lorem ipsum dolor sit amet, consectetur sed do.</p>
+  </div>
+  <a class="waves-effect waves-light btn purple-hover-btn product_card__add">В корзину</a>
+  <div class="product_card__price">
+    <span>600 000</span>
+    <span>₽</span>
+  </div>
+</div>

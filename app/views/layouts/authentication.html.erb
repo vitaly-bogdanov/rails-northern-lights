@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Авторизация</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= stylesheet_link_tag    'materialize', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'authentication', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',        'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'materialize', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'particles', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'authentication', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div id="particles-js" class="authentication blue-grey darken-3" class="blue-grey darken-3">
+      <%= yield %>
+    </div>
+  </body>
+</html>

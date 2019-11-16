@@ -1,0 +1,16 @@
+.underlined-text {
+  &-product-show {
+    padding-left: 10px;
+    padding-right: 10px;
+    &-head {
+      font-size: 25px !important;
+      font-weight: 700;
+      line-height: 27px;
+    }
+    &-body {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 23px;
+    }
+  }
+}

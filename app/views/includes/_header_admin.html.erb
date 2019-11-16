@@ -1,0 +1,45 @@
+<header data-turbolinks-permanent>
+
+  <ul id="dropdown1" class="dropdown-content dropdown-content--blue-grey">
+    <li><%= link_to 'Портфолио', new_admin_portfolio_path %></li>
+    <li><%= link_to 'Категорию', new_admin_category_path %></li>
+    <li><%= link_to 'Товар', new_admin_product_path %></li>
+  </ul>
+
+  <ul id="dropdown2" class="dropdown-content dropdown-content--blue-grey">
+    <li><%= link_to 'Все товары', admin_products_path %></li>
+    <% Category.all.each do |category| %>
+      <li><%= link_to category.name, admin_category_products_path(category) %></li>
+    <% end %>
+  </ul>
+
+  <nav class="blue-grey darken-3">
+    <div class="nav-wrapper">
+      <div class="container">
+        <ul class="left hide-on-small-only">
+          <li><%= link_to 'Заказы', admin_orders_path %></li>
+          <li><%= link_to 'Заявки на товары', admin_order_calls_path %></li>
+          <li><%= link_to 'Заявки на консультацию', admin_calls_path %></li>
+          <li>
+            <a class="dropdown-trigger" data-target="dropdown1" href="#">Создать<i class="material-icons right">arrow_drop_down</i></a>
+          </li>
+          <li>
+            <a class="dropdown-trigger" data-target="dropdown2" href="#">Товары<i class="material-icons right">arrow_drop_down</i></a>
+          </li>
+          <li><%= link_to 'Категории', admin_categories_path %></li>
+          <li><%= link_to 'Портфолио', admin_portfolios_path %></li>
+          <li><%= link_to 'Контакты',  admin_contacts_path %></li>
+        </ul>
+        <ul class="right">
+          <% if user_signed_in? %>
+            <li>
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+                <i class="material-icons">exit_to_app</i>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

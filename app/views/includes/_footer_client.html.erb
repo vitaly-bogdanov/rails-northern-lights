@@ -1,0 +1,28 @@
+<footer data-turbolinks-permanent class="blue-grey darken-2">
+  <div class="container">
+    <div class="row">
+      <div class="col l4 s12">
+        <h5 class="white-text">Контакты</h5>
+        <p class="grey-text text-lighten-4">Россия, Республика Саха (Якутия), г.Нерюнгри, пр.Дружбы Народов, 29/1</p>
+        <p><a href="mailto:<%= @email %>"><%= @email %></a></p>
+        <p><a href="https://www.instagram.com/<%= @instagram %>"><%= image_tag('static/instagram.svg', {class: 'instagram_logo', alt: 'instagram'}) %></a></p>
+      </div>
+      <div class="col l4 s12 block-phone">
+        <p>Обратиться с вопросом</p>
+        <p>По будням – с 10:00 до 18:00</p>
+        <p><a href="tel:+<%= @phone_call %>"><%= @phone %></a></p>
+      </div>
+      <div class="col l4 s12 logo2">
+        <%= image_tag('static/logo.svg', {alt: 'logo'}) %>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright blue-grey darken-3">
+    <div class="container">
+      <div class="copy-flexbox">
+        <p class="left">© 2019 И.П. Кудряшов.С.С., Художественная мастерская «Северное сияние».</p>
+        <%= image_tag('static/rails.svg', {class: 'right'}) %>
+      </div>
+    </div>
+  </div>
+</footer>

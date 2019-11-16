@@ -1,0 +1,31 @@
+<a id="menu" class="tap-target-fixed waves-light btn btn-floating purple darken-4 pulse">
+  <i class="material-icons">phone_in_talk</i>
+</a>
+<div class="tap-target purple darken-4" data-target="menu" id="fdpage">
+  <div class="tap-target-content">
+    <%= form_with(url: calls_path, id: 'call_form') do %>
+      <%= text_field_tag(:timezone, '', id: 'timezone-tap-target', type: 'hidden') %>
+      <div class="input-field">
+        <i class="material-icons prefix">account_circle</i>
+        <%= text_field_tag(:name, '') %>
+        <%= label_tag(:name, 'Ваше имя') %>
+        <span id="errors-call-name" class="helper-text" data-error=""></span>
+      </div>
+      <div class="input-field">
+        <i class="material-icons prefix">phone</i>
+        <%= text_field_tag(:telephone, '') %>
+        <%= label_tag(:telephone, 'Ваш телефонный номер') %>
+        <span id="errors-call-telephone" class="helper-text" data-error=""></span>
+      </div>
+      <div class="input-field">
+        <label>
+          <%= check_box_tag(:confirm, value = "1", checked = false, options = {class: 'filled-in'}) %>
+          <span id="errors-call-confirm" class="faq-checkbox">Принять <a target="_blank" href="<%= privacy_agreement_path %>">политику приватности</a></span>
+        </label>
+      </div>
+      <div class="input-field">
+        <%= submit_tag('Отправить', class: 'waves-effect waves-light btn') %>
+      </div>
+    <% end %>
+  </div>
+</div>

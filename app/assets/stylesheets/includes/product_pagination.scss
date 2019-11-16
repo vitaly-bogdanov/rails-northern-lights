@@ -1,0 +1,33 @@
+.product-pagination {
+  margin-top: 50px;
+  .pagination {
+    display: flex;
+    justify-content: center;
+    a {
+      color: #444444;
+    }
+    .disabled {
+      color: white;
+    }
+    .previous_page, .next_page {
+      i {
+        font-size: 36px;
+      }
+    }
+    a, .current {
+      height: 34px;
+      width: 27px;
+      display: inline-block;
+      line-height: 36px;
+      text-align: center;
+      font-size: 25px;
+      font-weight: 700;
+    }
+    .current {
+      background-color: #4a148c;
+      border-radius: 2px;
+      color: white;
+      font-style: normal;
+    }
+  }
+}

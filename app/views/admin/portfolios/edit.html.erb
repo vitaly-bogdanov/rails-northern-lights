@@ -1,0 +1,9 @@
+<section class="section section--grey section--full-height">
+  <div class="container">
+    <h2 class="section__title">Портфолио</h2>
+    <%= link_to 'Назад', admin_portfolios_path, {class: 'waves-effect waves-light btn castom-button castom-button--purple'} %>
+    <%= image_tag(@portfolio.large_picture, alt: @portfolio.name, class: 'image-block image-block--margin-top') %>
+    <%= render 'includes/portfolio_form' %>
+  </div>
+</section>
+    

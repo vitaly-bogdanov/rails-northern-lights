@@ -1,0 +1,123 @@
+.tap-target-fixed { // круглая кнопка
+  position: fixed !important;
+  bottom: 40px;
+  right: 40px;
+}
+.tap-target-origin {
+  top: auto;
+  left: auto;
+  transform: none !important;
+  bottom: 40px;
+  right: 40px;
+}
+.tap-target-wrapper { // rheukfz
+  right: -340px !important; 
+}
+.tap-target-content {
+  position: relative;
+  form {
+    position: absolute;
+    top: 160px;
+    left: 70px;
+    width: 270px;
+    .input-field {
+      .faq-checkbox {
+        padding-left: 45px;
+        &:after {
+          top: 2px !important;
+          left: 5px;
+        }
+        &:before {
+          top: 2px !important;
+          left: 6px !important;
+        }
+      }
+      label {
+        color: #fff;
+        font-size: 15px;
+        span {
+          white-space: nowrap;
+          font-size: 14px;
+          a {
+            color: #fff;
+            border-bottom: 1px solid #fff; 
+            font-size: 15px;
+          }
+        }
+      }
+      .prefix {
+        color: #fff;
+        text-shadow: 0px 0px 0px #fff;
+        transition: text-shadow .3s ease;
+      }
+      .prefix.active {
+        text-shadow: 0px 0px 3px #fff;
+      }
+      input {
+        color: #fff;
+      }
+      input[type=text]:focus + label, input[type=tel]:focus + label {
+        color: #fff;
+      }
+      input[type=text]:focus, input[type=tel]:focus {
+        border-bottom: 1px solid #fff;
+        box-shadow: 0 1px 0 0 #fff;
+      }
+      input[type="checkbox"].filled-in:checked + span:not(.lever):after {
+        border: 2px solid #fff;
+        background-color: #fff;
+      }
+      input[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
+        border: 2px solid #fff;
+        background-color: #fff;
+      }
+      input[type="checkbox"].filled-in:checked + span:not(.lever):before {
+        border-right: 2px solid #4a148c;
+        border-bottom: 2px solid #4a148c;
+      }
+      input[type="submit"] {
+        color: #000;
+        cursor: pointer;
+      }
+      .btn {
+        background-color: #fff;
+        box-shadow: 0 0px 0px #fff;
+        position: absolute;
+        bottom: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        &:hover {
+          box-shadow: 0 0px 4px #fff;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .tap-target-origin {
+    right: 55px;
+  }
+  .tap-target-fixed {
+    right: 55px;
+  }
+  .tap-target-wrapper {
+    right: -225px !important;
+  }
+  .tap-target-content {
+    form {
+      top: 55px;
+      left: 95px;
+      input {
+        margin-bottom: 0;
+      }
+      .input-field {
+        input {
+          margin-bottom: 0;
+        }
+        .btn {
+          left: 70px;
+        }
+      }
+    }
+  }
+}

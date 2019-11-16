@@ -1,0 +1,29 @@
+.authentication {
+  height: 100vh;
+  min-height: 420px;
+  width: 100vw;
+  background-color: #fff;
+  position: relative;
+  #new_user {
+    h1 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    width: 310px;
+    height: 410px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    padding: 36px;
+    box-sizing: border-box;;
+  }
+}
+
+@import './includes/castom_form.scss';
+@import './includes/button.scss';

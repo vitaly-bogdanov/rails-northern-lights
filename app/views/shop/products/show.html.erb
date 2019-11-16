@@ -1,0 +1,67 @@
+<section id="show_product" class="section">
+  <div class="container">
+    <% if @product.unique %>
+      <div class="underlined-text underlined-text-product-show">
+        <h3 class="underlined-text-head underlined-text-product-show-head">Как заказать единичные в своем роде товары?</h3>
+        <p class="underlined-text-body underlined-text-product-show-head-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.luptatem.</p>
+      </div>
+    <% end %>
+    <article>
+      <div class="show-flexbox">
+        <div class="show-product-image">
+          <%= image_tag @product.large_picture, { alt: @product.name } %>
+        </div>
+        <div class="show-product-description">
+          <div class="price">
+            <span><%= @product.price %></span>
+            <span>₽</span>
+          </div>
+          <h2><%= @product.name %></h2>
+          <p><%= @product.description %></p>
+          <div class="buttons-group">
+            <%= link_to 'Назад', :back, class: 'waves-effect waves-light btn-large blue-grey-hover-btn' %>
+            <% if @product.unique %>
+              <a class="waves-effect waves-light btn modal-trigger btn-large purple-hover-btn" href="#order-modal">Заказать</a>
+            <% else %>
+              <%= link_to 'В корзину', add_product_path(@product), remote: true, class: 'waves-effect waves-light btn-large purple-hover-btn', method: :post %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<% if @product.unique %>
+  <div id="order-modal" class="modal">
+    <i class="small material-icons order-modal-close modal-close">close</i>
+    <h5>Оставьте нам свои данные</h5>
+    <%= form_with(url: shop_order_calls_path, class: 'castom-form castom-form--purple') do %>
+      <%= text_field_tag(:timezone_order_call, '', id: 'timezone-order-modal', type: 'hidden') %>
+      <%= text_field_tag(:product_id_order_call, @product.id, type: 'hidden') %>
+      <div class="input-field">
+        <i class="material-icons prefix">account_circle</i>
+        <%= text_field_tag(:name_order_call, '') %>
+        <%= label_tag(:name_order_call, 'Ваше имя') %>
+        <span id="errors-order-call-name" class="helper-text" data-error=""></span>
+      </div>
+      <div class="input-field">
+        <i class="material-icons prefix">phone</i>
+        <%= text_field_tag(:telephone_order_call, '') %>
+        <%= label_tag(:telephone_order_call, 'Ваш телефонный номер') %>
+        <span id="errors-order-call-telephone" class="helper-text" data-error=""></span>
+      </div>
+      <div class="input-field">
+        <label class="castom-form__checkbox castom-form--checkbox-padding-left">
+          <%= check_box_tag(:confirm_order_call, value = "1", checked = false, options = {class: 'filled-in'}) %>
+          <span id="errors-order-call-confirm" class="order-modal-font">Принять <a target="_blank" href="<%= privacy_agreement_path %>">политику приватности</a></span>
+        </label>
+      </div>
+      <div class="input-field castom-form--margin-top">
+        <%= submit_tag('Отправить', class: 'center-submit waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white') %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= render 'includes/will_like' %>

@@ -1,0 +1,67 @@
+<header data-turbolinks-permanent style="background-image: url(<%= image_url('static/northern-light.jpg') %>);">
+  <ul id="dropdown1" class="dropdown-content dropdown-content--blue-grey">
+    <% Category.all.each do |category| %>
+      <li><%= link_to category.name, shop_category_products_path(category) %></li>
+    <% end %>
+  </ul>
+  <nav class="blue-grey darken-3">
+    <div class="nav-wrapper">
+      <div class="container">
+        <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-med-and-up"><i class="material-icons">menu</i></a>
+        <ul class="left hide-on-small-only">
+          <li><%= link_to 'Главная', root_path %></li>
+          <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Магазин<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+        <% unless current_page?(privacy_agreement_path) or current_page?(new_shop_order_path) %>
+          <ul class="right">
+            <li>
+              <%= link_to(show_cart_path, remote: true, method: :post) do %>
+                <a href="#bottom-modal-cart" class="modal-trigger footer">
+                  <i class="material-icons">shopping_cart</i>
+                </a>
+              <% end %>
+            </li>
+            <% if user_signed_in? %>
+              <li>
+                <%= link_to destroy_user_session_path, :method => :delete do %>
+                  <i class="material-icons">exit_to_app</i>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+  <ul id="slide-out" class="sidenav sidemenu">
+    <li>
+      <%= link_to(root_path, {class: 'side-link'}) do %>
+        <i class="small material-icons">home</i>
+      <% end %>
+    </li>
+    <hr>
+    <% Category.all.each do |category| %>
+      <li>
+        <%= link_to category.name, shop_category_products_path(category), { class: 'side-link' } %>
+      </li>
+    <% end %>
+  </ul>
+  <div style="height: 80px;"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col l4 s12">
+        <%= image_tag('static/logo.svg', {class: 'logo1'}) %>
+        <h1>Художественная мастерская</h1>
+      </div>
+      <div class="col l7 offset-l1 s12">
+        <div class="carousel right">
+          <%= image_tag('carousel/carousel_1.jpg', { class: 'carousel-item carousel-picture'}) %>
+          <%= image_tag('carousel/carousel_2.jpg', { class: 'carousel-item carousel-picture'}) %>
+          <%= image_tag('carousel/carousel_3.jpg', { class: 'carousel-item carousel-picture'}) %>
+          <%= image_tag('carousel/carousel_4.jpg', { class: 'carousel-item carousel-picture'}) %>
+          <%= image_tag('carousel/carousel_5.jpg', { class: 'carousel-item carousel-picture'}) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

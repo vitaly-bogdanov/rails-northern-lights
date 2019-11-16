@@ -1,0 +1,46 @@
+<section class="section section--grey section--full-height">
+  <div class="container">
+    <h2 class="section__title">Информация о заказе</h2>
+    <%= link_to 'Назад', admin_order_calls_path, {class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
+    <div id="order-call-product">
+      <div id="product-img">
+        <%= image_tag(@order_call.product.large_picture, { alt: @order_call.product.name }) %>
+      </div>
+      <div id="product-description">
+        <h3>Название товара</h3>
+        <p><%= @order_call.product.name %></p>
+        <h3>Цена товара</h3>
+        <p><%= @order_call.product.price %> руб.</p>
+        <h3>Краткое описание</h3>
+        <p><%= @order_call.product.preview %></p>
+        <h3>Полное отписание</h3>
+        <p><%= @order_call.product.description %></p>
+      </div>
+    </div>
+    <%= form_with model: [:admin, @order_call], class: 'castom-form castom-form--purple castom-form--margin-top', local: true do |f| %>
+      <div class="input-field">
+        <%= f.text_field :name, disabled: true %>
+        <%= f.label :name, 'Имя' %>
+      </div>
+      <div class="input-field">
+        <%= f.text_field :telephone, disabled: true %>
+        <%= f.label :telephone, 'Телефон' %>
+      </div>
+      <div class="input-field">
+        <%= f.text_field :timezone, disabled: true %>
+        <%= f.label :timezone, 'Часовой пояс' %>
+      </div>
+      <div class="input-field">
+        <%= f.text_field :created_at, disabled: true %>
+        <%= f.label :created_at, 'Время оставления заявки по времени локации сайта' %>
+      </div>
+      <div class="input-field">
+        <%= f.text_field :notes %>
+        <%= f.label :notes, 'Оставьте заметку о контакте, если нужно' %>
+      </div>
+      <%= text_field_tag(:product_id_order_call, @order_call.product.id, type: 'hidden') %>
+      <%= f.submit 'Сохранить', class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white' %>
+    <% end %>
+  </div>
+</section>
+<%= link_to 'проверим', new_shop_order_path %>

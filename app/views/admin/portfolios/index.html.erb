@@ -1,0 +1,25 @@
+<section class="section section--grey section--full-height">
+  <div class="container">
+    <h2 class="section__title">Портфолио</h2>
+    <% if @portfolios.any? %>
+      <% @portfolios.each do |portfolio| %>
+        <div class="horizontal-grid horizontal-grid--portfolio-elements-position horizontal-grid--margin-top-position">
+          <h3 class="horizontal-grid__item-title"><%= portfolio.name %></h3>
+          <p class="horizontal-grid__item-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic doloribus quo optio labore mollitia eveniet necessitatibus cumque repellat accusamus similique.</p>
+          <div class="horizontal-grid__item-edit">
+            <%= link_to edit_admin_portfolio_path(portfolio) do %>
+              <i class="material-icons">edit</i>
+            <% end %>
+          </div>
+          <div class="horizontal-grid__item-delete">
+            <%= link_to admin_portfolio_path(portfolio), method: :delete do %>
+              <i class="material-icons">delete_forever</i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h3 class="empty-index empty-index--center">Пока что демонстрационных работ нет :'(</h3>
+    <% end %>
+  </div>
+</section>

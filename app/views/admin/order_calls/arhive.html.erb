@@ -1,0 +1,37 @@
+<section class="section section--grey section--full-height">
+  <div class="container">
+    <h2 class="section__title">Архивные заявки</h2>
+    <%= link_to 'Назад', admin_order_calls_path, {class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
+    <% if @order_call.any? %>
+      <% @order_call.each do |cl| %>
+        <div class="horizontal-grid horizontal-grid--category-elements-position horizontal-grid--margin-top-position">
+          <h3 class="horizontal-grid__item-title"><%= cl.name %></h3>
+          <p class="horizontal-grid__item-telephone"><%= cl.telephone %></p>
+          <p class="horizontal-grid__item-notes"><%= cl.notes %></p>
+          <div class="horizontal-grid__item-check">
+            <%= link_to '#', class: 'disabled' do %>
+              <i class="material-icons">check_circle</i>
+            <% end %>
+          </div>
+          <div class="horizontal-grid__item-save">
+            <%= link_to admin_order_call_save_path(cl), method: :patch do %>
+              <i class="material-icons">save</i>
+            <% end %>
+          </div>
+          <div class="horizontal-grid__item-edit">
+            <%= link_to edit_admin_order_call_path(cl) do %>
+              <i class="material-icons">contacts</i>
+            <% end %>
+          </div>
+          <div class="horizontal-grid__item-delete">
+            <%= link_to admin_order_call_path(cl), method: :delete do %>
+              <i class="material-icons">delete_forever</i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h3 class="empty-index empty-index--center">Пока что тут пусто</h3>
+    <% end %>
+  </div>
+</section>

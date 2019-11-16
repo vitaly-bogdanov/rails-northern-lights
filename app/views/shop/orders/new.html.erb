@@ -1,0 +1,63 @@
+<section id="product_list">
+  <div class="container">
+    <h2>Ваш список товаров</h2>
+    <div id="all_your_products">
+      <% 3.times do %>
+        <%= render 'includes/product_flexbox' %>
+      <% end %>
+    </div>
+    <div class="to_order">
+      <p>Итого: <span>12 345</span> <span>₽</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="form-order">
+  <div class="container">
+    <h2>Оформление заказа</h2>
+    <form action="#">
+      <div class="input-field">
+        <input id="user" type="text" class="validate">
+        <label for="user">Фамилия Имя Отчество</label>
+        <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+      </div>
+      <div class="input-field">
+        <input id="phone" type="text" class="validate">
+        <label for="phone">Телефон</label>
+        <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+      </div>
+      <div class="input-field">
+        <input id="region" type="text" class="validate">
+        <label for="region">Регион</label>
+        <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+      </div>
+      <div class="input-field">
+        <input id="city" type="text" class="validate">
+        <label for="city">Город</label>
+        <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+      </div>
+      <div class="input-field">
+        <input id="address" type="text" class="validate">
+        <label for="address">Адрес доставки</label>
+        <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+      </div>
+      <div class="input-field">
+        <input id="index" type="text" class="validate">
+        <label for="index">Индекс</label>
+        <span class="helper-text" data-error="wrong" data-success="right">Helper text</span>
+      </div>
+      <div class="input-field">
+        <textarea id="textarea_comment" class="materialize-textarea"></textarea>
+        <label for="textarea_comment">Коментарии</label>
+      </div>
+      <label class="checkbox-confirm">
+        <input type="checkbox" class="filled-in"/>
+        <span>Принять <a href="<%= privacy_agreement_path %>" target="_blank">политику приватности</a></span>
+      </label>
+      <div class="input-field">
+        <input class="btn waves-effect waves-light purple-hover-btn" value="к оплате" type="submit" class="validate">
+      </div>
+    </form>
+  </div>
+</section>
+<%= link_to 'Проверим', @pay_link %>

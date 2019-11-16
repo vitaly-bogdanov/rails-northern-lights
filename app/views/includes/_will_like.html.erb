@@ -1,0 +1,28 @@
+<% 
+  count_products = Product.count
+  unless count_products == 0
+%>
+  <section class="section" id="will_like">
+    <div class="container">
+      <h2 class="section__title">Возможно вам понравится</h2>
+      <div class="products_grid products_grid--will_like">
+        <% Product.limit(4).offset(rand(0..count_products - 4)).each do |product| %>
+          <div class="product_card">
+            <%= link_to image_tag(product.middle_picture, {alt: product.name}), shop_product_path(product) %>
+            <div class="product_card__text">
+              <%= link_to shop_product_path(product), class: 'product_card__title_link' do %>
+                <h3 class="product_card__title"><%= product.name %></h3>
+              <% end %>
+              <p class="product_card__description"><%= product.preview %></p>
+            </div>
+            <%= link_to 'В корзину', add_product_path(product), remote: true, method: :post, class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
+            <div class="product_card__price">
+              <span><%= product.price %></span>
+              <span>₽</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

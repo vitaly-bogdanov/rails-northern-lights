@@ -1,0 +1,8 @@
+.dropdown-content li:not(.disabled) > span {
+  color: #4a148c;
+}
+.dropdown-content--blue-grey {
+  a {
+    color: #4a148c !important;
+  }
+}

@@ -1,0 +1,27 @@
+.checkbox-confirm {
+  input[type="checkbox"].filled-in:checked + span:not(.lever):before {
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    top: 3px;
+  }
+  input[type="checkbox"].filled-in:checked + span:not(.lever):after {
+    border: 2px solid #37474f;
+    background-color: #37474f;
+    top: 3px;
+  }
+  input[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
+    border: 2px solid #37474f;
+    background-color: #37474f;
+    top: 3px;
+  }
+  span {
+    color: #000;
+    font-size: 13px;
+    line-height: 14px;
+    a {
+      border-bottom: 1px solid #37474f;
+      color: #37474f;
+      line-height: 14px;
+    }
+  }
+}

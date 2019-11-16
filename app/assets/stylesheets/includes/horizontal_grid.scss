@@ -1,0 +1,43 @@
+.horizontal-grid {
+  display: grid;
+  align-items: center;
+  grid-auto-rows: 107px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  &__item-image {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
+  &__item-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 18px;
+    justify-self: center;
+  }
+  &__item-edit, &__item-delete, &__item-check, &__item-save {
+    justify-self: center;
+    i {
+      transition: color .3s ease;
+      color: black;
+      cursor: pointer;
+      &:hover {
+        color: #4a148c;
+      }
+    }
+  }
+  &__item-telephone {
+    font-size: 17px;
+    margin: 0;
+    justify-self: center;
+  }
+  &__item-notes {
+    box-sizing: border-box;
+    padding: 10px 15px 10px 15px;
+    margin: 0;
+  }
+}
+.horizontal-grid--margin-top-position {
+  margin-top: 3px;
+}

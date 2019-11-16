@@ -1,0 +1,40 @@
+.castom-button {
+  transition: background-color .3s ease;
+  span {
+    padding: 6px 16px;
+  }
+  &--purple {
+    background-color: #4a148c;
+    &:hover {
+      background-color: lighten(#4a148c, 10%);
+    }
+  }
+  &--grey {
+    background-color:#37474f;
+    &:hover {
+      background-color: lighten(#37474f, 10%);
+    }
+  }
+  &--margin-bottom {
+    margin-bottom: 20px;
+  }
+  &--input-text-white {
+    input {
+      color: white;
+    }
+  }
+  &--center {
+    width: 80px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.arhive-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 70px;
+  margin-bottom: 0;
+  width: 172px;
+}

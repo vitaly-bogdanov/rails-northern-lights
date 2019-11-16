@@ -1,0 +1,53 @@
+<%= form_with model: [:admin, @product], class: 'castom-form castom-form--purple castom-form--margin-top', local: true do |f| %>
+  <div class="file-field input-field">
+    <div class="btn castom-button castom-button--grey">
+      <span>Добавить</span>
+      <%= f.file_field :picture, class: 'ivalid-click-off' %>
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path invalid-off <%= invalid_class(@product, :picture) %>" type="text" placeholder="Картинка">
+      <span class="helper-text error" data-error="<%= error_message(@product, :picture) %>"></span>
+    </div>
+  </div>
+  <div class="input-field">
+    <%= f.select(:category_id, class: 'invalid') do %>
+      <%= content_tag(:option, 'Выберите категорию', disabled: true, selected: @product.errors.empty? || @product.errors[:category_id].any? ) %>
+      <% @categories.each do |category| %>
+        <%= content_tag(:option, category.name, value: category.id, selected: !@product.category.nil? && category.id == @product.category.id ) %>
+      <% end %>
+    <% end %>
+    <span id="note-error" class="helper-text" style="color:red;"><%= error_message(@product, :category_id) %></span>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :name, class: invalid_class(@product, :name) %>
+    <%= f.label :name, 'Название' %>
+    <span class="helper-text error" data-error="<%= error_message(@product, :name) %>"></span>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :price, class: invalid_class(@product, :price) %>
+    <%= f.label :price, 'Цена' %>
+    <span class="helper-text error" data-error="<%= error_message(@product, :price) %>">Стоимость товара</span>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :description, class: invalid_class(@product, :description) %>
+    <%= f.label :description, 'Описание' %>
+    <span class="helper-text error" data-error="<%= error_message(@product, :description) %>">Находится на странице товара</span>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :preview, class: invalid_class(@product, :preview) %>
+    <%= f.label :preview, 'Краткое описание' %>
+    <span class="helper-text error" data-error="<%= error_message(@product, :preview) %>">Находится на плитке товара</span>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :keywords, class: invalid_class(@product, :keywords) %>
+    <%= f.label :keywords, 'Ключевые слова' %>
+    <span class="helper-text error" data-error="<%= error_message(@product, :keywords) %>">Например: драгоценные камни, изделия из дерева, украшения. Нужно для поисковых роботов.</span>
+  </div>
+  <div class="input-field">
+    <label class="castom-form__checkbox">
+      <%= f.check_box :unique, class: 'filled-in' %>
+      <span>Не серийное изделие</span>
+    </label>
+  </div>
+  <%= f.submit('Сохранить', class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white') %>
+<% end %>

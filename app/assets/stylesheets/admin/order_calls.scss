@@ -1,0 +1,30 @@
+// Place all the styles related to the admin/order_calls controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import '../includes/castom_form.scss';
+@import '../includes/button.scss';
+@import '../includes/horizontal_grid.scss';
+.horizontal-grid--category-elements-position {
+  grid-template-columns: 1.5fr 1.5fr 5fr 1fr 1fr 1fr 1fr;
+}
+
+#order-call-product {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  #product-img {
+
+  }
+  #product-description {
+    width: 540px;
+    h3 {
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+}

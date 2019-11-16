@@ -1,0 +1,23 @@
+<%= form_with model: [:admin, @portfolio], class: 'castom-form castom-form--purple castom-form--margin-top', local: true, multipart: true do |f| %>
+  <div class="file-field input-field">
+    <div class="btn castom-button castom-button--grey">
+      <span>Добавить</span>
+      <%= f.file_field :picture, class: 'ivalid-click-off' %>
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path invalid-off <%= invalid_class(@portfolio, :picture) %>" type="text" placeholder="Картинка">
+      <span class="helper-text error" data-error="<%= error_message(@portfolio, :picture) %>"></span>
+    </div>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :name, class: invalid_class(@portfolio, :name) %>
+    <%= f.label :name, 'Название' %>
+    <span class="helper-text error" data-error="<%= error_message(@portfolio, :name) %>">Название проекта или назначение.</span>
+  </div>
+  <div class="input-field">
+    <%= f.text_field :description, class: invalid_class(@portfolio, :description) %>
+    <%= f.label :description, 'Описание' %>
+    <span class="helper-text error" data-error="<%= error_message(@portfolio, :description) %>">Краткое описание.</span>
+  </div>
+  <%= f.submit 'Сохранить', class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white' %>
+<% end %>

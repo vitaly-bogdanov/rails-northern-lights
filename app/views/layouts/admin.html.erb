@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Админ</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= stylesheet_link_tag    'materialize',    'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'admin/layout',   'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application',    'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag params[:controller], 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'materialize',    'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',    'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin',          'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <%= render 'includes/header_admin' %>
+    <%= yield %>
+    <%= render 'includes/footer_admin' %>
+  </body>
+</html>
