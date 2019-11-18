@@ -160,7 +160,8 @@ function closeSidebar() {
  */
 function serveceSlider() {
   const serveceSlider = document.querySelector('.service-slider');
-  if (serveceSlider) {
+
+  if (serveceSlider && serveceSlider.children.length != 0) {
     const serveceSliderInstance = M.Carousel.init(serveceSlider, {
       fullWidth: true,
       duration: 400

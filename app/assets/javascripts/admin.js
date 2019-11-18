@@ -41,9 +41,9 @@ function selectErrorBottomBorderOn() {
  * Выключаем стили валидационной ошибки элемента select.
  */
 function selectErrorStyleOff() {
-  let selectInput1 = document.querySelector('.select-wrapper .invalid');
-  if (selectInput1) {
-    selectInput1.onclick = function() {
+  let selectInput = document.querySelector('.select-wrapper .invalid');
+  if (selectInput) {
+    selectInput.onclick = function() {
       this.classList.remove('invalid');
       document.querySelector('#note-error').innerHTML = '';
     }
