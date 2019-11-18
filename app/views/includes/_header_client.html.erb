@@ -1,7 +1,16 @@
 <header data-turbolinks-permanent style="background-image: url(<%= image_url('static/northern-light.jpg') %>);">
   <ul id="dropdown1" class="dropdown-content dropdown-content--blue-grey">
-    <% Category.all.each do |category| %>
-      <li><%= link_to category.name, shop_category_products_path(category) %></li>
+    <% categories = Category.all %>
+    <% if categories.empty? %>
+      <% categories.all.each do |category| %>
+        <li><%= link_to category.name, shop_category_products_path(category) %></li>
+      <% end %>
+    <% else %>
+      <li>
+        <a href='#' class="disabled">
+          Пока пусто
+        </a>
+      </li>
     <% end %>
   </ul>
   <nav class="blue-grey darken-3">

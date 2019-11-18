@@ -81,6 +81,16 @@ hr {
   }
 }
 
+a.disabled {
+  i {
+      color: grey;
+  }
+  pointer-events: none;
+}
+
+
+// функция font-path() важна для правильного 
+// установления путей к шрифтам
 @font-face {
   font-family: 'Roboto';
   src: url(font-path('Roboto-Regular.eot'));
