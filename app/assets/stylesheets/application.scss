@@ -14,11 +14,18 @@
  *require_self // включаем данный файл
  */
 
-@import "./includes/section.scss";
-@import "./includes/dropdown.scss";
-@import "./includes/product_pagination.scss";
-
-// Общие стили
+// функция font-path() важна для правильного 
+// установления путей к шрифтам
+@font-face {
+  font-family: 'Roboto';
+  src: url(font-path('Roboto-Regular.eot'));
+  src: url(font-path('Roboto-Regular.eot?#iefix')) format('embedded-opentype'),
+  url(font-path('Roboto-Regular.woff')) format('woff'),
+  url(font-path('Roboto-Regular.ttf')) format('truetype'),
+  url(font-path('Roboto-Regular.svg#Roboto-Regular')) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 * {
   font-family: 'Roboto';
 }
@@ -35,6 +42,13 @@ hr {
   max-width: 1170px !important;
   margin: 0 auto;
 }
+
+@import "./includes/section.scss";
+@import "./includes/dropdown.scss";
+@import "./includes/product_pagination.scss";
+
+// Общие стили
+
 
 // боковое меню
 .sidemenu {
@@ -86,18 +100,4 @@ a.disabled {
       color: grey;
   }
   pointer-events: none;
-}
-
-
-// функция font-path() важна для правильного 
-// установления путей к шрифтам
-@font-face {
-  font-family: 'Roboto';
-  src: url(font-path('Roboto-Regular.eot'));
-  src: url(font-path('Roboto-Regular.eot?#iefix')) format('embedded-opentype'),
-  url(font-path('Roboto-Regular.woff')) format('woff'),
-  url(font-path('Roboto-Regular.ttf')) format('truetype'),
-  url(font-path('Roboto-Regular.svg#Roboto-Regular')) format('svg');
-  font-weight: normal;
-  font-style: normal;
 }
