@@ -20,6 +20,8 @@
     </div>
   <% end %>
   <div class="input-field input-field--margin">
+    <%= resource_name %>
+    <%= session_path(resource_name) %>
     <%= f.submit 'Войти', class: 'waves-effect waves-light btn castom-button castom-button--center castom-button--purple castom-button--input-text-white' %>
   </div>
 <% end %>
