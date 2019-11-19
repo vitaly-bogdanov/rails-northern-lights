@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_contacts, only: [:index, :privacy_agreement, :new, :show]
+  include Devise::Controllers::Rememberable
 
   def set_contacts
     contacts = YAML.load_file("#{Rails.root}/contacts.yml")
