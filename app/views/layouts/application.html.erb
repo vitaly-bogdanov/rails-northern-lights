@@ -11,8 +11,8 @@
     <%= stylesheet_link_tag 'application',        'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag params[:controller],  'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'materialize',     'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application',     'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'client',          'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',     'data-turbolinks-track': 'reload', defer: true %>
+    <%= javascript_include_tag 'client',          'data-turbolinks-track': 'reload', defer: true %>
     <meta name="description" content="<%= @description ? @description : 'Продажа изделий из полудрагоценных якутских камней дерева с лазерной гравировкой, картин, сувениров. Изготовление на заказ по вашим искизам. Cоздание сувениров для мероприятия. Сотрудничество.' %>">
     <meta name="keywords" content="<%= @keywords ? @keywords : 'драгоценные, полудрагоценные, камни, якутские, лазерная, гравировка, изделия, картины, сувениры, дерево' %>">
     <%= csrf_meta_tags %>
