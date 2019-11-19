@@ -259,8 +259,9 @@ function modalFooter() {
         loadAjaxProducts();
       }, 
       onOpenEnd: function() {
-        removeProducts(); // удалеение всего количества товара при нажатии на корзину
-      }
+        removeProducts();
+      },
+      inDuration: 600,
     });
   }
 }
