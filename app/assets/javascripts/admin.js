@@ -1,25 +1,3 @@
-document.addEventListener('page:load', function(event) {
-  select();                    // поле select в админке
-  selectErrorBottomBorderOn(); // вешаем класс invalid на поле select, если поле не проходит валидацию
-  selectErrorStyleOff();       // снимаем стили ошибки валидации и убираем сообщение об ошибке
-
-  M.updateTextFields();        // при загрузке перезагружает поля, на случай если форма не пуста
-
-  disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
-
-});
-
-document.addEventListener('turbolinks:load', function(event) {
-  select();                    // поле select в админке
-  selectErrorBottomBorderOn(); // вешаем класс invalid на поле select, если поле не проходит валидацию
-  selectErrorStyleOff();       // снимаем стили ошибки валидации и убираем сообщение об ошибке
-
-  M.updateTextFields();        // при загрузке перезагружает поля, на случай если форма не пуста
-
-  disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
-
-});
-
 /**
  * Выбор категории.
  */ 
@@ -62,3 +40,19 @@ function disableLink() {
     }
   });
 }
+
+document.addEventListener('page:load', function(event) {
+  select();                    // поле select в админке
+  selectErrorBottomBorderOn(); // вешаем класс invalid на поле select, если поле не проходит валидацию
+  selectErrorStyleOff();       // снимаем стили ошибки валидации и убираем сообщение об ошибке
+  M.updateTextFields();        // при загрузке перезагружает поля, на случай если форма не пуста
+  disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
+});
+
+document.addEventListener('turbolinks:load', function(event) {
+  select();                    // поле select в админке
+  selectErrorBottomBorderOn(); // вешаем класс invalid на поле select, если поле не проходит валидацию
+  selectErrorStyleOff();       // снимаем стили ошибки валидации и убираем сообщение об ошибке
+  M.updateTextFields();        // при загрузке перезагружает поля, на случай если форма не пуста
+  disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
+});

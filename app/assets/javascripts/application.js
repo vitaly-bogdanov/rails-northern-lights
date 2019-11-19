@@ -15,21 +15,6 @@
 //= require turbolinks
 //require_tree .
 
-document.addEventListener('page:load', function() {
-  toastActive();               // всплывающее сообщение, активируется если в url есть переменна message
-  navbarDropdown();            // выпадающие меню
-  onFocusInvalidClassRemove(); // снимаем с input класс invalid по фокусу на этом же поле
-  onClicButtonClassRemove()    // снимаем с input класс invalid по нажатию на кнопку выбора картинки
-});
-
-document.addEventListener('turbolinks:load', function() {
-  toastActive();               // всплывающее сообщение, активируется если в url есть переменна message
-  navbarDropdown();            // выпадающие меню
-  M.Modal._count = 0;          // иначе 
-  onFocusInvalidClassRemove(); // снимаем с input класс invalid по фокусу на этом же поле
-  onClicButtonClassRemove()    // снимаем с input класс invalid по нажатию на кнопку выбора картинки
-});
-
 /**
  * Активируем dropdown в клиентской и админской части сайта.
  */
@@ -78,3 +63,18 @@ function onClicButtonClassRemove() {
     };
   });
 }
+
+document.addEventListener('page:load', function() {
+  toastActive();               // всплывающее сообщение, активируется если в url есть переменна message
+  navbarDropdown();            // выпадающие меню
+  onFocusInvalidClassRemove(); // снимаем с input класс invalid по фокусу на этом же поле
+  onClicButtonClassRemove()    // снимаем с input класс invalid по нажатию на кнопку выбора картинки
+});
+
+document.addEventListener('turbolinks:load', function() {
+  toastActive();               // всплывающее сообщение, активируется если в url есть переменна message
+  navbarDropdown();            // выпадающие меню
+  M.Modal._count = 0;          // иначе 
+  onFocusInvalidClassRemove(); // снимаем с input класс invalid по фокусу на этом же поле
+  onClicButtonClassRemove()    // снимаем с input класс invalid по нажатию на кнопку выбора картинки
+});

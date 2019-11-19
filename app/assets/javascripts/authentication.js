@@ -1,13 +1,3 @@
-document.addEventListener('page:load', function(event) {
-  particlesActive();
-  onСhangeInvalidClassRemove();
-});
-
-document.addEventListener('turbolinks:load', function(event) {
-  particlesActive();
-  onСhangeInvalidClassRemove();
-});
-
 /**
  * Активируем анимацию на экране авторизации
  */
@@ -134,3 +124,13 @@ function onСhangeInvalidClassRemove() {
     };
   }); 
 }
+
+document.addEventListener('page:load', function(event) {
+  particlesActive();
+  onСhangeInvalidClassRemove();
+});
+
+document.addEventListener('turbolinks:load', function(event) {
+  particlesActive();
+  onСhangeInvalidClassRemove();
+});
