@@ -11,5 +11,5 @@ class Category < ApplicationRecord
   # обязательные поля
   validates :name,        presence: { message: 'Название категории обязательно' }
   validates :description, presence: { message: 'Описание категории обязательно' }
-  validates :keywords,    presence: { message: 'Парочка ключевых слов пригодятся для для CEO оптимизации' }
+  validates :keywords,    presence: { message: 'Парочка ключевых слов пригодятся для для SEO оптимизации' }
 end

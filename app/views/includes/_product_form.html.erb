@@ -19,9 +19,13 @@
     <span id="note-error" class="helper-text" style="color:red;"><%= error_message(@product, :category_id) %></span>
   </div>
   <div class="input-field">
-    <%= f.text_field :name, class: invalid_class(@product, :name) %>
+    <%= f.text_field :name, class: "#{invalid_class(@product, :name)} 
+     %>
     <%= f.label :name, 'Название' %>
-    <span class="helper-text error" data-error="<%= error_message(@product, :name) %>"></span>
+    <span class="helper-text error" data-error="<%= error_message(@product, :name) %>">
+      Максимальное количество символов: <span><%= @product.name_max_length %></span>.
+      Введено: <span class="letters-count-output"></span>.
+    </span>
   </div>
   <div class="input-field">
     <%= f.text_field :price, class: invalid_class(@product, :price) %>
@@ -29,14 +33,19 @@
     <span class="helper-text error" data-error="<%= error_message(@product, :price) %>">Стоимость товара</span>
   </div>
   <div class="input-field">
-    <%= f.text_field :description, class: invalid_class(@product, :description) %>
+    <%= f.text_field :description, class: "#{invalid_class(@product, :description)} letters-count-in-input" %>
     <%= f.label :description, 'Описание' %>
-    <span class="helper-text error" data-error="<%= error_message(@product, :description) %>">Находится на странице товара</span>
-  </div>
+    <span class="helper-text error" data-error="<%= error_message(@product, :description) %>">
+      Находится на странице товара. Допустимое количество символов: <span><%= "#{@product.description_min_length}-#{@product.description_max_length}" %></span>. 
+      Введено: <span class="letters-count-output"></span>.
+    </span>
   <div class="input-field">
-    <%= f.text_field :preview, class: invalid_class(@product, :preview) %>
+    <%= f.text_field :preview, class: "#{invalid_class(@product, :preview)} letters-count-in-input" %>
     <%= f.label :preview, 'Краткое описание' %>
-    <span class="helper-text error" data-error="<%= error_message(@product, :preview) %>">Находится на плитке товара</span>
+    <span class="helper-text error" data-error="<%= error_message(@product, :preview) %>">
+      Находится на карточке товара. Достимое количество символов: <span><%= "#{@product.preview_min_length}-#{@product.preview_max_length}" %></span>. 
+      Введено: <span class="letters-count-output"></span>.
+    </span>
   </div>
   <div class="input-field">
     <%= f.text_field :keywords, class: invalid_class(@product, :keywords) %>

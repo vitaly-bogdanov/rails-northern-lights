@@ -6,9 +6,17 @@ class Product < ApplicationRecord
   has_many   :order_calls
   has_one_attached :picture, :dependent => :purge_later
 
+  PREVIEW_MIN_LENGTH = 30
+  PREVIEW_MAX_LENGTH = 60
+
+  DESCRIPTION_MIN_LENGTH = 100
+  DESCRIPTION_MAX_LENGTH = 800
+
+  NAME_MAX_LENGTH = 22
+
   validates :name,  presence: { message: 'Название товара обязательно' },
                     length: { 
-                              maximum: 22, 
+                              maximum: NAME_MAX_LENGTH, 
                               message: 'Название товара должно иметь длинну максимум 22 символа' 
                             }
 
@@ -23,14 +31,15 @@ class Product < ApplicationRecord
 
   validates :description, presence: { message: 'Описание товара обязательно' },
                           length: { 
-                                    minimum: 100, 
-                                    maximum: 800, 
+                                    minimum: DESCRIPTION_MIN_LENGTH, 
+                                    maximum: DESCRIPTION_MAX_LENGTH, 
                                     message: 'Описание должно иметь от 100-800 символов' 
                                   }
 
   validates :preview, presence: { message: 'Краткое описание товара обязательно' },
                       length: { 
-                                maximum: 76, 
+                                minimum: PREVIEW_MIN_LENGTH,
+                                maximum: PREVIEW_MAX_LENGTH, 
                                 message: 'Краткое описание должно иметь длинну максимум 76 символов' 
                               }
 
@@ -48,5 +57,25 @@ class Product < ApplicationRecord
 
   def thumb_picture
     picture.variant(resize: '135x107!').processed
+  end
+
+  def description_min_length
+    DESCRIPTION_MIN_LENGTH
+  end
+
+  def description_max_length
+    DESCRIPTION_MAX_LENGTH
+  end
+
+  def preview_max_length
+    PREVIEW_MAX_LENGTH
+  end
+
+  def preview_min_length
+    PREVIEW_MIN_LENGTH
+  end
+
+  def name_max_length
+    NAME_MAX_LENGTH
   end
 end

@@ -29,6 +29,27 @@ function selectErrorStyleOff() {
 }
 
 /**
+ * Подсчет и валидация количества букв в поле ввода
+ * в админской части сайта. 
+ */
+function lettersCountInInput() {
+  document.querySelectorAll('.letters-count-in-input').forEach((inputField) => {
+    // при вводе в поле проставляем количество символов
+    inputField.oninput = function () {
+      this
+        .nextElementSibling
+        .nextElementSibling
+        .lastElementChild.innerHTML = this.textLength;
+    }
+    // при загрузке страницы проставим количество сиволов
+    inputField
+      .nextElementSibling
+      .nextElementSibling
+      .lastElementChild.innerHTML = inputField.textLength;
+  });
+}
+
+/**
  * Деактивируем ссылку на удаление при первом нажатии 
  * для избежания действий от повторного нажатия.
  */
@@ -46,6 +67,7 @@ document.addEventListener('page:load', function(event) {
   selectErrorStyleOff();       // снимаем стили ошибки валидации и убираем сообщение об ошибке
   M.updateTextFields();        // при загрузке перезагружает поля, на случай если форма не пуста
   disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
+  lettersCountInInput();
 });
 
 document.addEventListener('turbolinks:load', function(event) {
@@ -54,4 +76,5 @@ document.addEventListener('turbolinks:load', function(event) {
   selectErrorStyleOff();       // снимаем стили ошибки валидации и убираем сообщение об ошибке
   M.updateTextFields();        // при загрузке перезагружает поля, на случай если форма не пуста
   disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
+  lettersCountInInput();
 });
