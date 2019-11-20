@@ -1,19 +1,19 @@
 <%= link_to 'Назад', admin_categories_path, {class: 'waves-effect waves-light btn castom-button castom-button--purple'} %>
 <%= form_with model: [:admin, @category], class: 'castom-form castom-form--purple castom-form--margin-top', local: true do |f| %>
   <div class="input-field">
-    <%= f.text_field :name, class: if @category.errors.messages[:name].any? then 'invalid' end %>
+    <%= f.text_field :name, class: "#{invalid_class(@category, :name)} " %>
     <%= f.label :name, 'Название' %>
-    <span class="helper-text error" data-error="<%= if @category.errors.messages[:name].any? then @category.errors.messages[:name].first end %>"></span>
+    <span class="helper-text error" data-error="<%= error_message(@category, :name) %>"></span>
   </div>
   <div class="input-field">
-    <%= f.text_field :description, class: if @category.errors.messages[:description].any? then 'invalid' end %>
+    <%= f.text_field :description, class: invalid_class(@category, :description) %>
     <%= f.label :description, 'Описание' %>
-    <span class="helper-text error" data-error="<%= if @category.errors.messages[:description].any? then @category.errors.messages[:description].first end %>">Краткое описание. Нужно для поисковых роботов.</span>
+    <span class="helper-text error" data-error="<%= error_message(@category, :description) %>">Краткое описание. Нужно для поисковых роботов.</span>
   </div>
   <div class="input-field">
-    <%= f.text_field :keywords, class: if @category.errors.messages[:keywords].any? then 'invalid' end %>
+    <%= f.text_field :keywords, class: invalid_class(@category, :keywords) %>
     <%= f.label :keywords, 'Ключевые слова' %>
-    <span class="helper-text error" data-error="<%= if @category.errors.messages[:keywords].any? then @category.errors.messages[:keywords].first end %>">Например: драгоценные камни, изделия из дерева, украшения. Нужно для поисковых роботов.</span>
+    <span class="helper-text error" data-error="<%= error_message(@category, :keywords) %>">Например: драгоценные камни, изделия из дерева, украшения. Нужно для поисковых роботов.</span>
   </div>
   <%= f.submit('Сохранить', class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white') %>
 <% end %>
