@@ -14,11 +14,11 @@ class Product < ApplicationRecord
 
   NAME_MAX_LENGTH = 22
 
-  validates :name,  presence: { message: 'Название товара обязательно' },
-                    length: { 
-                              maximum: NAME_MAX_LENGTH, 
-                              message: 'Название товара должно иметь длинну максимум 22 символа' 
-                            }
+  validates :name, presence: { message: 'Название товара обязательно' },
+                     length: { 
+                               maximum: NAME_MAX_LENGTH, 
+                               message: "Название товара должно иметь длинну максимум #{NAME_MAX_LENGTH} символа" 
+                             }
 
   validates :category_id, presence: { message: 'Укажите категорию' }
 
@@ -30,18 +30,18 @@ class Product < ApplicationRecord
                               }
 
   validates :description, presence: { message: 'Описание товара обязательно' },
-                          length: { 
-                                    minimum: DESCRIPTION_MIN_LENGTH, 
-                                    maximum: DESCRIPTION_MAX_LENGTH, 
-                                    message: 'Описание должно иметь от 100-800 символов' 
-                                  }
+                            length: { 
+                                      minimum: DESCRIPTION_MIN_LENGTH, 
+                                      maximum: DESCRIPTION_MAX_LENGTH, 
+                                      message: "Описание должно иметь длинну от #{DESCRIPTION_MIN_LENGTH} до #{DESCRIPTION_MAX_LENGTH} символов" 
+                                    }
 
   validates :preview, presence: { message: 'Краткое описание товара обязательно' },
-                      length: { 
-                                minimum: PREVIEW_MIN_LENGTH,
-                                maximum: PREVIEW_MAX_LENGTH, 
-                                message: 'Краткое описание должно иметь длинну максимум 76 символов' 
-                              }
+                        length: { 
+                                  minimum: PREVIEW_MIN_LENGTH,
+                                  maximum: PREVIEW_MAX_LENGTH, 
+                                  message: "Краткое описание должно иметь длинну от #{PREVIEW_MIN_LENGTH} до #{PREVIEW_MAX_LENGTH} символов"
+                                }
 
   validates :keywords, presence: { message: 'Ключевые слова обязательны' }
 

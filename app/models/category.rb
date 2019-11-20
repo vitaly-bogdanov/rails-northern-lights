@@ -15,4 +15,8 @@ class Category < ApplicationRecord
                           length:   { maximum: NAME_MAX_LENGTH, message: 'Законы геометрии не позволяют втеснить такое название' }
   validates :description, presence: { message: 'Описание категории обязательно' }
   validates :keywords,    presence: { message: 'Парочка ключевых слов пригодятся для для SEO оптимизации' }
+
+  def name_max_length
+    NAME_MAX_LENGTH
+  end
 end

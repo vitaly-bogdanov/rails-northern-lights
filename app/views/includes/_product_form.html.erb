@@ -19,8 +19,7 @@
     <span id="note-error" class="helper-text" style="color:red;"><%= error_message(@product, :category_id) %></span>
   </div>
   <div class="input-field">
-    <%= f.text_field :name, class: "#{invalid_class(@product, :name)} 
-     %>
+    <%= f.text_field :name, class: "#{invalid_class(@product, :name)} letters-count-in-input"%>
     <%= f.label :name, 'Название' %>
     <span class="helper-text error" data-error="<%= error_message(@product, :name) %>">
       Максимальное количество символов: <span><%= @product.name_max_length %></span>.

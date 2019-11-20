@@ -1,9 +1,12 @@
 <%= link_to 'Назад', admin_categories_path, {class: 'waves-effect waves-light btn castom-button castom-button--purple'} %>
 <%= form_with model: [:admin, @category], class: 'castom-form castom-form--purple castom-form--margin-top', local: true do |f| %>
   <div class="input-field">
-    <%= f.text_field :name, class: "#{invalid_class(@category, :name)} " %>
+    <%= f.text_field :name, class: "#{invalid_class(@category, :name)} letters-count-in-input" %>
     <%= f.label :name, 'Название' %>
-    <span class="helper-text error" data-error="<%= error_message(@category, :name) %>"></span>
+    <span class="helper-text error" data-error="<%= error_message(@category, :name) %>">
+      Максимальное количество символов: <span><%= @category.name_max_length %></span>
+      Введено: <span class="letters-count-output"></span>
+    </span>
   </div>
   <div class="input-field">
     <%= f.text_field :description, class: invalid_class(@category, :description) %>
