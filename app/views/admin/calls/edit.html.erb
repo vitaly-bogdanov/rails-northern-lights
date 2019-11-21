@@ -1,6 +1,7 @@
 <section class="section section--grey section--full-height">
   <div class="container">
     <h2 class="section__title">Информация о контакте</h2>
+    <%= link_to 'Назад', admin_calls_path, {class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
     <%= form_with model: [:admin, @call], class: 'castom-form castom-form--purple castom-form--margin-top', local: true do |f| %>
       <div class="input-field">
         <%= f.text_field :name, disabled: true %>
