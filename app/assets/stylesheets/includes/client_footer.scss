@@ -47,7 +47,6 @@ footer {
       padding-left: 10px;
       padding-right: 10px;
       align-items: center;
-      flex-wrap: wrap;
       p {
         margin-bottom: 0;
         color: white;
@@ -98,7 +97,7 @@ footer {
     }
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 503px) {
   footer {
     .footer-copyright {
       .copy-flexbox {
