@@ -2,7 +2,7 @@ class Shop::ProductsController < ApplicationController
   def index
     # категория и продукты имеют связь "один ко многим"
     @category = Category.find(params[:id])
-    @products = @category.products.paginate(page: params[:page], per_page: 8)
+    @products = @category.products.where(available: true).paginate(page: params[:page], per_page: 8)
 
     @title = @category.name
     @description = @category.description
