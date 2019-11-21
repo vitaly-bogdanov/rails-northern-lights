@@ -61,13 +61,37 @@ function disableLink() {
   });
 }
 
+
+/**
+ * Переключение товара: доступен для покупки или нет.
+ */
+function toogleAvailable() {
+  document.querySelector('#toogle-available').onclick = function() {
+    let formData = new FormData();
+    formData.append('available', !this.checked);
+    Rails.ajax({
+      type: 'PATCH', 
+      url: `/admin/order_calls/${this.dataset.productId}/toogle-available`,
+      dataType: 'json',
+      data: formData,
+      success: function(response) {
+        console.log(response);
+      },
+      error: function(response) {
+        console.log(response);
+      }
+    });
+  }
+}
+
 document.addEventListener('page:load', function(event) {
   select();                    // поле select в админке
   selectErrorBottomBorderOn(); // вешаем класс invalid на поле select, если поле не проходит валидацию
   selectErrorStyleOff();       // снимаем стили ошибки валидации и убираем сообщение об ошибке
   M.updateTextFields();        // при загрузке перезагружает поля, на случай если форма не пуста
   disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
-  lettersCountInInput();
+  lettersCountInInput();       //
+  toogleAvailable();           //
 });
 
 document.addEventListener('turbolinks:load', function(event) {
@@ -76,5 +100,7 @@ document.addEventListener('turbolinks:load', function(event) {
   selectErrorStyleOff();       // снимаем стили ошибки валидации и убираем сообщение об ошибке
   M.updateTextFields();        // при загрузке перезагружает поля, на случай если форма не пуста
   disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
-  lettersCountInInput();
+  lettersCountInInput();       //
+  toogleAvailable();           //
 });
+

@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2019_11_03_093833) do
     t.text "description"
     t.string "preview"
     t.text "keywords"
+    t.boolean "available", default: true
     t.boolean "unique"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

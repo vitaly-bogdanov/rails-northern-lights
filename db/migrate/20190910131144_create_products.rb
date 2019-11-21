@@ -8,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.text       :description
       t.string     :preview
       t.text       :keywords
+      t.boolean    :available, default: true
       t.boolean    :unique
       t.timestamps
     end

@@ -15,6 +15,21 @@
         <p><%= @order_call.product.preview %></p>
         <h3>Полное отписание</h3>
         <p><%= @order_call.product.description %></p>
+        <div class="switch">
+          <label>
+            <span class="switch-point">В продаже</span>
+            <input 
+              type="checkbox" 
+              id="toogle-available" 
+              data-product-id="<%= @order_call.product.id %>" 
+              <% unless @order_call.product.available %>
+                checked
+              <% end %>
+            >    
+            <span class="lever"></span>
+            <span class="switch-point">Продан</span>
+          </label>
+        </div>
       </div>
     </div>
     <%= form_with model: [:admin, @order_call], class: 'castom-form castom-form--purple castom-form--margin-top', local: true do |f| %>
