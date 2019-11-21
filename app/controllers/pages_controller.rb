@@ -6,4 +6,5 @@ class PagesController < ApplicationController
   def privacy_agreement
   end
   
+  
 end
