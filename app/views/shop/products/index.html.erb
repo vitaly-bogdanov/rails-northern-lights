@@ -3,9 +3,7 @@
     <% unless @products.empty? %>
       <h2 class="section__title"><%= @category.name %></h2>
       <div class="products_grid products_grid--all_products">
-        <% @products.each do |product| %>
-          <%= render partial: 'includes/product_card', locals: { product: product } %>
-        <% end %>
+        <%= render partial: 'includes/product_card', collection: @products %>
       </div>
       <div class="product-pagination">
         <%= will_paginate @products, previous_label: '<i class="material-icons">chevron_left</i>', next_label: '<i class="material-icons">chevron_right</i>' %>

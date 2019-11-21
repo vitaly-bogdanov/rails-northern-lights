@@ -7,7 +7,7 @@
       <h2 class="section__title">Возможно вам понравится</h2>
       <div class="products_grid products_grid--will_like">
         <% Product.where(available: true).limit(4).offset(rand(0..count_products - 4)).each do |product| %>
-          <%= render partial: 'includes/product_card', locals: { product: product } %>
+          <%= render partial: 'includes/product_card', locals: { product_card: product } %>
         <% end %>
       </div>
     </div>

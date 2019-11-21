@@ -1,18 +1,18 @@
 <div class="product_card">
-  <%= link_to image_tag(product.middle_picture, {alt: product.name}), shop_product_path(product) %>
+  <%= link_to image_tag(product_card.middle_picture, {alt: product_card.name}), shop_product_path(product_card) %>
   <div class="product_card__text">
-    <a class="product_card__title_link" href="<%= shop_product_path(product) %>">
-      <h3 class="product_card__title"><%= product.name %></h3>
+    <a class="product_card__title_link" href="<%= shop_product_path(product_card) %>">
+      <h3 class="product_card__title"><%= product_card.name %></h3>
     </a>
-    <p class="product_card__description"><%= product.preview %></p>
+    <p class="product_card__description"><%= product_card.preview %></p>
   </div>
-  <% if product.unique %>
-    <%= link_to 'Подробнее', shop_product_path(product), class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
+  <% if product_card.unique %>
+    <%= link_to 'Подробнее', shop_product_path(product_card), class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
   <% else %>
-    <%= link_to 'В корзину', add_product_path(product), remote: true, method: :post, class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
+    <%= link_to 'В корзину', add_product_path(product_card), remote: true, method: :post, class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
   <% end %>
   <div class="product_card__price">
-    <span><%= product.price %></span>
+    <span><%= product_card.price %></span>
     <span>₽</span>
   </div>
 </div>
