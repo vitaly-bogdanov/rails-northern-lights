@@ -1,68 +1,3 @@
-document.addEventListener('ajax:success', function(event) {
-  callCreateAjaxSend(event);      // отправляем круглую форму
-  addProductSuccess(event);
-  changeCountProducts(event);
-  orderCallCreateAjaxSend(event);
-});
-
-document.addEventListener('ajax:error', function(event) {
-  callCreateValidateError(event); // выводим ошибки для круглой формы
-  orderCallCreateValidateError(event);
-});
-
-document.addEventListener('page:load', function() {
-  headerCarousel();          // слайдере с картинами
-  modalFooter();             // модальное окно корзины
-  featureDiscoveryCreate();  // включаем круглую форму в нижнем правом угле
-  sidebar();                 // включаем sidebar
-  parallax();                // включаем параллакс
-  serveceSlider();           // слайдер с демонстрационными работами
-  checkBoxErrorOff('#errors-call-confirm', 'white');        // снимаем с чекбокса красное выделение
-  checkBoxErrorOff('#errors-order-call-confirm', '#9e9e9e'); 
-
-  // console.log(document.querySelector('#errors-call-confirm'))
-  
-  document.querySelectorAll('.side-link').forEach(element => {
-    element.onclick = (event) => {
-      event.stopPropagation();
-      closeSidebar();
-    };
-  });
-  document.querySelector('#menu').onclick = (event) => {
-    event.stopPropagation();
-    openFeatureDiscovery();
-  };
-
-  orderModal();
-});
-
-document.addEventListener('turbolinks:load', function() {
-  headerCarousel();         // слайдере с картинами
-  modalFooter();            // модальное окно корзины
-  featureDiscoveryCreate(); // включаем круглую форму в нижнем правом угле
-  sidebar();                // включаем sidebar
-  parallax();               // включаем параллакс
-  serveceSlider();          // слайдер с демонстрационными работами
-  checkBoxErrorOff('#errors-call-confirm', 'white');       // снимаем с чекбокса красное выделение
-  checkBoxErrorOff('#errors-order-call-confirm', '#9e9e9e');
-
-  // console.log(document.querySelector('#errors-call-confirm'))
-
-  document.querySelectorAll('.side-link').forEach(element => {
-    element.onclick = (event) => {
-      event.stopPropagation();
-      closeSidebar();
-    };
-  });
-  document.querySelector('#menu').onclick = (event) => {
-    event.stopPropagation();
-    openFeatureDiscovery();
-  };
-
-  orderModal();
-});
-
-
 /**
  * Слайдер с картинами в header на клиентской части сайта.
  */
@@ -392,3 +327,67 @@ function closeModal(callback) {
     M.Modal.getInstance(modal, { onClose: callback() }).close();
   }
 }
+
+document.addEventListener('ajax:success', function(event) {
+  callCreateAjaxSend(event);      // отправляем круглую форму
+  addProductSuccess(event);
+  changeCountProducts(event);
+  orderCallCreateAjaxSend(event);
+});
+
+document.addEventListener('ajax:error', function(event) {
+  callCreateValidateError(event); // выводим ошибки для круглой формы
+  orderCallCreateValidateError(event);
+});
+
+document.addEventListener('page:load', function() {
+  headerCarousel();          // слайдере с картинами
+  modalFooter();             // модальное окно корзины
+  featureDiscoveryCreate();  // включаем круглую форму в нижнем правом угле
+  sidebar();                 // включаем sidebar
+  parallax();                // включаем параллакс
+  serveceSlider();           // слайдер с демонстрационными работами
+  checkBoxErrorOff('#errors-call-confirm', 'white');        // снимаем с чекбокса красное выделение
+  checkBoxErrorOff('#errors-order-call-confirm', '#9e9e9e'); 
+
+  // console.log(document.querySelector('#errors-call-confirm'))
+  
+  document.querySelectorAll('.side-link').forEach(element => {
+    element.onclick = (event) => {
+      event.stopPropagation();
+      closeSidebar();
+    };
+  });
+  document.querySelector('#menu').onclick = (event) => {
+    event.stopPropagation();
+    openFeatureDiscovery();
+  };
+
+  orderModal();
+});
+
+document.addEventListener('turbolinks:load', function() {
+  headerCarousel();         // слайдере с картинами
+  modalFooter();            // модальное окно корзины
+  featureDiscoveryCreate(); // включаем круглую форму в нижнем правом угле
+  sidebar();                // включаем sidebar
+  parallax();               // включаем параллакс
+  serveceSlider();          // слайдер с демонстрационными работами
+  checkBoxErrorOff('#errors-call-confirm', 'white');       // снимаем с чекбокса красное выделение
+  checkBoxErrorOff('#errors-order-call-confirm', '#9e9e9e');
+
+  // console.log(document.querySelector('#errors-call-confirm'))
+
+  document.querySelectorAll('.side-link').forEach(element => {
+    element.onclick = (event) => {
+      event.stopPropagation();
+      closeSidebar();
+    };
+  });
+  document.querySelector('#menu').onclick = (event) => {
+    event.stopPropagation();
+    openFeatureDiscovery();
+  };
+
+  orderModal();
+});

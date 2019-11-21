@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get  'privacy-agreement', to: 'pages#privacy_agreement', as: 'privacy_agreement'
   resources :calls,        only: [:create]
   
-
   # магазин
   namespace :shop do
     get '/products_category/:id' => 'products#index', as: 'category_products'
