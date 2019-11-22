@@ -33,20 +33,23 @@ function selectErrorStyleOff() {
  * в админской части сайта. 
  */
 function lettersCountInInput() {
-  document.querySelectorAll('.letters-count-in-input').forEach((inputField) => {
-    // при вводе в поле проставляем количество символов
-    inputField.oninput = function () {
-      this
+  let inputFields = document.querySelectorAll('.letters-count-in-input');
+  if (inputFields) {
+    inputFields.forEach((inputField) => {
+      // при вводе в поле проставляем количество символов
+      inputField.oninput = function () {
+        this
+          .nextElementSibling
+          .nextElementSibling
+          .lastElementChild.innerHTML = this.value.length;
+      }
+      // при загрузке страницы проставим количество сиволов
+      inputField
         .nextElementSibling
         .nextElementSibling
-        .lastElementChild.innerHTML = this.textLength;
-    }
-    // при загрузке страницы проставим количество сиволов
-    inputField
-      .nextElementSibling
-      .nextElementSibling
-      .lastElementChild.innerHTML = inputField.textLength;
-  });
+        .lastElementChild.innerHTML = inputField.value.length;
+    });
+  }
 }
 
 /**
