@@ -66,21 +66,24 @@ function disableLink() {
  * Переключение товара: доступен для покупки или нет.
  */
 function toogleAvailable() {
-  document.querySelector('#toogle-available').onclick = function() {
-    let formData = new FormData();
-    formData.append('available', !this.checked);
-    Rails.ajax({
-      type: 'PATCH', 
-      url: `/admin/order_calls/${this.dataset.productId}/toogle-available`,
-      dataType: 'json',
-      data: formData,
-      success: function(response) {
-        console.log(response);
-      },
-      error: function(response) {
-        console.log(response);
-      }
-    });
+  let toogleAvailableButton = document.querySelector('#toogle-available');
+  if (toogleAvailableButton) {
+    toogleAvailableButton.onclick = function() {
+      let formData = new FormData();
+      formData.append('available', !this.checked);
+      Rails.ajax({
+        type: 'PATCH', 
+        url: `/admin/order_calls/${this.dataset.productId}/toogle-available`,
+        dataType: 'json',
+        data: formData,
+        success: function(response) {
+          console.log(response);
+        },
+        error: function(response) {
+          console.log(response);
+        }
+      });
+    }
   }
 }
 
@@ -92,6 +95,7 @@ document.addEventListener('page:load', function(event) {
   disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
   lettersCountInInput();       //
   toogleAvailable();           //
+  toastActive();
 });
 
 document.addEventListener('turbolinks:load', function(event) {
@@ -102,5 +106,6 @@ document.addEventListener('turbolinks:load', function(event) {
   disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
   lettersCountInInput();       //
   toogleAvailable();           //
+  toastActive();
 });
 

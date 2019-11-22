@@ -13,7 +13,7 @@ class Admin::PortfoliosController < ApplicationController
   def create
     @portfolio = Portfolio.new(portfolio_params)
     if @portfolio.save
-      redirect_to "#{admin_portfolios_path}?message=Демонстрационная работа создана"
+      redirect_to "#{admin_portfolios_path}#message=Демонстрационная работа создана"
     else
       flash[:file_path] = params[:portfolio][:file_path]
       render :new
@@ -27,7 +27,7 @@ class Admin::PortfoliosController < ApplicationController
   def update
     @portfolio = Portfolio.find(params[:id])
     if @portfolio.update_attributes(portfolio_params)
-      redirect_to "#{admin_portfolios_path}?message=Портфолио обновленно"
+      redirect_to "#{admin_portfolios_path}#message=Портфолио обновленно"
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Admin::PortfoliosController < ApplicationController
   def destroy
     @porfolio = Portfolio.find(params[:id])
     if @porfolio.destroy
-      redirect_to "#{admin_portfolios_path}?message=Демонстрационная работа \"#{@porfolio.name}\" удалена"
+      redirect_to "#{admin_portfolios_path}#message=Демонстрационная работа \"#{@porfolio.name}\" удалена"
     else
       render :index
     end

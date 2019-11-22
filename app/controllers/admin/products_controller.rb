@@ -21,7 +21,7 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to "#{admin_category_products_path(@product.category.id)}?message=Товар \"#{@product.name}\" создан"
+      redirect_to "#{admin_category_products_path(@product.category.id)}#message=Товар \"#{@product.name}\" создан"
     else
       @categories = Category.select("id, name") # на странице создания товаров нужен перечень категорий
       render :new
@@ -36,7 +36,7 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update_attributes(product_params)
-      redirect_to "#{admin_category_products_path(@product.category.id)}?message=Информация о товаре обновленно"
+      redirect_to "#{admin_category_products_path(@product.category.id)}#message=Информация о товаре обновленно"
     else
       @categories = Category.select("id, name") # на странице редактирования товаров нужен перечень категорий
       render :edit
@@ -46,7 +46,7 @@ class Admin::ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     if @product.destroy
-      redirect_to "#{admin_category_products_path(@product.category)}?message=Товар \"#{@product.name}\" удален"
+      redirect_to "#{admin_category_products_path(@product.category)}#message=Товар \"#{@product.name}\" удален"
     else
       render :index
     end
