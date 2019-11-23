@@ -39,6 +39,10 @@ Rails.application.routes.draw do
     resources :categories,   except: [:show]
     resources :portfolios,   except: [:show]
     resources :orders,       except: [:new, :create]
+
+    get  '/search-products',          to: 'search_products#index',    as: 'search_products_index'
+    post '/search-products',          to: 'search_products#search',   as: 'search_products_search'
+    post '/search-products/:request', to: 'search_products#detected', as: 'search_products_detected'
   end
 
   post 'cart',                     to: 'cart#show_cart',       as: 'show_cart'

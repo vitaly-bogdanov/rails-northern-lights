@@ -65,10 +65,50 @@ function onClicButtonClassRemove() {
   });
 }
 
+/**
+ * Активируем автозаполнение для поля поиска.
+ */
+function seachFieldAutocomplete() {
+  let searchField = document.querySelector('.autocomplete');
+  if (searchField) {
+    let searchFieldInstance = M.Autocomplete.init(searchField, {
+      limit: 10,
+      onAutocomplete: () => {
+        Rails.ajax({
+          type: 'POST', 
+          url: `/admin/search-products/${searchField.value}`,
+          success: (response) => {
+            document.querySelector('#search-result').innerHTML = response.body.innerHTML;
+          },
+          error: function(response) {
+            console.log(response);
+          }
+        });
+      }
+    });
+    Rails.ajax({
+      type: 'POST', 
+      url: `/admin/search-products`,
+      success: (response) => {
+        let data = {};
+        response.forEach(item => {
+          data[item.name] = null
+        });
+        searchFieldInstance.updateData(data);
+      },
+      error: function(response) {
+        console.log(response);
+      }
+    });
+  }
+}
+
 document.addEventListener('page:load', function() {
   navbarDropdown();            // выпадающие меню
   onFocusInvalidClassRemove(); // снимаем с input класс invalid по фокусу на этом же поле
   onClicButtonClassRemove()    // снимаем с input класс invalid по нажатию на кнопку выбора картинки
+  seachFieldAutocomplete();
+  // outputSearchResult()
 });
 
 document.addEventListener('turbolinks:load', function() {
@@ -76,4 +116,6 @@ document.addEventListener('turbolinks:load', function() {
   M.Modal._count = 0;          // иначе 
   onFocusInvalidClassRemove(); // снимаем с input класс invalid по фокусу на этом же поле
   onClicButtonClassRemove()    // снимаем с input класс invalid по нажатию на кнопку выбора картинки
+  seachFieldAutocomplete();
+  // outputSearchResult();
 });

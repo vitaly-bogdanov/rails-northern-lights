@@ -1,0 +1,22 @@
+// Place all the styles related to the admin/search_products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import '../includes/horizontal_grid.scss';
+.horizontal-grid--product-elements-position {
+  grid-template-columns: 1fr 9fr 1fr 1fr;
+}
+.search-field {
+  width: 25%;
+  margin: 0 auto;
+  input[type=text]:focus + label {
+    color: #4a148c !important;
+  }
+  input[type=text]:focus {
+    border-bottom: 1px solid #4a148c !important;
+    box-shadow: 0 1px 0 0 #4a148c !important;
+  }
+  .active {
+    color: #4a148c !important;
+  }
+}

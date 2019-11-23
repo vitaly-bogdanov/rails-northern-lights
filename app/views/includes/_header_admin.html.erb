@@ -5,7 +5,9 @@
     <li><%= link_to 'Товар', new_admin_product_path %></li>
   </ul>
   <ul id="dropdown2" class="dropdown-content dropdown-content--blue-grey">
+    <li><%= link_to 'Поиск', admin_search_products_index_path %></li>
     <li><%= link_to 'Все товары', admin_products_path %></li>
+    <li class="divider" tabindex="-1"></li>
     <% Category.all.each do |category| %>
       <li><%= link_to category.name, admin_category_products_path(category) %></li>
     <% end %>

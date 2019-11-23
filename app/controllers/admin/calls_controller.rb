@@ -1,5 +1,5 @@
 class Admin::CallsController < ApplicationController
-  layout "admin" # назначаем шаблон
+  layout 'admin'
   before_action :authenticate_user!
   def index
     calls = Call.where(completed: false)
