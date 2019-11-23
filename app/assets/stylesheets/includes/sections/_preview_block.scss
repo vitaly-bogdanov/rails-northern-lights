@@ -1,0 +1,39 @@
+#preview-block {
+  background-image: url('static/northern-light.jpg');
+  padding-top: 65px;
+  padding-bottom: 20px;
+  .logo1 {
+    width: 195px;
+    height: 173px;
+  }
+  h1 {
+    color: white;
+    font-size: 43px;
+    font-weight: 700;
+    line-height: 60px;
+    margin-bottom: 0;
+    margin-top: 20px;
+  }
+  .carousel {
+    height: 320px !important;
+    .carousel-picture {
+      height: 305px !important;
+      width: 270px !important;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  #preview-block {
+    text-align: center;
+    padding-bottom: 10px;
+    h1 {
+      font-size: 25px;
+      line-height: 30px;
+      margin-top: 15px;
+    }
+    .logo1 {
+      height: 150px;
+    }
+  }
+}
