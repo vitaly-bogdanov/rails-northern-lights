@@ -5,7 +5,7 @@
       <% @portfolios.each do |portfolio| %>
         <div class="horizontal-grid horizontal-grid--portfolio-elements-position horizontal-grid--margin-top-position">
           <h3 class="horizontal-grid__item-title"><%= portfolio.name %></h3>
-          <p class="horizontal-grid__item-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic doloribus quo optio labore mollitia eveniet necessitatibus cumque repellat accusamus similique.</p>
+          <p class="horizontal-grid__item-description"><%= portfolio.description %></p>
           <div class="horizontal-grid__item-edit">
             <%= link_to edit_admin_portfolio_path(portfolio) do %>
               <i class="material-icons">edit</i>

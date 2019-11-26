@@ -10,6 +10,24 @@ header {
       font-size: 19px;
       font-weight: 400;
     }
+    #header-search-input {
+      input {
+        color: white;
+      }
+      input[type=text]:focus {
+        border-bottom: 1px solid white;
+        box-shadow: 0 1px 0 0 white;
+      }
+      .prefix {
+        top: 0;
+        color: #fff;
+        text-shadow: 0px 0px 0px #fff;
+        transition: text-shadow .3s ease;
+      }
+      .prefix.active {
+        text-shadow: 0px 0px 3px #fff;
+      }
+    }
   }
 }
 

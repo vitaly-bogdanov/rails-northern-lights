@@ -30,18 +30,27 @@
                 </a>
               <% end %>
             </li>
-            <% if user_signed_in? %>
-              <li>
-                <%= link_to destroy_user_session_path, :method => :delete do %>
-                  <i class="material-icons">exit_to_app</i>
-                <% end %>
-              </li>
-            <% end %>
           </ul>
+        <% end %>
+        <% if user_signed_in? %>
+          <ul class="right">
+            <li>
+              <%= link_to destroy_user_session_path, :method => :delete do %>
+                <i class="material-icons">exit_to_app</i>
+              <% end %>
+            </li>
+          </ul>
+        <% end %>
+        <% if params[:controller] == 'shop/products' && params[:action] == 'index' || params[:controller] == 'shop/search_products' && params[:action] == 'index' %>
+          <div id="header-search-input" class="input-field right">
+            <i class="material-icons prefix">search</i>
+            <input type="text" id="autocomplete-input" class="autocomplete" placeholder="Поиск">
+          </div>
         <% end %>
       </div>
     </div>
   </nav>
+  
   <ul id="slide-out" class="sidenav sidemenu">
     <li>
       <%= link_to(root_path, {class: 'side-link'}) do %>

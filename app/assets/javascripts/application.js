@@ -68,7 +68,7 @@ function onClicButtonClassRemove() {
 /**
  * Активируем автозаполнение для поля поиска.
  */
-function seachFieldAutocomplete() {
+function seachFieldAutocomplete(params) {
   let searchField = document.querySelector('.autocomplete');
   if (searchField) {
     let searchFieldInstance = M.Autocomplete.init(searchField, {
@@ -76,9 +76,15 @@ function seachFieldAutocomplete() {
       onAutocomplete: () => {
         Rails.ajax({
           type: 'POST', 
-          url: `/admin/search-products/${searchField.value}`,
+          url: `${params.url}/${searchField.value}`,
           success: (response) => {
-            document.querySelector('#search-result').innerHTML = response.body.innerHTML;
+            document.querySelector(params.outputBodyIdSelector).innerHTML = response.body.innerHTML;
+            if (params.outputRequestIdSelector) {
+              document.querySelector(params.outputRequestIdSelector).innerHTML = `Поиск по "${searchField.value}"`;
+            }
+            if (params.getMethod) {
+              history.pushState(null, null, `/shop/search-products/${searchField.value}`)
+            }
           },
           error: function(response) {
             console.log(response);
@@ -88,7 +94,7 @@ function seachFieldAutocomplete() {
     });
     Rails.ajax({
       type: 'POST', 
-      url: `/admin/search-products`,
+      url: params.url,
       success: (response) => {
         let data = {};
         response.forEach(item => {
@@ -107,8 +113,6 @@ document.addEventListener('page:load', function() {
   navbarDropdown();            // выпадающие меню
   onFocusInvalidClassRemove(); // снимаем с input класс invalid по фокусу на этом же поле
   onClicButtonClassRemove()    // снимаем с input класс invalid по нажатию на кнопку выбора картинки
-  seachFieldAutocomplete();
-  // outputSearchResult()
 });
 
 document.addEventListener('turbolinks:load', function() {
@@ -116,6 +120,5 @@ document.addEventListener('turbolinks:load', function() {
   M.Modal._count = 0;          // иначе 
   onFocusInvalidClassRemove(); // снимаем с input класс invalid по фокусу на этом же поле
   onClicButtonClassRemove()    // снимаем с input класс invalid по нажатию на кнопку выбора картинки
-  seachFieldAutocomplete();
-  // outputSearchResult();
 });
+

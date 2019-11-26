@@ -19,7 +19,15 @@
           <h2><%= @product.name %></h2>
           <p><%= @product.description %></p>
           <div class="buttons-group">
-            <%= link_to 'Назад', :back, class: 'waves-effect waves-light btn-large blue-grey-hover-btn' %>
+            <% if params[:q] %>
+              <%= link_to shop_search_products_client_index_path(params[:q]), class: 'waves-effect waves-light btn-large blue-grey-hover-btn' do %>
+                <div><i class="tiny material-icons">arrow_back</i> <span>Поиск</span></div> 
+              <% end %>
+            <% else %>
+              <%= link_to shop_category_products_url(@product.category_id), class: 'waves-effect waves-light btn-large blue-grey-hover-btn' do %>
+                <div><i class="tiny material-icons">arrow_back</i> <span><%= @product.category.name %></span></div>
+              <% end %>
+            <% end %>
             <% if @product.unique %>
               <a class="waves-effect waves-light btn modal-trigger btn-large purple-hover-btn" href="#order-modal">Заказать</a>
             <% else %>
@@ -31,7 +39,6 @@
     </article>
   </div>
 </section>
-
 <% if @product.unique %>
   <div id="order-modal" class="modal">
     <i class="small material-icons order-modal-close modal-close">close</i>
@@ -63,5 +70,4 @@
     <% end %>
   </div>
 <% end %>
-
 <%= render 'includes/will_like' %>

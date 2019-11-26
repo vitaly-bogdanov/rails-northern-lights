@@ -55,6 +55,14 @@
             font-weight: 300;
             &:first-child {
               margin-right: 30px;
+              div {
+                display: flex;
+                align-items: center;
+                i {
+                  font-size: 18px;
+                  margin-right: 5px;
+                }
+              }
             }
           }
         }

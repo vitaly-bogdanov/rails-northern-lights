@@ -349,8 +349,6 @@ document.addEventListener('page:load', function() {
   serveceSlider();                                           // слайдер с демонстрационными работами
   checkBoxErrorOff('#errors-call-confirm', 'white');         // снимаем с чекбокса красное выделение
   checkBoxErrorOff('#errors-order-call-confirm', '#9e9e9e');
-
-  
   document.querySelectorAll('.side-link').forEach(element => {
     element.onclick = (event) => {
       event.stopPropagation();
@@ -361,8 +359,13 @@ document.addEventListener('page:load', function() {
     event.stopPropagation();
     openFeatureDiscovery();
   };
-
   orderModal();
+  seachFieldAutocomplete({
+    url: '/shop/search-products', 
+    outputBodyIdSelector: '#search-result-client', 
+    outputRequestIdSelector: '#search-request-client',
+    getMethod: true
+  });
 });
 
 document.addEventListener('turbolinks:load', function() {
@@ -374,7 +377,6 @@ document.addEventListener('turbolinks:load', function() {
   serveceSlider();                                           // слайдер с демонстрационными работами
   checkBoxErrorOff('#errors-call-confirm', 'white');         // снимаем с чекбокса красное выделение
   checkBoxErrorOff('#errors-order-call-confirm', '#9e9e9e');
-
   document.querySelectorAll('.side-link').forEach(element => {
     element.onclick = (event) => {
       event.stopPropagation();
@@ -385,7 +387,11 @@ document.addEventListener('turbolinks:load', function() {
     event.stopPropagation();
     openFeatureDiscovery();
   };
-
-  
   orderModal();
+  seachFieldAutocomplete({
+    url: '/shop/search-products', 
+    outputBodyIdSelector: '#search-result-client', 
+    outputRequestIdSelector: '#search-request-client',
+    getMethod: true
+  });
 });

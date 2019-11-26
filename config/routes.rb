@@ -12,6 +12,11 @@ Rails.application.routes.draw do
     resources :products,    only: [:show]
     resources :orders,      only: [:new, :create]
     resources :order_calls, only: [:create]
+
+    post '/search-products',          to: 'search_products#search',   as: 'search_products_client_search'
+    post '/search-products/:request', to: 'search_products#detected', as: 'search_products_client_detected'
+
+    get  '/search-products/:request', to: 'search_products#index', as: 'search_products_client_index'
   end
 
   # админ панель

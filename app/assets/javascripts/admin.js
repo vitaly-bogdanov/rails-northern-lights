@@ -99,6 +99,9 @@ document.addEventListener('page:load', function(event) {
   lettersCountInInput();       //
   toogleAvailable();           //
   toastActive();
+
+  // поиск, метод находится в aplication.js
+  seachFieldAutocomplete({url1: '/admin/search-products', url2: '/admin/search-products', outputBodyIdSelector: '#search-result', picture: false});
 });
 
 document.addEventListener('turbolinks:load', function(event) {
@@ -110,5 +113,13 @@ document.addEventListener('turbolinks:load', function(event) {
   lettersCountInInput();       //
   toogleAvailable();           //
   toastActive();
+
+  // поиск, метод находится в aplication.js
+  seachFieldAutocomplete({
+    url: '/admin/search-products', 
+    outputBodyIdSelector: '#search-result', 
+    picture: false
+  });
+
 });
 

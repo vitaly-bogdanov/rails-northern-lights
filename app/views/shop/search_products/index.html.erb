@@ -1,9 +1,9 @@
 <section id='all-products-block' class="section">
   <div class="container">
     <% unless @products.empty? %>
-      <h2 id="search-request-client" class="section__title"><%= @category.name %></h2>
+      <h2 id="search-request-client" class="section__title">Поиск по "<%= @request %>"</h2>
       <div id="search-result-client" class="products_grid products_grid--all_products">
-        <%= render partial: 'includes/product_card', collection: @products %>
+        <%= render partial: 'includes/product_card', locals: { q: "?q=#{@request}" }, collection: @products %>
       </div>
       <div class="product-pagination">
         <%= will_paginate @products, previous_label: '<i class="material-icons">chevron_left</i>', next_label: '<i class="material-icons">chevron_right</i>' %>

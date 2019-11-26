@@ -1,13 +1,13 @@
 <div class="product_card">
-  <%= link_to image_tag(product_card.middle_picture, {alt: product_card.name}), shop_product_path(product_card) %>
+  <%= link_to image_tag(product_card.middle_picture, {alt: product_card.name}), shop_product_path(product_card) + (if defined? q then q else '' end) %>
   <div class="product_card__text">
-    <a class="product_card__title_link" href="<%= shop_product_path(product_card) %>">
+    <a class="product_card__title_link" href="<%= shop_product_path(product_card) + (if defined? q then q else '' end) %>">
       <h3 class="product_card__title"><%= product_card.name %></h3>
     </a>
     <p class="product_card__description"><%= product_card.preview %></p>
   </div>
   <% if product_card.unique %>
-    <%= link_to 'Подробнее', shop_product_path(product_card), class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
+    <%= link_to 'Подробнее', shop_product_path(product_card) + (if defined? q then q else '' end), class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
   <% else %>
     <%= link_to 'В корзину', add_product_path(product_card), remote: true, method: :post, class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
   <% end %>

@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import '../includes/horizontal_grid.scss';
 .horizontal-grid--category-elements-position {
-  grid-template-columns: 10fr 1fr 1fr;
+  grid-template-columns: 1fr 9fr 1fr 1fr;
 }
 
 @import '../includes/button.scss';

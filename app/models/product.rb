@@ -59,6 +59,10 @@ class Product < ApplicationRecord
     picture.variant(resize: '135x107!').processed
   end
 
+  def search_picture
+    picture.variant(resize: '50x50!').processed
+  end
+
   def description_min_length
     DESCRIPTION_MIN_LENGTH
   end

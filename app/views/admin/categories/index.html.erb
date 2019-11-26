@@ -5,6 +5,9 @@
       <% @categories.each do |category| %>  
         <div class="horizontal-grid horizontal-grid--category-elements-position horizontal-grid--margin-top-position">
           <h3 class="horizontal-grid__item-title"><%= category.name %></h3>
+          <div class="horizontal-grid__item-description">
+            <%= category.description %>
+          </div>
           <div class="horizontal-grid__item-edit">
             <%= link_to edit_admin_category_path(category.id) do %>
               <i class="material-icons">edit</i>
