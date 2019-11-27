@@ -1,67 +1,68 @@
-<%= render 'includes/preview_block' %>
-<section class="section" id="services">
-  <div class="container">
-    <h2 class="section__title">
-      Наши услуги
-    </h2>
-    <div class="services-flexbox">
-      <div class="about-service">
-        <h3>Магниты на заказ</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
-      </div>
-      <div class="show-service">
-        <h3>Выполненные работы</h3>
-        <div class="carousel carousel-slider service-slider">
-          <% @portfolios.each do |portfolio| %>
-            <div class="carousel-item">
-              <%= image_tag(portfolio.large_picture, {alt: portfolio.name }) %>
-            </div>
-          <% end %>
+<% content_for :title, 'Северное Сияние' %>
+<% content_for :description, 'Продажа изделий из полудрагоценных якутских камней дерева с лазерной гравировкой, картин, сувениров. Изготовление на заказ по вашим искизам. Cоздание сувениров для мероприятия. Сотрудничество.' %>
+<% content_for :keywords, 'драгоценные, полудрагоценные, камни, якутские, лазерная, гравировка, изделия, картины, сувениры, дерево, подарки' %>
+<% content_for :body do %>
+  <%= render 'includes/preview_block' %>
+  <section class="section" id="services">
+    <div class="container">
+      <h2 class="section__title">
+        Наши услуги
+      </h2>
+      <div class="services-flexbox">
+        <div class="about-service">
+          <h3>Магниты на заказ</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+        </div>
+        <div class="show-service">
+          <h3>Выполненные работы</h3>
+          <div class="carousel carousel-slider service-slider">
+            <% @portfolios.each do |portfolio| %>
+              <div class="carousel-item">
+                <%= image_tag(portfolio.large_picture, {alt: portfolio.name }) %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="about-service">
+          <h3>Картины на заказ</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
         </div>
       </div>
-      <div class="about-service">
-        <h3>Картины на заказ</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+    </div>
+  </section>
+  <div class="parallax-container">
+    <div class="parallax"><%= image_tag('static/parallax_shop_1.jpg') %></div>
+  </div>
+  <section class="section section--grey" id="shop">
+    <div class="container">
+      <h2 class="section__title">Наш магазин</h2>
+      <div class="about-shop-grid">
+        <div class="block block-description">
+          <h3>О нас</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+        <div class="block">
+          <%= image_tag('static/shop_1.jpg', {alt: 'about_us'}) %>
+        </div>
+        <div class="block">
+          <%= image_tag('static/shop_2.jpg', {alt: 'products'}) %>
+        </div>
+        <div class="block block-description">
+          <h3>О продукции</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+        <div class="block block-description">
+          <h3>Камни</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+        <div class="block">
+          <%= image_tag('static/shop_3.jpg', {alt: 'gems'}) %>
+        </div>
       </div>
     </div>
+  </section>
+  <div class="parallax-container">
+    <div class="parallax"><%= image_tag('static/parallax_shop_2.jpg') %></div>
   </div>
-</section>
-
-<div class="parallax-container">
-  <div class="parallax"><%= image_tag('static/parallax_shop_1.jpg') %></div>
-</div>
-
-<section class="section section--grey" id="shop">
-  <div class="container">
-    <h2 class="section__title">Наш магазин</h2>
-    <div class="about-shop-grid">
-      <div class="block block-description">
-        <h3>О нас</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      </div>
-      <div class="block">
-        <%= image_tag('static/shop_1.jpg', {alt: 'about_us'}) %>
-      </div>
-      <div class="block">
-        <%= image_tag('static/shop_2.jpg', {alt: 'products'}) %>
-      </div>
-      <div class="block block-description">
-        <h3>О продукции</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      </div>
-      <div class="block block-description">
-        <h3>Камни</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-      </div>
-      <div class="block">
-        <%= image_tag('static/shop_3.jpg', {alt: 'gems'}) %>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="parallax-container">
-  <div class="parallax"><%= image_tag('static/parallax_shop_2.jpg') %></div>
-</div>
-
-<%= render 'includes/will_like' %>
+  <%= render 'includes/will_like' %>
+<% end %>

@@ -1,15 +1,20 @@
-<section id='all-products-block' class="section">
-  <div class="container">
-    <% unless @products.empty? %>
-      <h2 id="search-request-client" class="section__title">Поиск по "<%= @request %>"</h2>
-      <div id="search-result-client" class="products_grid products_grid--all_products">
-        <%= render partial: 'includes/product_card', locals: { q: "?q=#{@request}" }, collection: @products %>
-      </div>
-      <div class="product-pagination">
-        <%= will_paginate @products, previous_label: '<i class="material-icons">chevron_left</i>', next_label: '<i class="material-icons">chevron_right</i>' %>
-      </div>
-    <% else %>
-      <h2 class="section__title">В категории "<%= @category.name %>" пока что товаров нет</h2>
-    <% end %>
-  </div>
-</section>
+<% content_for :title, params[:request] %>
+<% content_for :description, "Поиск #{params[:request]}" %>
+<% content_for :keywords, params[:request] %>
+<% content_for :body do %>
+  <section id='all-products-block' class="section">
+    <div class="container">
+      <% unless @products.empty? %>
+        <h2 id="search-request-client" class="section__title">Поиск по "<%= @request %>"</h2>
+        <div id="search-result-client" class="products_grid products_grid--all_products">
+          <%= render partial: 'includes/product_card', locals: { q: "?q=#{@request}" }, collection: @products %>
+        </div>
+        <div class="product-pagination">
+          <%= will_paginate @products, previous_label: '<i class="material-icons">chevron_left</i>', next_label: '<i class="material-icons">chevron_right</i>' %>
+        </div>
+      <% else %>
+        <h2 class="section__title">В категории "<%= @category.name %>" пока что товаров нет</h2>
+      <% end %>
+    </div>
+  </section>
+<% end %>

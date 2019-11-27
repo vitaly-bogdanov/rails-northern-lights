@@ -1,15 +1,20 @@
-<section id='all-products-block' class="section">
-  <div class="container">
-    <% unless @products.empty? %>
-      <h2 id="search-request-client" class="section__title"><%= @category.name %></h2>
-      <div id="search-result-client" class="products_grid products_grid--all_products">
-        <%= render partial: 'includes/product_card', collection: @products %>
-      </div>
-      <div class="product-pagination">
-        <%= will_paginate @products, previous_label: '<i class="material-icons">chevron_left</i>', next_label: '<i class="material-icons">chevron_right</i>' %>
-      </div>
-    <% else %>
-      <h2 class="section__title">В категории "<%= @category.name %>" пока что товаров нет</h2>
-    <% end %>
-  </div>
-</section>
+<% content_for :title, @category.name %>
+<% content_for :description, @category.description %>
+<% content_for :keywords, @category.keywords %>
+<% content_for :body do %>
+  <section id='all-products-block' class="section">
+    <div class="container">
+      <% unless @products.empty? %>
+        <h2 id="search-request-client" class="section__title"><%= @category.name %></h2>
+        <div id="search-result-client" class="products_grid products_grid--all_products">
+          <%= render partial: 'includes/product_card', collection: @products %>
+        </div>
+        <div class="product-pagination">
+          <%= will_paginate @products, previous_label: '<i class="material-icons">chevron_left</i>', next_label: '<i class="material-icons">chevron_right</i>' %>
+        </div>
+      <% else %>
+        <h2 class="section__title">В категории "<%= @category.name %>" пока что товаров нет</h2>
+      <% end %>
+    </div>
+  </section>
+<% end %>

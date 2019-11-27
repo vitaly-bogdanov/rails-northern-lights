@@ -2,7 +2,7 @@
   <div class="file-field input-field">
     <div class="btn castom-button castom-button--grey">
       <span>Добавить</span>
-      <%= f.file_field :picture, class: 'ivalid-click-off' %>
+      <%= f.file_field :picture, class: 'ivalid-click-off', onchange: "alert('test');" %>
     </div>
     <div class="file-path-wrapper">
       <input class="file-path invalid-off <%= invalid_class(@product, :picture) %>" type="text" placeholder="Картинка">

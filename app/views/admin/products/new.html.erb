@@ -1,6 +1,9 @@
-<section class="section section--grey section--full-height">
-  <div class="container">
-    <h2 class="section__title">Создать товар</h2>
-    <%= render 'includes/product_form' %>
-  </div>
-</section>
+<% content_for :title, 'Создать товар' %>
+<% content_for :body do %>
+  <section class="section section--grey section--full-height">
+    <div class="container">
+      <h2 class="section__title">Создать товар</h2>
+      <%= render 'includes/product_form' %>
+    </div>
+  </section>
+<% end %>

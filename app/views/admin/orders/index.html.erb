@@ -1,6 +1,9 @@
-<section class="section section--grey section--full-height">
-  <div class="container">
-    <h2 class="section__title">Заказы</h2>
-    <%= link_to 'Архив', admin_calls_arhive_path, class: 'waves-effect waves-light btn-large blue-grey-hover-btn arhive-btn' %> 
-  </div>
-</section>
+<% content_for :title, 'Заказы' %>
+<% content_for :body do %>
+  <section class="section section--grey section--full-height">
+    <div class="container">
+      <h2 class="section__title">Заказы</h2>
+      <%= link_to 'Архив', admin_calls_arhive_path, class: 'waves-effect waves-light btn-large blue-grey-hover-btn arhive-btn' %> 
+    </div>
+  </section>
+<% end %>

@@ -1,7 +1,10 @@
-<section class="section section--grey section--full-height">
-  <div class="container">
-    <h2 class="section__title">Редактировать товар</h2>
-    <%= image_tag(@product.large_picture, alt: @product.name, class: 'image-block image-block--margin-top') %>
-    <%= render 'includes/product_form' %>
-  </div>
-</section>
+<% content_for :title, 'Редактировать товар' %>
+<% content_for :body do %>
+  <section class="section section--grey section--full-height">
+    <div class="container">
+      <h2 class="section__title">Редактировать товар</h2>
+      <%= image_tag(@product.large_picture, alt: @product.name, class: 'image-block image-block--margin-top') %>
+      <%= render 'includes/product_form' %>
+    </div>
+  </section>
+<% end %>

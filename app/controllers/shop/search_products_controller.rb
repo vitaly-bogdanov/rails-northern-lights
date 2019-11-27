@@ -10,7 +10,6 @@ class Shop::SearchProductsController < ApplicationController
   end
   def search
     @products = Product.select('name')
-    
     render :json => @products
   end
 end

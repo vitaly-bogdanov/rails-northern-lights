@@ -3,8 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import '../includes/horizontal_grid.scss';
 .horizontal-grid--category-elements-position {
-  grid-template-columns: 1fr 9fr 1fr 1fr;
+  grid-template-columns: 2fr 8fr 1fr 1fr;
 }
+.horizontal-grid {
+  &__item-description {
+    justify-self: center;
+  }
+}
+
 
 @import '../includes/button.scss';
 @import '../includes/castom_form.scss';

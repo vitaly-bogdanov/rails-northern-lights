@@ -1,29 +1,32 @@
-<section class="section section--grey section--full-height">
-  <div class="container">
-    <h2 class="section__title">Информация о контакте</h2>
-    <%= link_to 'Назад', admin_calls_path, {class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
-    <%= form_with model: [:admin, @call], class: 'castom-form castom-form--purple castom-form--margin-top', local: true do |f| %>
-      <div class="input-field">
-        <%= f.text_field :name, disabled: true %>
-        <%= f.label :name, 'Имя' %>
-      </div>
-      <div class="input-field">
-        <%= f.text_field :telephone, disabled: true %>
-        <%= f.label :telephone, 'Телефон' %>
-      </div>
-      <div class="input-field">
-        <%= f.text_field :timezone, disabled: true %>
-        <%= f.label :timezone, 'Часовой пояс' %>
-      </div>
-      <div class="input-field">
-        <%= f.text_field :created_at, disabled: true %>
-        <%= f.label :created_at, 'Время оставления заявки по времени локации сайта' %>
-      </div>
-      <div class="input-field">
-        <%= f.text_field :notes %>
-        <%= f.label :notes, 'Оставьте заметку о контакте, если нужно' %>
-      </div>
-      <%= f.submit 'Сохранить', class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white' %>
-    <% end %>
-  </div>
-</section>
+<% content_for :title, 'Информация о контакте' %>
+<% content_for :body do %>
+  <section class="section section--grey section--full-height">
+    <div class="container">
+      <h2 class="section__title">Информация о контакте</h2>
+      <%= link_to 'Назад', :back, {class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
+      <%= form_with model: [:admin, @call], class: 'castom-form castom-form--purple castom-form--margin-top', local: true do |f| %>
+        <div class="input-field">
+          <%= f.text_field :name, disabled: true %>
+          <%= f.label :name, 'Имя' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :telephone, disabled: true %>
+          <%= f.label :telephone, 'Телефон' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :timezone, disabled: true %>
+          <%= f.label :timezone, 'Часовой пояс' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :created_at, disabled: true %>
+          <%= f.label :created_at, 'Время оставления заявки по времени локации сайта' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :notes %>
+          <%= f.label :notes, 'Оставьте заметку о контакте, если нужно' %>
+        </div>
+        <%= f.submit 'Сохранить', class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white' %>
+      <% end %>
+    </div>
+  </section>
+<% end %>

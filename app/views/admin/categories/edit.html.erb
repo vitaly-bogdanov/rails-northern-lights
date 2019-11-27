@@ -1,6 +1,9 @@
-<section class="section section--grey section--full-height">
-  <div class="container">
-    <h2 class="section__title">Редактировать категорию "<%= @category.name %>"</h2>
-    <%= render 'includes/category_form' %>    
-  </div>
-</section>
+<% content_for :title, 'Редактировать категорию' %>
+<% content_for :body do %>
+  <section class="section section--grey section--full-height">
+    <div class="container">
+      <h2 class="section__title">Редактировать категорию "<%= @category.name %>"</h2>
+      <%= render 'includes/category_form' %>    
+    </div>
+  </section>
+<% end %>
