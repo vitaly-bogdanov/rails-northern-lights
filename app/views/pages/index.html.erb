@@ -16,10 +16,12 @@
         <div class="show-service">
           <h3>Выполненные работы</h3>
           <div class="carousel carousel-slider service-slider">
-            <% @portfolios.each do |portfolio| %>
-              <div class="carousel-item">
-                <%= image_tag(portfolio.large_picture, {alt: portfolio.name }) %>
-              </div>
+            <% if @portfolios.any? %>
+              <% @portfolios.each do |portfolio| %>
+                <div class="carousel-item">
+                  <%= image_tag(portfolio.large_picture, {alt: portfolio.name }) %>
+                </div>
+              <% end %>
             <% end %>
           </div>
         </div>
