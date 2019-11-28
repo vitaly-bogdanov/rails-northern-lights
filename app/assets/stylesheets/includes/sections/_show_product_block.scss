@@ -6,15 +6,14 @@
     min-height: 432px;
     .show-flexbox {
       display: flex;
-      // justify-content: space-between;
+      justify-content: right;
       padding-left: 10px;
       padding-right: 10px;
       .show-product-image {
         margin-right: 20px;
-        justify-self: left;
       }
       .show-product-description {
-        justify-self: right;
+        max-width: 590px;
         .price {
           display: flex;
           justify-content: center;
