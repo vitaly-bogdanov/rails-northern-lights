@@ -119,7 +119,6 @@ function particlesActive() {
 function onСhangeInvalidClassRemove() {
   document.querySelectorAll('input[type=email], input[type=password]').forEach(input => {
     input.onchange = function() {
-      console.log(1);
       this.classList.remove('invalid');
     };
   }); 
