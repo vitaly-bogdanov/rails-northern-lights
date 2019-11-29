@@ -6,7 +6,7 @@
     min-height: 432px;
     .show-flexbox {
       display: flex;
-      justify-content: right;
+      justify-content: flex-end;
       padding-left: 10px;
       padding-right: 10px;
       .show-product-image {
