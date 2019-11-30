@@ -6,7 +6,7 @@
       <%= link_to 'Назад', admin_calls_path, {class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
       <% if @calls.any? %>
         <% @calls.each do |cl| %>
-          <div class="horizontal-grid horizontal-grid--category-elements-position horizontal-grid--margin-top-position">
+          <div class="horizontal-grid horizontal-grid--calls-elements-position horizontal-grid--margin-top-position">
             <h3 class="horizontal-grid__item-title"><%= cl.name %></h3>
             <p class="horizontal-grid__item-telephone"><%= cl.telephone %></p>
             <p class="horizontal-grid__item-notes"><%= cl.notes %></p>

@@ -5,7 +5,7 @@
       <h2 class="section__title">Заявки на консультацию</h2>
       <% if @calls_new.any? %>
         <% @calls_new.each do |cl| %>
-          <div class="horizontal-grid horizontal-grid--category-elements-position horizontal-grid--margin-top-position">
+          <div class="horizontal-grid horizontal-grid--calls-elements-position horizontal-grid--margin-top-position">
             <h3 class="horizontal-grid__item-title"><%= cl.name %></h3>
             <p class="horizontal-grid__item-telephone"><%= cl.telephone %></p>
             <p class="horizontal-grid__item-notes"><%= cl.notes %></p>
@@ -41,7 +41,7 @@
       <h2 class="section__title">Сохраненные заявки</h2>
       <% if @calls_saved.any? %>
         <% @calls_saved.each do |cl| %>
-          <div class="horizontal-grid horizontal-grid--category-elements-position horizontal-grid--margin-top-position">
+          <div class="horizontal-grid horizontal-grid--calls-elements-position horizontal-grid--margin-top-position">
             <h3 class="horizontal-grid__item-title"><%= cl.name %></h3>
             <p class="horizontal-grid__item-telephone"><%= cl.telephone %></p>
             <p class="horizontal-grid__item-notes"><%= cl.notes %></p>

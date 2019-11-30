@@ -1,0 +1,101 @@
+@import 'includes/admin_header.scss';
+@import 'includes/admin_footer.scss';
+@import 'includes/button.scss';
+@import 'includes/castom_form.scss';
+@import 'includes/horizontal_grid.scss';
+.empty-index {
+  font-size: 16px;
+  color: black;
+  &--center {
+    margin-top: 100px;
+    text-align: center;
+  }
+}
+.image-block {
+  display: block;
+}
+.image-block--margin-top {
+  margin-top: 25px;
+}
+body {
+    min-width: 1200px;
+}
+
+.horizontal-grid--calls-elements-position {
+  grid-template-columns: 1.5fr 1.5fr 5fr 1fr 1fr 1fr 1fr;
+}
+
+.horizontal-grid--category-elements-position {
+  grid-template-columns: 2fr 8fr 1fr 1fr;
+}
+.horizontal-grid {
+  &__item-description {
+    justify-self: center;
+  }
+}
+
+.horizontal-grid--order-calls-elements-position {
+  grid-template-columns: 1.5fr 1.5fr 5fr 1fr 1fr 1fr 1fr;
+}
+#order-call-product {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  #product-img {
+
+  }
+  #product-description {
+    width: 540px;
+    color: lighten(black, 15%);
+    h3 {
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+}
+.switch {
+  label {
+    .lever::before {
+      background-color:#621ab9;
+      opacity: 0.15;
+    }
+    input[type="checkbox"]:checked + .lever {
+      background-color: lighten(#621ab9, 20%);
+    }
+    input[type="checkbox"]:checked + .lever::after {
+      background-color: #621ab9;
+    }
+  }
+  &-point {
+    font-size: 12px;
+    color: lighten(black, 15%);
+  }
+}
+
+.horizontal-grid--portfolio-elements-position {
+  grid-template-columns: 3fr 7fr 1fr 1fr;
+}
+
+.horizontal-grid--product-elements-position {
+  grid-template-columns: 1fr 9fr 1fr 1fr;
+}
+
+.search-field {
+  width: 25%;
+  margin: 0 auto;
+  input[type=text]:focus + label {
+    color: #4a148c !important;
+  }
+  input[type=text]:focus {
+    border-bottom: 1px solid #4a148c !important;
+    box-shadow: 0 1px 0 0 #4a148c !important;
+  }
+  .active {
+    color: #4a148c !important;
+  }
+}

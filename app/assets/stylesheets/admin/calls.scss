@@ -1,9 +1,0 @@
-// Place all the styles related to the admin/calls controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-@import '../includes/castom_form.scss';
-@import '../includes/button.scss';
-@import '../includes/horizontal_grid.scss';
-.horizontal-grid--category-elements-position {
-  grid-template-columns: 1.5fr 1.5fr 5fr 1fr 1fr 1fr 1fr;
-}

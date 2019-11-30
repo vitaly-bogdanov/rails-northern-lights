@@ -21,7 +21,11 @@
         <% end %>
         <ul class="left hide-on-small-only">
           <li><%= link_to 'Главная', root_path %></li>
-          <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Магазин<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li>
+            <%= link_to '#', class: 'dropdown-trigger', data: { target: 'dropdown1', turbolinks: false } do %>
+              Магазин<i class="material-icons right">arrow_drop_down</i>
+            <% end %>
+          </li>
         </ul>
         <% unless current_page?(privacy_agreement_path) or current_page?(new_shop_order_path) %>
           <ul class="right">
