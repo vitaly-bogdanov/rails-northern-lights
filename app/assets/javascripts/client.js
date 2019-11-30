@@ -380,3 +380,7 @@ document.addEventListener('turbolinks:load', function() {
     getMethod: true
   });
 });
+
+document.addEventListener('turbolinks:before-render', () => {
+  Turbolinks.clearCache();
+});
