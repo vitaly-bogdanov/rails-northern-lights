@@ -18,7 +18,8 @@ class Admin::OrderCallsController < ApplicationController
   end
   def complete
     @order_call = OrderCall.find(params[:id])
-    if @order_call.update_columns(completed: true, saved: false, available: false)
+    if @order_call.update_columns(completed: true, saved: false)
+      @order_call.product.update_columns(available: false)
       redirect_to "#{admin_order_calls_path}?message=Заявка обработана"
     else
       redirect_to "#{admin_order_calls_path}?message=Произошла неведомая херня"
@@ -38,14 +39,15 @@ class Admin::OrderCallsController < ApplicationController
   end
   def destroy
     @order_call = OrderCall.find(params[:id])
+    path = @order_call.completed ? admin_order_calls_arhive_path : admin_order_calls_path
     if @order_call.destroy
-      redirect_to "#{admin_order_calls_arhive_path}?message=Заявка удалена"
+      redirect_to "#{path}?message=Заявка удалена"
     else
       render :index
     end
   end
   def toogle_available
-    @order_call = OrderCall.find(params[:id])
-    @order_call.product.update_columns(available: params[:available])
+    @product = Product.find(params[:id])
+    @product.update_columns(available: params[:available])
   end
 end

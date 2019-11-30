@@ -14,17 +14,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 Rails.application.config.assets.precompile += %w( materialize.css materialize.js )
-
 Rails.application.config.assets.precompile += %w( client.css client.js )
 
 Rails.application.config.assets.precompile += %w( admin/search_products.css )
-
-Rails.application.config.assets.precompile += %w( shop/search_products.css )
-
-Rails.application.config.assets.precompile += %w( pages.css )
-Rails.application.config.assets.precompile += %w( cart.css ) # убрать
-Rails.application.config.assets.precompile += %w( shop/products.css )
-Rails.application.config.assets.precompile += %w( shop/orders.css )
 Rails.application.config.assets.precompile += %w( admin/layout.css )
 Rails.application.config.assets.precompile += %w( admin/products.css )
 Rails.application.config.assets.precompile += %w( admin/calls.css )

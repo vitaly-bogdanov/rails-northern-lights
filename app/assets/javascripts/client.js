@@ -81,7 +81,6 @@ function sidebar() {
 
 function openSidebar() {
   const sidebar = document.querySelector('.sidenav');
-
   if (sidebar) {
     let sidebarInstance = M.Sidenav.getInstance(sidebar);
     document.querySelector('.sidenav-click').onclick = function(event) {
@@ -282,7 +281,7 @@ function totalPriceIsert(totalPrice) {
 function orderModal() {
   const orderModal = document.querySelector('#order-modal');
   M.Modal.init(orderModal, {
-    endingTop: '5%',
+    // endingTop: '5%',
     onOpenStart: function() {
       insertTimeZoneInInput('#timezone-order-modal');
     }

@@ -40,8 +40,9 @@ class Admin::CallsController < ApplicationController
   end
   def destroy
     @call = Call.find(params[:id])
+    path = @call.completed ? admin_calls_arhive_path : admin_calls_path
     if @call.destroy
-      redirect_to "#{admin_calls_arhive_path}?message=Заявка удалена"
+      redirect_to "#{path}?message=Заявка удалена"
     else
       render :index
     end

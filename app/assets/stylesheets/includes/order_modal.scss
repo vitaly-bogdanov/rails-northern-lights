@@ -4,6 +4,8 @@
   min-height: 410px;
   box-sizing: border-box;
   padding: 35px 40px;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
   .order-modal-close {
     position: absolute;
     top: 10px;
