@@ -75,6 +75,7 @@
   #show_product_block {
     article {
       .show-flexbox {
+        padding-top: 30px;
         .show-product-description {
           .price {
             width: 150px;
@@ -106,10 +107,11 @@
     article {
       .show-flexbox {
         flex-direction: column;
+        // justify-content: center;
+        align-items: center;
         .show-product-image {
           margin-right: 0px;
           margin-bottom: 5px;
-          align-self: center;
           img {
             width: 100%;
           }
@@ -125,10 +127,15 @@
             margin-top: 25px;
             position: static;
             a {
-              font-size: 14px;
+              font-size: 13px;
             }
             a:first-child {
               margin-right: 15px;
+              div {
+                i {
+                  font-size: 12px;
+                }
+              }
             }
             .btn-large {
               height: 30px;

@@ -16,7 +16,9 @@
   <nav class="blue-grey darken-3">
     <div class="nav-wrapper">
       <div class="container">
-        <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-med-and-up"><i class="material-icons">menu</i></a>
+        <%= link_to "#", { class: 'left sidenav-click hide-on-med-and-up' } do %>
+          <i class="material-icons">menu</i>
+        <% end %>
         <ul class="left hide-on-small-only">
           <li><%= link_to 'Главная', root_path %></li>
           <li><a class="dropdown-trigger" href="#" data-target="dropdown1">Магазин<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -50,7 +52,7 @@
       </div>
     </div>
   </nav>
-  <ul id="slide-out" class="sidenav sidemenu">
+  <ul class="sidenav sidemenu">
     <li>
       <%= link_to(root_path, {class: 'side-link'}) do %>
         <i class="small material-icons">home</i>

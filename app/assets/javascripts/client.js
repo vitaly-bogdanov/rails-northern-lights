@@ -79,6 +79,18 @@ function sidebar() {
   }
 }
 
+function openSidebar() {
+  const sidebar = document.querySelector('.sidenav');
+
+  if (sidebar) {
+    let sidebarInstance = M.Sidenav.getInstance(sidebar);
+    document.querySelector('.sidenav-click').onclick = function(event) {
+      event.preventDefault();
+      sidebarInstance.open();
+    }
+  }
+}
+
 /**
  * Закрытие Sidebar'а.
  */
@@ -91,7 +103,7 @@ function closeSidebar() {
 }
 
 /**
- * Включаем слайде с выполненными работами.
+ * Включаем слайдер с выполненными работами.
  */
 function serveceSlider() {
   const serveceSlider = document.querySelector('.service-slider');
@@ -340,39 +352,13 @@ document.addEventListener('ajax:error', function(event) {
   orderCallCreateValidateError(event);
 });
 
-document.addEventListener('page:load', function() {
-  headerCarousel();                                          // слайдере с картинами
-  modalFooter();                                             // модальное окно корзины
-  featureDiscoveryCreate();                                  // включаем круглую форму в нижнем правом угле
-  sidebar();                                                 // включаем sidebar
-  parallax();                                                // включаем параллакс
-  serveceSlider();                                           // слайдер с демонстрационными работами
-  checkBoxErrorOff('#errors-call-confirm', 'white');         // снимаем с чекбокса красное выделение
-  checkBoxErrorOff('#errors-order-call-confirm', '#9e9e9e');
-  document.querySelectorAll('.side-link').forEach(element => {
-    element.onclick = (event) => {
-      event.stopPropagation();
-      closeSidebar();
-    };
-  });
-  document.querySelector('#menu').onclick = (event) => {
-    event.stopPropagation();
-    openFeatureDiscovery();
-  };
-  orderModal();
-  seachFieldAutocomplete({
-    url: '/shop/search-products', 
-    outputBodyIdSelector: '#search-result-client', 
-    outputRequestIdSelector: '#search-request-client',
-    getMethod: true
-  });
-});
-
 document.addEventListener('turbolinks:load', function() {
   headerCarousel();                                          // слайдере с картинами
   modalFooter();                                             // модальное окно корзины
   featureDiscoveryCreate();                                  // включаем круглую форму в нижнем правом угле
   sidebar();                                                 // включаем sidebar
+  openSidebar();
+  closeSidebar();
   parallax();                                                // включаем параллакс
   serveceSlider();                                           // слайдер с демонстрационными работами
   checkBoxErrorOff('#errors-call-confirm', 'white');         // снимаем с чекбокса красное выделение
