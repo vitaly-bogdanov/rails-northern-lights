@@ -9,6 +9,9 @@
   &:hover {
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.35);
   }
+  &__image {
+    min-height: 213px;
+  }
   &__title_link {
     color: black;
     transition: color 0.3s ease, ;
