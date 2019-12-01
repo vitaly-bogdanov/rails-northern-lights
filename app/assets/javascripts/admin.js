@@ -64,7 +64,6 @@ function disableLink() {
   });
 }
 
-
 /**
  * Переключение товара: доступен для покупки или нет.
  */
@@ -90,20 +89,6 @@ function toogleAvailable() {
   }
 }
 
-document.addEventListener('page:load', function(event) {
-  select();                    // поле select в админке
-  selectErrorBottomBorderOn(); // вешаем класс invalid на поле select, если поле не проходит валидацию
-  selectErrorStyleOff();       // снимаем стили ошибки валидации и убираем сообщение об ошибке
-  M.updateTextFields();        // при загрузке перезагружает поля, на случай если форма не пуста
-  disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
-  lettersCountInInput();       //
-  toogleAvailable();           //
-  toastActive();
-
-  // поиск, метод находится в aplication.js
-  seachFieldAutocomplete({url1: '/admin/search-products', url2: '/admin/search-products', outputBodyIdSelector: '#search-result', picture: false});
-});
-
 document.addEventListener('turbolinks:load', function(event) {
   select();                    // поле select в админке
   selectErrorBottomBorderOn(); // вешаем класс invalid на поле select, если поле не проходит валидацию
@@ -120,6 +105,5 @@ document.addEventListener('turbolinks:load', function(event) {
     outputBodyIdSelector: '#search-result', 
     picture: false
   });
-
 });
 

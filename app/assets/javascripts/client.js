@@ -79,6 +79,9 @@ function sidebar() {
   }
 }
 
+/*
+ * Открытие Sidebar'а.
+ */
 function openSidebar() {
   const sidebar = document.querySelector('.sidenav');
   if (sidebar) {
@@ -381,6 +384,3 @@ document.addEventListener('turbolinks:load', function() {
   });
 });
 
-document.addEventListener('turbolinks:before-render', () => {
-  Turbolinks.clearCache();
-});

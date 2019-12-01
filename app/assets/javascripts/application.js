@@ -110,12 +110,6 @@ function seachFieldAutocomplete(params) {
   }
 }
 
-document.addEventListener('page:load', function() {
-  navbarDropdown();            // выпадающие меню
-  onFocusInvalidClassRemove(); // снимаем с input класс invalid по фокусу на этом же поле
-  onClicButtonClassRemove()    // снимаем с input класс invalid по нажатию на кнопку выбора картинки
-});
-
 document.addEventListener('turbolinks:load', function() {
   navbarDropdown();            // выпадающие меню
   M.Modal._count = 0;          // иначе 
@@ -123,3 +117,6 @@ document.addEventListener('turbolinks:load', function() {
   onClicButtonClassRemove()    // снимаем с input класс invalid по нажатию на кнопку выбора картинки
 });
 
+document.addEventListener('turbolinks:before-cache', () => {
+  Turbolinks.clearCache();
+});
