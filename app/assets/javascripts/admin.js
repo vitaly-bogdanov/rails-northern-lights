@@ -1,3 +1,5 @@
+//= require activestorage
+
 /**
  * Выбор категории.
  */ 
