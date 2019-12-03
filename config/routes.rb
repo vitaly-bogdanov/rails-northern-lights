@@ -40,7 +40,9 @@ Rails.application.routes.draw do
     
     resources :order_calls, only: [:index, :edit, :update, :destroy]
 
-    resources :products,     except: [:show]
+    resources :products,     except: [:show, :destroy]
+    delete '/products/:id/:from_place', to: 'products#destroy', as: 'product_destroy'
+
     resources :categories,   except: [:show]
     resources :portfolios,   except: [:show]
     resources :orders,       except: [:new, :create]

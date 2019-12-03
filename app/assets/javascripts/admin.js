@@ -91,6 +91,8 @@ function toogleAvailable() {
   }
 }
 
+
+
 document.addEventListener('turbolinks:load', function(event) {
   select();                    // поле select в админке
   selectErrorBottomBorderOn(); // вешаем класс invalid на поле select, если поле не проходит валидацию

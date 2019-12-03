@@ -65,6 +65,21 @@ function onClicButtonClassRemove() {
   });
 }
 
+function deleteSerchedProduct() {
+  let products = document.querySelectorAll('.delete-searched-product');
+  if (products) {
+    products.forEach(product => {
+      product.onclick = function(event) {
+        this
+          .parentElement
+          .parentElement
+          .parentElement
+          .removeChild(this.parentElement.parentElement);
+      }
+    });
+  }
+}
+
 /**
  * Активируем автозаполнение для поля поиска.
  */
@@ -85,6 +100,9 @@ function seachFieldAutocomplete(params) {
             if (params.getMethod) {
               history.pushState(null, null, `/shop/search-products/${searchField.value}`)
             }
+            setTimeout(() => {
+              deleteSerchedProduct();
+            }, 1000);
           },
           error: function(response) {
             console.log(response);

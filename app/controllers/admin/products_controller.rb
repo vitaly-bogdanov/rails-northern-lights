@@ -45,8 +45,11 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
+    path = admin_products_path                             if params[:from_place] == 'all_products'
+    path = admin_category_products_path(@product.category) if params[:from_place] == 'category_products'
+    path = nil                                             if params[:from_place] == 'search'
     if @product.destroy
-      redirect_to "#{admin_category_products_path(@product.category)}#message=Товар \"#{@product.name}\" удален"
+      redirect_to "#{path}#message=Товар \"#{@product.name}\" удален" unless path.nil? 
     else
       render :index
     end

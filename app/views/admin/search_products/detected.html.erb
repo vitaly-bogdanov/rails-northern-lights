@@ -9,7 +9,7 @@
         <% end %>
       </div>
       <div class="horizontal-grid__item-delete">
-        <%= link_to admin_product_path(product), method: :delete do %>
+        <%= link_to admin_product_destroy_path(product, 'search'), class: 'delete-searched-product', method: :delete do %>
           <i class="material-icons">delete_forever</i>
         <% end %>
       </div>
