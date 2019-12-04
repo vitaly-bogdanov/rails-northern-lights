@@ -49,5 +49,12 @@
     font-size: 19px;
     font-weight: 700;
     color: #4a148c;
+    &:last-child {
+      padding-left: 5px;;
+      img {
+        height: 14px;
+        width: 15px;
+      }
+    }
   }
 }

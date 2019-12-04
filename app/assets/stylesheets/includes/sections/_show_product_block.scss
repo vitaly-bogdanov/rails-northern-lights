@@ -31,8 +31,11 @@
               letter-spacing: 0.5px;
             }
             &:last-child {
-              font-weight: 400;
-              font-size: 20px;
+              padding-left: 5px;
+              img {
+                height: 16px;
+                width: 16px;            
+              }
             }
           }
         }

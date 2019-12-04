@@ -18,7 +18,7 @@
           <div class="show-product-description">
             <div class="price">
               <span><%= @product.price %></span>
-              <span>₽</span>
+              <span><%= image_tag 'static/ruble-currency-sign.svg', { alt: 'rub' } %></span>
             </div>
             <h2><%= @product.name %></h2>
             <p><%= @product.description %></p>

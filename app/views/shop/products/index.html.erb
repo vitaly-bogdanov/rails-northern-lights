@@ -2,7 +2,7 @@
 <% content_for :description, @category.description %>
 <% content_for :keywords, @category.keywords %>
 <% content_for :body do %>
-  <section id='all-products-block' class="section">
+  <section id='all-products-block' class="section section--full-height">
     <div class="container">
       <% unless @products.empty? %>
         <h2 id="search-request-client" class="section__title"><%= @category.name %></h2>
