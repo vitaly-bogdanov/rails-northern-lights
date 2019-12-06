@@ -280,7 +280,13 @@ function loadAjaxProducts() {
     type: 'POST', 
     url: '/cart',
     success: function(response) {
-      document.querySelector('#bottom-modal-cart .container').innerHTML = response.body.innerHTML
+      document.querySelector('#bottom-modal-cart .container').innerHTML = response.body.innerHTML;
+      setTimeout(() => {
+        minusProduct();    // устанавливаем события клика на значек -
+        plusProduct();     // уствнавливаем событие клика на зеачек +
+        removeProducts();  // устанавливаем на собыите клика значек trash
+        onEmptyCart();     // отслеживание DOM-элементов товаров в корзине
+      }, 100);
     },
     error: function(response) {
       console.log(response);
@@ -320,13 +326,12 @@ function modalFooter() {
       inDuration: 500,
       outDuration: 500,
       onOpenStart: function() {
+        let html = '<div class="preloader-box"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>'
+        document.querySelector('#bottom-modal-cart .container').innerHTML = html;
         loadAjaxProducts();
       }, 
       onOpenEnd: function() {
-        minusProduct();    // устанавливаем события клика на значек -
-        plusProduct();     // уствнавливаем событие клика на зеачек +
-        removeProducts();  // устанавливаем на собыите клика значек trash
-        onEmptyCart();     // отслеживание DOM-элементов товаров в корзине
+        
       },
       inDuration: 600,
     });
