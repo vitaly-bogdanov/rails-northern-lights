@@ -185,6 +185,8 @@ function checkBoxErrorOff(id, color) {
   }
 }
 
+/* ********* КОРЗИНА ********* */
+
 /**
  * Добавить в корзину
  */
@@ -195,50 +197,79 @@ function addProductSuccess(event) {
   }
 }
 
+
 /**
- * Активируем с низу выезжающее окно корзины
+ * Минус 1 продукт
  */
-function modalFooter() {
-  const modalFooter = document.querySelector('#bottom-modal-cart');
-  if (modalFooter) {
-    M.Modal.init(modalFooter, {
-      inDuration: 500,
-      outDuration: 500,
-      onOpenStart: function() {
-        loadAjaxProducts();
-      }, 
-      onOpenEnd: function() {
-        removeProducts();
-      },
-      inDuration: 600,
+function minusProduct() {
+  const minusButtons = document.querySelectorAll('.minus-product');
+  if (minusButtons) {
+    minusButtons.forEach(button => {
+      button.onclick = function(event) {
+        event.preventDefault();
+        Rails.ajax({
+          type: 'POST',
+          url: this.getAttribute('href'),
+          success: (response) => {
+            document.querySelector('#tottal-price').innerHTML = response['tottal_price'];
+            if (response['count'] == 0) {
+              this.closest('.product-flexbox').remove();
+            } else {
+              this.nextElementSibling.innerHTML = response['count'];
+              document.querySelector('#tottal-price').innerHTML = response['tottal_price'];
+            }
+          },
+          error: (error) => {}
+        });
+      }
     });
   }
 }
 
 /**
- * Удалеение всего количества товара при нажатии на корзину
+ * Плюс 1 продукт
+ */
+function plusProduct() {
+  const plusButtons = document.querySelectorAll('.plus-product');
+  if (plusButtons) {
+    plusButtons.forEach(button => {
+      button.onclick = function(event) {
+        event.preventDefault();
+        Rails.ajax({
+          type: 'POST',
+          url: this.getAttribute('href'),
+          success: (response) => {
+            this.previousElementSibling.innerHTML = response['count'];
+            document.querySelector('#tottal-price').innerHTML = response['tottal_price'];
+          },
+          error: (error) => console.error(error)
+        });
+      }
+    });
+  }
+}
+
+/**
+ * Удалеение всего количества товара одного вида
  */
 function removeProducts() {
-  document.querySelectorAll('.remove_products').forEach(element => {
-    element.onclick = function(event) { 
-      event.preventDefault();
-      Rails.ajax({
-        type: 'POST', 
-        url: `/cart/${this.closest('.description-grid').dataset.id}/remove-products`,
-        success: (response) => {
-          if (response['tottal_price'] != 0) {
-            totalPriceIsert(response['tottal_price']);
-            this.closest('.product-flexbox').remove(); // удаляем колонку
-          } else {
-            loadAjaxProducts(); // если из корзины все удалили, перезагружаем шаблон
-          }
-        },
-        error: function(response) {
-          console.log(response);
-        }
-      });
-    }
-  });
+  let removeButton = document.querySelectorAll('.remove_products');
+  if (removeButton) {
+    removeButton.forEach(element => {
+      element.onclick = function(event) {
+        event.preventDefault();
+        Rails.ajax({
+          type: 'POST', 
+          url: this.getAttribute('href'),
+          success: (response) => {
+            document.querySelector('#tottal-price').innerHTML = response['tottal_price'];
+            this.closest('.product-flexbox').remove();
+          },
+          error: (error) => console.error(error)
+        });
+      }
+    });
+  }
 }
 
 /**
@@ -257,26 +288,52 @@ function loadAjaxProducts() {
   });
 }
 
-function changeCountProducts(event) {
-  if (event.detail[0]['action'] == 'plus') {
-    event.target.previousElementSibling.innerHTML = parseInt(event.target.previousElementSibling.innerHTML) + 1;
-    totalPriceIsert(event.detail[0]['tottal_price']);
-  } else if (event.detail[0]['action'] == 'minus') {
-    event.target.nextElementSibling.innerHTML = parseInt(event.target.nextElementSibling.innerHTML) - 1;
-    totalPriceIsert(event.detail[0]['tottal_price']);
-    if (event.target.nextElementSibling.innerHTML == '0') {
-      event.target.closest('.product-flexbox').remove();
-      loadAjaxProducts();
+/**
+ * Отслеживающая состояние DOM-элемента корзины
+ */
+function onEmptyCart() {
+  let cart = document.querySelector('#cart');
+  if (cart) {
+    let modal = document.querySelector('.modal-cart');
+    let html = [
+      '<i class="small material-icons modal-close">clear</i>',
+      '<h3>Корзина пуста</h3>',
+      '<p class="empty-cart-message">Но у нас много классных изделий :-)</p>',
+    ];
+    cart.onclick = function() {
+      setInterval(() => {
+        if (this.childElementCount == 0) {
+          modal.innerHTML = html.join('');
+        }
+      }, 200);
     }
   }
 }
 
 /**
- * Вставляем цену
+ * Активируем с низу выезжающее окно корзины
  */
-function totalPriceIsert(totalPrice) {
-  document.querySelector('#tottal-price').innerHTML = totalPrice;
+function modalFooter() {
+  const modalFooter = document.querySelector('#bottom-modal-cart');
+  if (modalFooter) {
+    M.Modal.init(modalFooter, {
+      inDuration: 500,
+      outDuration: 500,
+      onOpenStart: function() {
+        loadAjaxProducts();
+      }, 
+      onOpenEnd: function() {
+        minusProduct();    // устанавливаем события клика на значек -
+        plusProduct();     // уствнавливаем событие клика на зеачек +
+        removeProducts();  // устанавливаем на собыите клика значек trash
+        onEmptyCart();     // отслеживание DOM-элементов товаров в корзине
+      },
+      inDuration: 600,
+    });
+  }
 }
+
+/* ********* ЗАЯВКА НА ПОКУПКУ УНИКАЛЬНОГО ТОВАРА ********* */
 
 /**
  * Модальное окно заказа для уникального товара
@@ -284,7 +341,6 @@ function totalPriceIsert(totalPrice) {
 function orderModal() {
   const orderModal = document.querySelector('#order-modal');
   M.Modal.init(orderModal, {
-    // endingTop: '5%',
     onOpenStart: function() {
       insertTimeZoneInInput('#timezone-order-modal');
     }
@@ -345,7 +401,6 @@ function closeModal(callback) {
 document.addEventListener('ajax:success', function(event) {
   callCreateAjaxSend(event);      // отправляем круглую форму
   addProductSuccess(event);
-  changeCountProducts(event);
   orderCallCreateAjaxSend(event);
 });
 
@@ -382,5 +437,6 @@ document.addEventListener('turbolinks:load', function() {
     outputRequestIdSelector: '#search-request-client',
     getMethod: true
   });
+  removeProducts(); // только для страницы заказа
 });
 

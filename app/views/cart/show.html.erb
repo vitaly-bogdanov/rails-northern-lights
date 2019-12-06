@@ -1,6 +1,6 @@
 <div class="modal-cart">
-  <i class="small material-icons modal-close">clear</i>
   <% unless products.empty? %>
+    <i class="small material-icons modal-close">clear</i>
     <h3>Корзина</h3>
     <div class="to_order">
       <p>Итого: <span id="tottal-price"><%= tottal_price %></span>&nbsp;<span><%= image_tag('static/ruble-currency-sign.svg', { alt: 'rub' }) %></span></p>
@@ -10,15 +10,15 @@
       <% products.each do |value| %>
         <div class="product-flexbox">
           <div class="image-block"><%= image_tag value[:product].thumb_picture, { alt: value[:product].name } %></div>
-          <div class="description-grid" data-id="<%= value[:product].id %>">
+          <div class="description-grid">
             <div class="title-block"><%= value[:product].name %></div>
             <div class="price-block"><span><%= value[:product].price %></span>&nbsp;<span><%= image_tag('static/ruble-currency-sign.svg', { alt: 'rub' }) %></span></div>
             <div class="count-block">
-              <%= link_to minus_product_path(value[:product]), remote: true, method: :post do %>
+              <%= link_to minus_product_path(value[:product]), class: 'minus-product' do %>
                 <i class="material-icons">remove</i>
               <% end %>
               <span class="product-type-count"><%= value[:count] %></span>
-              <%= link_to plus_product_path(value[:product]), remote: true, method: :post do %>
+              <%= link_to plus_product_path(value[:product]), class: 'plus-product' do %>
                 <i class="material-icons">add</i>
               <% end %>
             </div>
@@ -32,7 +32,8 @@
       <% end %>
     </div>
   <% else %>
+    <i class="small material-icons modal-close">clear</i>
     <h3>Корзина пуста</h3>
-    <p class="empty-cart-message">У нас много классных изделий :-)</p>
+    <p class="empty-cart-message">Но у нас много классных изделий :-)</p>
   <% end %>
 </div>
