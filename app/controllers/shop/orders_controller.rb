@@ -2,27 +2,33 @@ require 'digest/md5'
 
 class Shop::OrdersController < ApplicationController
   def new
-    mrh_login = "demo"
-    mrh_pass1 = "password_1"
-    inv_id = 0
-    inv_desc = "ROBOKASSA Advanced User Guide"
-    out_summ = "8.96"
-    shp_item = 1
-    in_curr = ""
-    culture = "ru"
-    encoding = "utf-8"
-    crc = Digest::MD5.hexdigest("#{mrh_login}:#{out_summ}:#{inv_id}:#{mrh_pass1}:Shp_item=#{shp_item}")
-
-    @pay_link = "https://auth.robokassa.ru/Merchant/PaymentForm/FormFLS.js?" +
-    "MrchLogin=#{mrh_login}&OutSum=#{out_summ}&InvId=#{inv_id}&IncCurrLabel=#{in_curr}" +
-    "&Desc=#{inv_desc}&SignatureValue=#{crc}&Shp_item=#{shp_item}" +
-    "&Culture=#{culture}&Encoding=#{encoding}"
+    products = []
+    session[:cart]['products'].each do |id, value|
+      product = Product.find(id.to_i)
+      products << { product: product, count: value['count'] }
+    end
+    render 'new', locals: { products: products, tottal_price: session[:cart]['tottal_price'] }
   end
 
   def create
   end
 end
 
+# mrh_login = "demo"
+# mrh_pass1 = "password_1"
+# inv_id = 0
+# inv_desc = "ROBOKASSA Advanced User Guide"
+# out_summ = "8.96"
+# shp_item = 1
+# in_curr = ""
+# culture = "ru"
+# encoding = "utf-8"
+# crc = Digest::MD5.hexdigest("#{mrh_login}:#{out_summ}:#{inv_id}:#{mrh_pass1}:Shp_item=#{shp_item}")
+
+# @pay_link = "https://auth.robokassa.ru/Merchant/PaymentForm/FormFLS.js?" +
+# "MrchLogin=#{mrh_login}&OutSum=#{out_summ}&InvId=#{inv_id}&IncCurrLabel=#{in_curr}" +
+# "&Desc=#{inv_desc}&SignatureValue=#{crc}&Shp_item=#{shp_item}" +
+# "&Culture=#{culture}&Encoding=#{encoding}"
 
 # $mrh_login = "demo";
 # $mrh_pass1 = "password_1";

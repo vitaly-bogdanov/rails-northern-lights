@@ -13,7 +13,10 @@
         font-size: 25px;
       }
       &:last-child {
-        font-size: 18px;
+        img {
+          height: 16px;
+          width: 14px;
+        }
       }
     }
   }

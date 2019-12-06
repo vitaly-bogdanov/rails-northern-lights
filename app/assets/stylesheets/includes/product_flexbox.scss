@@ -28,8 +28,10 @@
           font-weight: 700;
         }
         &:last-child {
-          font-size: 16px;
-          font-weight: 700;
+          img {
+            height: 14px;
+            width: 12px;
+          }
         }
       }
     }
