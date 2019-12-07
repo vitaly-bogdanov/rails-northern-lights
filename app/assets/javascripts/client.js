@@ -424,24 +424,27 @@ function onEmptyListProducts() {
 
 }
 
+
+/* ********* ПРЕЛОАДЕРЫ ********* */
+
+/**
+ * Прелоадер для картинок карточек товаров
+ */
 function productCardImagePreloader() {
   const products = document.querySelectorAll('.product_card');
   if (products) {
     products.forEach((product) => {
       let img = product.firstElementChild.firstElementChild;
-      img.onload = () => {
+      if (img.complete) {
         product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
+      } else {
+        img.onload = () => {
+          product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
+        }
       }
     });
   }
 }
-
-// let img = new Image();
-// const src = product.getAttribute('data-src');
-// const alt = product.getAttribute('data-alt');
-// img.src = src;
-// img.classList.add('product_card__image');
-// img.setAttribute('alt', alt);
 
 document.addEventListener('ajax:success', function(event) {
   callCreateAjaxSend(event);      // отправляем круглую форму
