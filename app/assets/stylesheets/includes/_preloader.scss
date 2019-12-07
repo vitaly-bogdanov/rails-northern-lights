@@ -93,6 +93,13 @@
     top: 0;
     opacity: 0.5;
   }
+  &--product-show {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    opacity: 0.5;
+  }
   &--white {
     .lds-roller div:after {
       background: #fff;

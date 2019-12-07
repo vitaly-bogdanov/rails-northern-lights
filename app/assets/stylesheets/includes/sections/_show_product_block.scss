@@ -11,6 +11,11 @@
       padding-right: 10px;
       .show-product-image {
         margin-right: 20px;
+        position: relative;
+        height: auto;
+        img {
+          display: block;
+        }
       }
       .show-product-description {
         max-width: 590px;

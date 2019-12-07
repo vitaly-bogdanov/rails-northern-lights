@@ -446,6 +446,23 @@ function productCardImagePreloader() {
   }
 }
 
+/**
+ * Прелоадер для картинки демонстрации товара 
+ */
+function productShowImagePreloader() {
+  const imageBlock = document.querySelector('.show-product-image');
+  if (imageBlock) {
+    let img = imageBlock.firstElementChild;
+    if (img.complete) {
+      imageBlock.lastElementChild.classList.add('preloader-box--hidden');
+    } else {
+      img.onload = () => {
+        imageBlock.lastElementChild.classList.add('preloader-box--hidden');
+      }
+    }
+  }
+}
+
 document.addEventListener('ajax:success', function(event) {
   callCreateAjaxSend(event);      // отправляем круглую форму
   addProductSuccess(event);
@@ -491,6 +508,7 @@ document.addEventListener('turbolinks:load', function() {
   plusProduct();     // уствнавливаем событие клика на зеачек +
   removeProducts();  // устанавливаем на собыите клика значек trash
 
-  productCardImagePreloader()
+  productCardImagePreloader(); // активируем preloader для картинки карточки товара
+  productShowImagePreloader(); // активируем preloader для картинки на странице показа товара
 });
 
