@@ -86,8 +86,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  &--product-cart {
+  &--product-card {
     height: 213px;
+    width: 270px;
+    position: absolute;
+    top: 0;
+    opacity: 0.5;
   }
   &--white {
     .lds-roller div:after {
@@ -98,5 +102,8 @@
     .lds-roller div:after {
       background: #4a148c;
     }
+  }
+  &--hidden {
+    display: none;
   }
 }

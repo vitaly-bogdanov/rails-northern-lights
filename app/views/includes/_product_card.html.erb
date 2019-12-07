@@ -1,7 +1,17 @@
 <div class="product_card" data-src="<%= request.base_url + url_for(product_card.middle_picture) %>" data-alt="<%= product_card.name %>">
   <%= link_to shop_product_path(product_card) + (if defined? q then q else '' end), class: 'product_card--image-link' do %>
-    <div class="preloader-box preloader-box--product-cart preloader-box--white blue-grey darken-3">
-      <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <%= image_tag(product_card.middle_picture, { alt: product_card.name, class: 'product_card__image' }) %>
+    <div class="preloader-box preloader-box--product-card preloader-box--white blue-grey darken-3">
+      <div class="lds-roller">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   <% end %>
   <%=  %>

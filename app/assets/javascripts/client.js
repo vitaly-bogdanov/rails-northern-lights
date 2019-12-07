@@ -428,20 +428,20 @@ function productCardImagePreloader() {
   const products = document.querySelectorAll('.product_card');
   if (products) {
     products.forEach((product) => {
-      let img = new Image();
-      const src = product.getAttribute('data-src');
-      const alt = product.getAttribute('data-alt');
-      let imageTag = document.createElement('img');
-      imageTag.classList.add('product_card__image');
+      let img = product.firstElementChild.firstElementChild;
       img.onload = () => {
-        imageTag.setAttribute('src', img.src);
-        imageTag.setAttribute('alt', alt);
-        product.children[0].innerHTML = imageTag.outerHTML;
+        product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
       }
-      img.src = src;
     });
   }
 }
+
+// let img = new Image();
+// const src = product.getAttribute('data-src');
+// const alt = product.getAttribute('data-alt');
+// img.src = src;
+// img.classList.add('product_card__image');
+// img.setAttribute('alt', alt);
 
 document.addEventListener('ajax:success', function(event) {
   callCreateAjaxSend(event);      // отправляем круглую форму
