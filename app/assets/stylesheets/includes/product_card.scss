@@ -9,8 +9,12 @@
   &:hover {
     box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.35);
   }
+  &--image-link {
+    display: block;
+    height: 213px;
+  }
   &__image {
-    min-height: 213px;
+    height: 100%;
   }
   &__title_link {
     color: black;

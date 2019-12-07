@@ -295,6 +295,17 @@ function loadAjaxProducts() {
 }
 
 /**
+ * Событие закрытия корзины по нажатию на крестик
+ */
+function bottomModalClose() {
+  const modalFooter = document.querySelector('#bottom-modal-cart');
+  if (modalFooter) {
+    const instanceModalFooter = M.Modal.getInstance(modalFooter);
+    modalFooter.querySelector('.modal-close').onclick = () => instanceModalFooter.close();
+  }
+}
+
+/**
  * Отслеживающая состояние DOM-элемента корзины
  */
 function onEmptyCart() {
@@ -307,9 +318,10 @@ function onEmptyCart() {
       '<p class="empty-cart-message">Но у нас много классных изделий :-)</p>',
     ];
     cart.onclick = function() {
-      setInterval(() => {
+      setTimeout(() => {
         if (this.childElementCount == 0) {
           modal.innerHTML = html.join('');
+          bottomModalClose();
         }
       }, 200);
     }
@@ -326,7 +338,7 @@ function modalFooter() {
       inDuration: 500,
       outDuration: 500,
       onOpenStart: function() {
-        let html = '<div class="preloader-box"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>'
+        let html = '<div class="preloader-box preloader-box--purple"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>'
         document.querySelector('#bottom-modal-cart .container').innerHTML = html;
         loadAjaxProducts();
       }, 
@@ -403,6 +415,34 @@ function closeModal(callback) {
   }
 }
 
+/* ********* ОФОРМЛЕНИЕ ЗАКАЗА НЕУНИКАЛЬНЫХ ТОВАРОВ ********* */
+
+/**
+ * all_your_products
+ */
+function onEmptyListProducts() {
+
+}
+
+function productCardImagePreloader() {
+  const products = document.querySelectorAll('.product_card');
+  if (products) {
+    products.forEach((product) => {
+      let img = new Image();
+      const src = product.getAttribute('data-src');
+      const alt = product.getAttribute('data-alt');
+      let imageTag = document.createElement('img');
+      imageTag.classList.add('product_card__image');
+      img.onload = () => {
+        imageTag.setAttribute('src', img.src);
+        imageTag.setAttribute('alt', alt);
+        product.children[0].innerHTML = imageTag.outerHTML;
+      }
+      img.src = src;
+    });
+  }
+}
+
 document.addEventListener('ajax:success', function(event) {
   callCreateAjaxSend(event);      // отправляем круглую форму
   addProductSuccess(event);
@@ -442,6 +482,12 @@ document.addEventListener('turbolinks:load', function() {
     outputRequestIdSelector: '#search-request-client',
     getMethod: true
   });
-  removeProducts(); // только для страницы заказа
+
+  // только для страницы с оформлением заказа
+  minusProduct();    // устанавливаем события клика на значек -
+  plusProduct();     // уствнавливаем событие клика на зеачек +
+  removeProducts();  // устанавливаем на собыите клика значек trash
+
+  productCardImagePreloader()
 });
 
