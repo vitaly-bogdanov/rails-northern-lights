@@ -197,7 +197,6 @@ function addProductSuccess(event) {
   }
 }
 
-
 /**
  * Минус 1 продукт
  */
