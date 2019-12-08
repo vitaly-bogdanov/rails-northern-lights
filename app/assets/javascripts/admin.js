@@ -80,12 +80,8 @@ function toogleAvailable() {
         url: `/admin/order_calls/${this.dataset.productId}/toogle-available`,
         dataType: 'json',
         data: formData,
-        success: function(response) {
-          console.log(response);
-        },
-        error: function(response) {
-          console.log(response);
-        }
+        success: (response) => {},
+        error: (error) => console.error(error)
       });
     }
   }

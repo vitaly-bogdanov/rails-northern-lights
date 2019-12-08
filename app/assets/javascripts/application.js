@@ -94,9 +94,7 @@ function productCardImagePreloader() {
         product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
       } else {
         img.onload = () => {
-          setTimeout(() => {
-            product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
-          }, 5000);
+          product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
         }
       }
     });
