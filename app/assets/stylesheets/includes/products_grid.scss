@@ -22,7 +22,7 @@
 }
 @media (max-width: 870px) {
   .products_grid {
-    grid-gap: 10px;
+    grid-gap: 15px;
     &--all_products, &--will_like {
       grid-template-columns: repeat(2, 270px);
     }

@@ -13,7 +13,10 @@
           <%= will_paginate @products, previous_label: '<i class="material-icons">chevron_left</i>', next_label: '<i class="material-icons">chevron_right</i>' %>
         </div>
       <% else %>
-        <h2 class="section__title">В категории "<%= @category.name %>" пока что товаров нет</h2>
+        <h2 id="search-request-client" class="section__title">В категории "<%= @category.name %>" пока что товаров нет</h2>
+        <div id="search-result-client" class="products_grid products_grid--all_products">
+          
+        </div>
       <% end %>
     </div>
   </section>

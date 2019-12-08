@@ -6,13 +6,13 @@ class Product < ApplicationRecord
   has_many   :order_calls
   has_one_attached :picture, :dependent => :purge_later
 
+  NAME_MAX_LENGTH = 22
+
   PREVIEW_MIN_LENGTH = 30
   PREVIEW_MAX_LENGTH = 60
 
   DESCRIPTION_MIN_LENGTH = 100
-  DESCRIPTION_MAX_LENGTH = 800
-
-  NAME_MAX_LENGTH = 22
+  DESCRIPTION_MAX_LENGTH = 650
 
   validates :name, presence: { message: 'Название товара обязательно' },
                      length: { 

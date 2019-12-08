@@ -80,6 +80,46 @@ function deleteSerchedProduct() {
   }
 }
 
+/* ********* ПРЕЛОАДЕРЫ ********* */
+
+/**
+ * Прелоадер для картинок карточек товаров
+ */
+function productCardImagePreloader() {
+  const products = document.querySelectorAll('.product_card');
+  if (products) {
+    products.forEach((product) => {
+      let img = product.firstElementChild.firstElementChild;
+      if (img.complete) {
+        product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
+      } else {
+        img.onload = () => {
+          setTimeout(() => {
+            product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
+          }, 5000);
+        }
+      }
+    });
+  }
+}
+
+/**
+ * Прелоадер для картинки демонстрации товара 
+ */
+function productShowImagePreloader() {
+  const imageBlock = document.querySelector('.show-product-image');
+  if (imageBlock) {
+    let img = imageBlock.firstElementChild;
+    if (img.complete) {
+      imageBlock.lastElementChild.classList.add('preloader-box--hidden');
+    } else {
+      img.onload = () => {
+        imageBlock.lastElementChild.classList.add('preloader-box--hidden');
+      }
+    }
+  }
+}
+
 /**
  * Активируем автозаполнение для поля поиска.
  */
@@ -96,10 +136,12 @@ function seachFieldAutocomplete(params) {
             document.querySelector(params.outputBodyIdSelector).innerHTML = response.body.innerHTML;
             if (params.outputRequestIdSelector) {
               document.querySelector(params.outputRequestIdSelector).innerHTML = `Поиск по "${searchField.value}"`;
+              document.querySelector('.product-pagination').remove();
             }
             if (params.getMethod) {
               history.pushState(null, null, `/shop/search-products/${searchField.value}`)
             }
+            productCardImagePreloader();
             setTimeout(() => {
               deleteSerchedProduct();
             }, 1000);
