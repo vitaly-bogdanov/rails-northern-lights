@@ -73,3 +73,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'materialize-sass', '~> 1.0.0'
 gem 'whenever', require: false
 gem 'sitemap_generator'
+gem 'friendly_id', '~> 5.2.4'

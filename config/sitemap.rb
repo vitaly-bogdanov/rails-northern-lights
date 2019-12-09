@@ -26,7 +26,6 @@ SitemapGenerator::Sitemap.create do
   #   end
 
   add root_path, priority: 0.7, changefreq: 'weekly'
-  add privacy_agreement_path, priority: 0.2, changefreq: 'weekly'
   
   Category.find_each do |category|
     add shop_category_products_path(category), :lastmod => category.updated_at
