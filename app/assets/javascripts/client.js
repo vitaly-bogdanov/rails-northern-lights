@@ -192,7 +192,7 @@ function checkBoxErrorOff(id, color) {
  */
 function addProductSuccess(event) {
   if (event.detail[0]['action'] == 'add_product') {
-    let message = `Товар "${event.detail[0]['name']} добавлен в корзину`;
+    let message = `Товар "${event.detail[0]['name']}" добавлен в корзину`;
     toastActive(message);
   }
 }
