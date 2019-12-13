@@ -1,0 +1,17 @@
+<% content_for :title, 'Страница не существует' %>
+<% content_for :description, 'ERROR 404' %>
+<% content_for :keywords, 'ERROR 404' %>
+<% content_for :body do %>
+  <section>
+    <div class="container">
+      <div class="error-box">
+        <div class="error-box--message">
+          <h1>404</h1><span>Страница не существует</span>
+          <p>Возможно, тут был когда-то товар, а потом его продали...</p>
+          <p>...или тут была целая категория каких-либо товаров, но потом она была удалена.</p>
+          <%= link_to 'Вернуться на главную', root_path %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

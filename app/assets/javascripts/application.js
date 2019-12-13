@@ -134,7 +134,10 @@ function seachFieldAutocomplete(params) {
             document.querySelector(params.outputBodyIdSelector).innerHTML = response.body.innerHTML;
             if (params.outputRequestIdSelector) {
               document.querySelector(params.outputRequestIdSelector).innerHTML = `Поиск по "${searchField.value}"`;
-              document.querySelector('.product-pagination').remove();
+              let pagination = document.querySelector('.product-pagination');
+              if (pagination) {
+                pagination.remove();
+              }
             }
             if (params.getMethod) {
               history.pushState(null, null, `/shop/search-products/${searchField.value}`)

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   # магазин
   namespace :shop do
-    get '/products_category/:id' => 'products#index', as: 'category_products'
+    get '/products-category/:id' => 'products#index', as: 'category_products'
     resources :products,    only: [:show]
     resources :orders,      only: [:new, :create]
     resources :order_calls, only: [:create]
@@ -33,15 +33,15 @@ Rails.application.routes.draw do
 
     resources :calls, only: [:index, :edit, :update, :destroy]
 
-    get   '/order_calls/arhive',               to: 'order_calls#arhive',           as: 'order_calls_arhive'
-    patch '/order_calls/:id/complete',         to: 'order_calls#complete',         as: 'order_call_complete'
-    patch '/order_calls/:id/save',             to: 'order_calls#save',             as: 'order_call_save'
-    patch '/order_calls/:id/toogle-available', to: 'order_calls#toogle_available', as: 'order_call_toogle_available'
+    get   '/order-calls/arhive',               to: 'order_calls#arhive',           as: 'order_calls_arhive'
+    patch '/order-calls/:id/complete',         to: 'order_calls#complete',         as: 'order_call_complete'
+    patch '/order-calls/:id/save',             to: 'order_calls#save',             as: 'order_call_save'
+    patch '/order-calls/:id/toogle-available', to: 'order_calls#toogle_available', as: 'order_call_toogle_available'
     
     resources :order_calls, only: [:index, :edit, :update, :destroy]
 
     resources :products,     except: [:show, :destroy]
-    delete '/products/:id/:from_place', to: 'products#destroy', as: 'product_destroy'
+    delete '/products/:id/:from-place', to: 'products#destroy', as: 'product_destroy'
 
     resources :categories,   except: [:show]
     resources :portfolios,   except: [:show]
@@ -57,4 +57,8 @@ Rails.application.routes.draw do
   post 'cart/:id/remove-products', to: 'cart#remove_products', as: 'remove_products'
   post 'cart/:id/plus-product',    to: 'cart#plus_product',    as: 'plus_product'
   post 'cart/:id/minus-product',   to: 'cart#minus_product',   as: 'minus_product'
+
+  match "/404", to: "errors#not_found", via: :all
+  match "/422", to: "errors#unacceptable", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
 end

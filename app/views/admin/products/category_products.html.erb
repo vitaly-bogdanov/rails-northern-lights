@@ -9,12 +9,12 @@
             <%= image_tag(product.thumb_picture, {class: 'horizontal-grid__item-image', alt: product.name  }) %>
             <h3 class="horizontal-grid__item-title"><%= product.name %></h3>
             <div class="horizontal-grid__item-edit">
-              <%= link_to edit_admin_product_path(product) do %>
+              <%= link_to edit_admin_product_path(product.id) do %>
                 <i class="material-icons">edit</i>
               <% end %>
             </div>
             <div class="horizontal-grid__item-delete">
-              <%= link_to admin_product_destroy_path(product, 'category_products'), method: :delete do %>
+              <%= link_to admin_product_destroy_path(product.id, 'category_products'), method: :delete do %>
                 <i class="material-icons">delete_forever</i>
               <% end %>
             </div>

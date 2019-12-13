@@ -6,6 +6,12 @@ class Product < ApplicationRecord
   has_many   :order_calls
   has_one_attached :picture, :dependent => :purge_later
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  def normalize_friendly_id(input)
+    input.to_s.to_slug.normalize(transliterations: :russian).to_s
+  end
+
   NAME_MAX_LENGTH = 22
 
   PREVIEW_MIN_LENGTH = 30

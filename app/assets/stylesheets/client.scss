@@ -263,10 +263,75 @@ section#privacy_agreement {
 }
 
 .parallax-container {
-  height: 300pxцввввв;
+  height: 300px;
 }
 @media (max-width: 800px) {
   .parallax-container {
     height: 150px;
+  }
+}
+
+.error-box {
+  padding-left: 5px;
+  padding-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  &--message {
+    h1 {
+      font-size: 100px;
+      color: #4a148c;
+      display: inline;
+      margin: 0;
+    }
+    span, p, a {
+      font-size: 20px;
+    }
+    span {
+      color: #4a148c;
+    }
+    p {
+      color: #37474f;
+      margin-top: 15px;
+      margin-bottom: 0;
+    }
+    a {
+      display: block;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #607d8b;
+      max-width: 220px;
+      width: 100%;
+    }
+  }
+}
+
+
+@media (max-width: 790px) {
+  .error-box {
+    &--message {
+      p, a {
+        font-size: 15px;
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .error-box {
+    &--message {
+      h1, span {
+        display: block;
+        text-align: center;
+      }
+      p {
+        font-size: 14px;
+        margin-top: 0px;
+        text-align: center;
+      }
+    }
   }
 }

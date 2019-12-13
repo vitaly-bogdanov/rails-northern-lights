@@ -6,6 +6,13 @@
   Имеет поля: name, description, keywords.
 =end
 class Category < ApplicationRecord
+    # friendly url
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  def normalize_friendly_id(input)
+    input.to_s.to_slug.normalize(transliterations: :russian).to_s
+  end
+
   has_many :products, dependent: :destroy
 
   NAME_MAX_LENGTH = 12
