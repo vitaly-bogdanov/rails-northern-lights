@@ -1,0 +1,17 @@
+<% content_for :title, 'Необрабатываемый экземпляр' %>
+<% content_for :description, 'ERROR 422' %>
+<% content_for :keywords, 'ERROR 422' %>
+<% content_for :body do %>
+  <section>
+    <div class="container">
+      <div class="error-box">
+        <div class="error-box--message">
+          <h1>422</h1><span>Необрабатываемый экземпляр</span>
+          <p>Сервер успешно принял запрос...</p>
+          <p>...однако имеется в нем какая-то ошибка.</p>
+          <%= link_to 'Вернуться на главную', root_path %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

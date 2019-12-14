@@ -1,0 +1,17 @@
+<% content_for :title, 'Ошибка на сервере' %>
+<% content_for :description, 'ERROR 500' %>
+<% content_for :keywords, 'ERROR 500' %>
+<% content_for :body do %>
+  <section>
+    <div class="container">
+      <div class="error-box">
+        <div class="error-box--message">
+          <h1>500</h1><span>Ошибка на сервере</span>
+          <p>Что-то работает не так как должно...</p>
+          <p>...но скоро это будет исправленно.</p>
+          <%= link_to 'Вернуться на главную', root_path %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>

@@ -5,11 +5,11 @@ class ErrorsController < ApplicationController
   end
 
   def unacceptable
-    render status: 422
+    render '422', layout: 'application', status: 422
   end
 
   def internal_server_error
-    render status: 500
+    render '500', layout: 'application', status: 500
   end
 
 end
