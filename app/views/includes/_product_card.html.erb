@@ -22,9 +22,9 @@
     <p class="product_card__description"><%= product_card.preview %></p>
   </div>
   <% if product_card.unique %>
-    <%= link_to 'Подробнее', shop_product_path(product_card) + (if defined? q then q else '' end), class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
+    <%= link_to 'Подробнее', shop_product_path(product_card.id) + (if defined? q then q else '' end), class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
   <% else %>
-    <%= link_to 'В корзину', add_product_path(product_card), remote: true, method: :post, class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
+    <%= link_to 'В корзину', add_product_path(product_card.id), remote: true, method: :post, class: 'waves-effect waves-light btn purple-hover-btn product_card__add' %>
   <% end %>
   <div class="product_card__price">
     <span><%= product_card.price %></span>

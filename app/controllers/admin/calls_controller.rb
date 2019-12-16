@@ -13,7 +13,7 @@ class Admin::CallsController < ApplicationController
   def update
     @call = Call.find(params[:id])
     if @call.update_columns(notes: params[:notes])
-      redirect_to "#{admin_calls_path}?message=Заявка обновлена"
+      redirect_to "#{admin_calls_path}#message=Заявка обновлена"
     else
       render :edit
     end
@@ -21,18 +21,18 @@ class Admin::CallsController < ApplicationController
   def complete
     @call = Call.find(params[:id])
     if @call.update_columns(completed: true, saved: false)
-      redirect_to "#{admin_calls_path}?message=Заявка обработана"
+      redirect_to "#{admin_calls_path}#message=Заявка обработана"
     else
-      redirect_to "#{admin_calls_path}?message=Произошла неведомая херня"
+      redirect_to "#{admin_calls_path}#message=Произошла неведомая херня"
     end
   end
   def save
     @call = Call.find(params[:id])
     path = @call.completed ? admin_calls_arhive_path : admin_calls_path
     if @call.update_columns(saved: @call.saved ? false : true, completed: false)
-      redirect_to "#{path}?message=Заявка сохранена"
+      redirect_to "#{path}#message=Заявка сохранена"
     else
-      redirect_to "#{path}?message=Произошла неведомая херня"
+      redirect_to "#{path}#message=Произошла неведомая херня"
     end
   end
   def arhive

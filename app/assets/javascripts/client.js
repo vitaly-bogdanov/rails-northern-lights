@@ -45,9 +45,11 @@ function featureDiscoveryCreate() {
 }
 
 function insertTimeZoneInInput(id_selector) {
-  document.querySelector(id_selector).value = new Date().toString().split(' ')[6].slice(1, -1);
+  let timeZoneInput = document.querySelector(id_selector);
+  if (timeZoneInput) {
+    timeZoneInput.value = new Date().toString().split(' ')[6].slice(1, -1);
+  }
 }
-
 
 /**
  * Открыть окно Feature Discovery.
@@ -287,9 +289,7 @@ function loadAjaxProducts() {
         onEmptyCart();     // отслеживание DOM-элементов товаров в корзине
       }, 100);
     },
-    error: function(response) {
-      console.log(response);
-    }
+    error: (error) => console.error(error),
   });
 }
 
@@ -470,6 +470,8 @@ document.addEventListener('turbolinks:load', function() {
   minusProduct();    // устанавливаем события клика на значек -
   plusProduct();     // уствнавливаем событие клика на зеачек +
   removeProducts();  // устанавливаем на собыите клика значек trash
+
+  insertTimeZoneInInput('#order_timezone'); // часовой пояс
 
   productCardImagePreloader(); // активируем preloader для картинки карточки товара
   productShowImagePreloader(); // активируем preloader для картинки на странице показа товара

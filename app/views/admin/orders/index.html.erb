@@ -3,6 +3,71 @@
   <section class="section section--grey section--full-height">
     <div class="container">
       <h2 class="section__title">Заказы</h2>
+      <% if @orders_new.any? %>
+        <% @orders_new.each do |ord| %>
+          <div class="horizontal-grid horizontal-grid--order-elements-position horizontal-grid--margin-top-position">
+            <h3 class="horizontal-grid__item-title"><%= ord.initials %></h3>
+            <div class="horizontal-grid__item-check">
+              <%= link_to '#', method: :patch do %>
+                <i class="material-icons">check_circle</i>
+              <% end %>
+            </div>
+            <div class="horizontal-grid__item-save">
+              <%= link_to '#', method: :patch do %>
+                <i class="material-icons">save</i>
+              <% end %>
+            </div>
+            <div class="horizontal-grid__item-edit">
+              <%= link_to '#' do %>
+                <i class="material-icons">contacts</i>
+              <% end %>
+            </div>
+            <div class="horizontal-grid__item-delete">
+              <%= link_to admin_order_path(ord.id), method: :delete do %>
+                <i class="material-icons">delete_forever</i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <h3 class="empty-index empty-index--center">Пока что нет заказов</h3>
+      <% end %>
+    </div>
+  </section>
+  <section class="section section--grey section--full-height">
+    <div class="container">
+      <h2 class="section__title">Сохраненные заказы</h2>
+      <% if @orders_saved.any? %>
+        <% @orders_saved.each do |ord| %>
+          <div class="horizontal-grid horizontal-grid--calls-elements-position horizontal-grid--margin-top-position">
+            <h3 class="horizontal-grid__item-title"><%= ord.name %></h3>
+            <p class="horizontal-grid__item-telephone"><%= ord.telephone %></p>
+            <p class="horizontal-grid__item-notes"></p>
+            <div class="horizontal-grid__item-check">
+              <%= link_to '#', method: :patch, 'data-turbolinks-scroll': false do %>
+                <i class="material-icons">check_circle</i>
+              <% end %>
+            </div>
+            <div class="horizontal-grid__item-save">
+              <%= link_to '#', class: 'disabled' do %>
+                <i class="material-icons">save</i>
+              <% end %>
+            </div>
+            <div class="horizontal-grid__item-edit">
+              <%= link_to '#' do %>
+                <i class="material-icons">contacts</i>
+              <% end %>
+            </div>
+            <div class="horizontal-grid__item-delete">
+              <%= link_to '#', method: :delete do %>
+                <i class="material-icons">delete_forever</i>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <h3 class="empty-index empty-index--center">Пока что нет заявок</h3>
+      <% end %>
       <%= link_to 'Архив', admin_calls_arhive_path, class: 'waves-effect waves-light btn-large blue-grey-hover-btn arhive-btn' %> 
     </div>
   </section>
