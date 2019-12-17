@@ -10,22 +10,22 @@
             <p class="horizontal-grid__item-telephone"><%= cl.telephone %></p>
             <p class="horizontal-grid__item-notes"><%= cl.notes %></p>
             <div class="horizontal-grid__item-check">
-              <%= link_to admin_call_complete_path(cl), method: :patch do %>
+              <%= link_to admin_call_complete_path(cl.id), method: :patch do %>
                 <i class="material-icons">check_circle</i>
               <% end %>
             </div>
             <div class="horizontal-grid__item-save">
-              <%= link_to admin_call_save_path(cl), method: :patch do %>
+              <%= link_to admin_call_save_path(cl.id), method: :patch do %>
                 <i class="material-icons">save</i>
               <% end %>
             </div>
             <div class="horizontal-grid__item-edit">
-              <%= link_to edit_admin_call_path(cl) do %>
+              <%= link_to edit_admin_call_path(cl.id) do %>
                 <i class="material-icons">contacts</i>
               <% end %>
             </div>
             <div class="horizontal-grid__item-delete">
-              <%= link_to admin_call_path(cl), method: :delete do %>
+              <%= link_to admin_call_path(cl.id), method: :delete do %>
                 <i class="material-icons">delete_forever</i>
               <% end %>
             </div>
@@ -46,7 +46,7 @@
             <p class="horizontal-grid__item-telephone"><%= cl.telephone %></p>
             <p class="horizontal-grid__item-notes"><%= cl.notes %></p>
             <div class="horizontal-grid__item-check">
-              <%= link_to admin_call_complete_path(cl), method: :patch, 'data-turbolinks-scroll': false do %>
+              <%= link_to admin_call_complete_path(cl.id), method: :patch, 'data-turbolinks-scroll': false do %>
                 <i class="material-icons">check_circle</i>
               <% end %>
             </div>
@@ -56,12 +56,12 @@
               <% end %>
             </div>
             <div class="horizontal-grid__item-edit">
-              <%= link_to edit_admin_call_path(cl) do %>
+              <%= link_to edit_admin_call_path(cl.id) do %>
                 <i class="material-icons">contacts</i>
               <% end %>
             </div>
             <div class="horizontal-grid__item-delete">
-              <%= link_to admin_call_path(cl), method: :delete do %>
+              <%= link_to admin_call_path(cl.id), method: :delete do %>
                 <i class="material-icons">delete_forever</i>
               <% end %>
             </div>
@@ -70,7 +70,7 @@
       <% else %>
         <h3 class="empty-index empty-index--center">Пока что нет заявок</h3>
       <% end %>
-      <%= link_to 'Архив', admin_calls_arhive_path, class: 'waves-effect waves-light btn-large blue-grey-hover-btn arhive-btn' %> 
+      <%= link_to 'Архив', admin_calls_arhive_path, class: 'blue-grey darken-3 waves-effect waves-light btn-large blue-grey-hover-btn arhive-btn' %> 
     </div>
   </section>
 <% end %>

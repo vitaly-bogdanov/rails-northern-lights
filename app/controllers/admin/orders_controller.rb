@@ -11,11 +11,16 @@ class Admin::OrdersController < ApplicationController
 
   def edit
     @order = Order.find(params[:id])
+    @meta_products = []
+    @order.order_products.each do |meta_product|
+      @meta_products << { product: meta_product.product, count: meta_product.count_products }
+    end
   end
 
   def update
     @order = Order.find(params[:id])
-    if @order.update_columns(notes: params[:notes])
+
+    if @order.update_columns(notes: params[:order][:notes])
       redirect_to "#{admin_orders_path}#message=Заказ обновлен"
     else
       render :edit
@@ -25,7 +30,7 @@ class Admin::OrdersController < ApplicationController
   def complete
     @order = Order.find(params[:id])
     if @order.update_columns(completed: true, saved: false)
-      redirect_to "#{admin_orders_path}#message=Заказ обработана"
+      redirect_to "#{admin_orders_path}#message=Заказ обработан"
     else
       redirect_to "#{admin_orders_path}#message=Произошла неведомая херня"
     end
@@ -33,8 +38,8 @@ class Admin::OrdersController < ApplicationController
 
   def save
     @order = Order.find(params[:id])
-    path = @order.completed ? admin_order_calls_arhive_path : admin_orders_path
-    if @order_call.update_columns(saved: @order.saved ? false : true, completed: false)
+    path = @order.completed ? admin_orders_arhive_path : admin_orders_path
+    if @order.update_columns(saved: @order.saved ? false : true, completed: false)
       redirect_to "#{path}#message=Заказ сохранен"
     else
       redirect_to "#{path}#message=Произошла неведомая херня"

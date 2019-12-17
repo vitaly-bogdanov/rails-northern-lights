@@ -3,8 +3,8 @@
 =end
 
 class Order < ApplicationRecord
-  has_many :order_product, dependent: :destroy
-  has_many :product, through: :order_product
+  has_many :order_products, dependent: :destroy
+  has_many :products, through: :order_products
 
   validates :initials,  presence: { message: 'Укажите ваши данные' }
   validates :telephone, presence: { message: 'Укажите ваш телефон' },

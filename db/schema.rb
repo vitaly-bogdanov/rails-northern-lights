@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_12_15_084330) do
     t.integer "postcode"
     t.string "comment"
     t.string "timezone"
+    t.integer "tottal_price"
     t.string "email"
     t.text "notes"
     t.boolean "completed", default: false

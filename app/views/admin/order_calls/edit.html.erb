@@ -3,7 +3,7 @@
   <section class="section section--grey section--full-height">
     <div class="container">
       <h2 class="section__title">Информация о заказе</h2>
-      <%= link_to 'Назад', admin_order_calls_path, {class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
+      <%= link_to 'Назад', :back, {class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
       <div id="order-call-product">
         <div id="product-img">
           <%= image_tag(@order_call.product.large_picture, { alt: @order_call.product.name }) %>
@@ -56,7 +56,7 @@
           <%= f.label :notes, 'Оставьте заметку о контакте, если нужно' %>
         </div>
         <%= text_field_tag(:product_id_order_call, @order_call.product.id, type: 'hidden') %>
-        <%= f.submit 'Сохранить', class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white' %>
+        <%= f.submit 'Сохранить', class: 'purple darken-4 waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white' %>
       <% end %>
     </div>
   </section>

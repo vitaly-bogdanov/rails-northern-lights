@@ -32,7 +32,7 @@ function toastActive(message) {
     if (arrayMessage[0] == '#message') {
       let message = decodeURI(arrayMessage[1]);
       M.toast({html: message, completeCallback: () => {
-        window.location.hash = '';
+        history.pushState(null, null, window.location.pathname);
       }});
     }
   } else {
@@ -140,7 +140,7 @@ function seachFieldAutocomplete(params) {
               }
             }
             if (params.getMethod) {
-              history.pushState(null, null, `/shop/search-products/${searchField.value}`)
+              history.pushState(null, null, `/shop/search-products/${searchField.value}`);
             }
             productCardImagePreloader();
             setTimeout(() => {
@@ -163,14 +163,13 @@ function seachFieldAutocomplete(params) {
         });
         searchFieldInstance.updateData(data);
       },
-      error: function(response) {
-        console.log(response);
-      }
+      error: (errror) => {}
     });
   }
 }
 
 document.addEventListener('turbolinks:load', function() {
+  toastActive();
   navbarDropdown();            // выпадающие меню
   M.Modal._count = 0;          // иначе 
   onFocusInvalidClassRemove(); // снимаем с input класс invalid по фокусу на этом же поле

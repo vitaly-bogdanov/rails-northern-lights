@@ -9,6 +9,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :postcode
       t.string  :comment
       t.string  :timezone
+      t.integer :tottal_price
       t.string  :email,     default: nil
       t.text    :notes
       t.boolean :completed, default: false

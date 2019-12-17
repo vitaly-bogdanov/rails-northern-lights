@@ -2,9 +2,9 @@
 <% content_for :description, '' %>
 <% content_for :keywords, '' %>
 <% content_for :body do %>
-  <section id="product_list">
+  <section id="product_list" class="section section--grey">
     <div class="container">
-      <h2>Ваш список товаров</h2>
+      <h2 class="order-header">Ваш список товаров</h2>
       <div id="all_your_products">
         <% @products.each do |value| %>
           <div class="product-flexbox">
@@ -35,9 +35,9 @@
       </div>
     </div>
   </section>
-  <section id="form-order">
+  <section id="form-order" class="section section--grey section--full-height">
     <div class="container">
-      <h2>Оформление заказа</h2>
+      <h2 class="order-header order-header--form-order">Оформление заказа</h2>
       <%= form_with model: [:shop, @order], class: 'castom-form castom-form--purple castom-form--margin-top', local: true do |f| %>
         <%= f.text_field(:timezone, type: 'hidden') %>
         <div class="input-field">
@@ -76,14 +76,13 @@
           <span class="helper-text">не обязательное поле</span>
         </div>
         <div class="input-field">
-          <label>
-            <%= f.check_box(:confirm, { class: 'filled-in' }, value = "1") %>
+          <label class="castom-form__checkbox">
+            <%= f.check_box(:confirm, { class: 'filled-in purple darken-4' }, value = "1") %>
             <span style="<%= @order.errors.messages[:confirm].any? ? 'color: red;' : nil %>">Принять <a class="privacy-agreement-path" href="<%= privacy_agreement_path %>" target="_blank">политику приватности</a></span>
           </label>
-          <%= error_message(@order, :confirm) %>
         </div>
-        <div class="input-field input-field-margin-top">
-          <%= f.submit 'Отправить', class: 'btn waves-effect waves-light purple-hover-btn' %>
+        <div class="input-field">
+          <%= f.submit 'Отправить', class: 'btn purple darken-4 waves-effect waves-light purple-hover-btn' %>
         </div>
       <% end %>
     </div>

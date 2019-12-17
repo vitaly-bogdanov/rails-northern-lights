@@ -1,0 +1,65 @@
+<% content_for :title, 'Информация о заказе' %>
+<% content_for :body do %>
+  <section id="product_list">
+    <div class="container">
+      <h2>Список товаров</h2>
+      <div class="to_order">
+        <p>Общая сумма: <span id="tottal-price"><%= @order.tottal_price %></span>&nbsp;<span><%= image_tag('static/ruble-currency-sign.svg', { alt: 'rub' }) %></span></p>
+      </div>
+      <% @meta_products.each do |meta_product| %>
+        <div class="horizontal-grid horizontal-grid--margin-top-position horizontal-grid--product-elements-position">
+          <%= image_tag(meta_product[:product].thumb_picture, {class: 'horizontal-grid__item-image', alt: meta_product[:product].name  }) %>
+          <h3 class="horizontal-grid__item-title"><%= meta_product[:product].name %> (<%= meta_product[:count] %> шт. по <%= meta_product[:product].price %> руб. за ед. товара)</h3>
+          <div class="horizontal-grid__item-edit">
+            <%= link_to edit_admin_product_path(meta_product[:product].id), target: :_blank do %>
+              <i class="material-icons">contacts</i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </section>
+  <section id="form-order" class="section section--full-height">
+    <div class="container">
+      <%= link_to 'Назад', :back, {class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
+      <%= form_with model: [:admin, @order], class: 'castom-form castom-form--purple castom-form--margin-top', local: true do |f| %>
+        <%= f.text_field(:timezone, type: 'hidden', disabled: true) %>
+        <div class="input-field">
+          <%= f.text_field :initials, disabled: true %>
+          <%= f.label :initials, 'Фамилия Имя Отчество' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :telephone, disabled: true %>
+          <%= f.label :telephone, 'Телефон' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :region, disabled: true %>
+          <%= f.label :region, 'Регион' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :city, disabled: true %>
+          <%= f.label :city, 'Город' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :address, disabled: true %>
+          <%= f.label :address, 'Адрес' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :postcode, disabled: true %>
+          <%= f.label :postcode, 'Почтовый индекс' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_area :comment, class: 'materialize-textarea', disabled: true %>
+          <%= f.label :comment, 'Комментарий' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_area :notes, class: 'materialize-textarea' %>
+          <%= f.label :notes, 'Оставьте заметку о контакте, если нужно' %>
+        </div>
+        <div class="input-field input-field-margin-top">
+          <%= f.submit 'Сохранить', class: 'btn purple darken-4 waves-effect waves-light purple-hover-btn' %>
+        </div>
+      <% end %>
+    </div>
+  </section>
+<% end %>

@@ -3,12 +3,14 @@
     .input-field {
       input[type=text]:focus + label,
       input[type=email]:focus + label,
-      input[type=password]:focus + label {
+      input[type=password]:focus + label,
+      textarea:focus + label {
         color: #4a148c;
       }
       input[type=text]:focus,
       input[type=email]:focus,
-      input[type=password]:focus {
+      input[type=password]:focus,
+      textarea:focus {
         border-bottom: 1px solid #4a148c;
         box-shadow: 0 1px 0 0 #4a148c;
       }
@@ -24,12 +26,12 @@
     input[type="checkbox"].filled-in:checked + span:not(.lever):after {
       border: 2px solid #4a148c;
       background-color: #4a148c;
-      top: 3px;
+      top: 2px;
     }
     input[type="checkbox"].filled-in:not(:checked) + span:not(.lever):after {
       border: 2px solid #4a148c;
       background-color: #4a148c;
-      top: 3px;
+      top: 2px;
     }
   }
   .input-field {
@@ -49,9 +51,6 @@
   }
   &__checkbox {
     position: static !important;
-    .faq-checkbox {
-      
-    }
   }
   .btn {
     padding: 0;
@@ -59,5 +58,6 @@
   input[type='submit'] {
     padding: 6px 16px;
     line-height: 24px;
+    color: white;
   }
 }

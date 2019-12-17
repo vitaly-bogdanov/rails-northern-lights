@@ -12,7 +12,7 @@ class Admin::CallsController < ApplicationController
   end
   def update
     @call = Call.find(params[:id])
-    if @call.update_columns(notes: params[:notes])
+    if @call.update_columns(notes: params[:call][:notes])
       redirect_to "#{admin_calls_path}#message=Заявка обновлена"
     else
       render :edit

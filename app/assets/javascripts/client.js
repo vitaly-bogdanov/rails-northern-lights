@@ -139,10 +139,13 @@ function callCreateAjaxSend(event) {
     closeFeatureDiscovery(function() {
       toastActive('Запрос отправлен');
       
+
+
       // чистим поля
       event.target[2].value = '';
       event.target[3].value = '';
-      event.target[4].checked = false;
+      event.target[4].value = '';
+      event.target[5].checked = false;
 
       // перезагружаем формы
       M.updateTextFields();
@@ -413,18 +416,6 @@ function closeModal(callback) {
     M.Modal.getInstance(modal, { onClose: callback() }).close();
   }
 }
-
-/* ********* ОФОРМЛЕНИЕ ЗАКАЗА НЕУНИКАЛЬНЫХ ТОВАРОВ ********* */
-
-/**
- * all_your_products
- */
-function onEmptyListProducts() {
-
-}
-
-
-
 
 document.addEventListener('ajax:success', function(event) {
   callCreateAjaxSend(event);      // отправляем круглую форму

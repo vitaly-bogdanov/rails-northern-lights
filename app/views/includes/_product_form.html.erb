@@ -2,7 +2,7 @@
   <div class="file-field input-field">
     <div class="btn castom-button castom-button--grey">
       <span>Добавить</span>
-      <%= f.file_field :picture, class: 'ivalid-click-off' %>
+      <%= f.file_field :picture, class: 'blue-grey darken-3 ivalid-click-off' %>
     </div>
     <div class="file-path-wrapper">
       <input class="file-path invalid-off <%= invalid_class(@product, :picture) %>" type="text" placeholder="Картинка">
@@ -57,5 +57,5 @@
       <span>Не серийное изделие</span>
     </label>
   </div>
-  <%= f.submit('Сохранить', class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white') %>
+  <%= f.submit('Сохранить', class: 'purple darken-4 waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white') %>
 <% end %>

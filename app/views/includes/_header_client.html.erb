@@ -37,15 +37,6 @@
             </li>
           </ul>
         <% end %>
-        <% if user_signed_in? %>
-          <ul class="right">
-            <li>
-              <%= link_to destroy_user_session_path, :method => :delete do %>
-                <i class="material-icons">exit_to_app</i>
-              <% end %>
-            </li>
-          </ul>
-        <% end %>
         <% if params[:controller] == 'shop/products' && params[:action] == 'index' || params[:controller] == 'shop/search_products' && params[:action] == 'index' %>
           <div id="header-search-input" class="input-field right">
             <i class="material-icons prefix">search</i>

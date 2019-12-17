@@ -3,14 +3,22 @@ require 'digest/md5'
 class Shop::OrdersController < ApplicationController
   def new
     @order = Order.new
-
     @products = products_from_cart
     @tottal_price = tottal_price_from_cart
-    # render 'new', locals: { products: products, tottal_price: session[:cart]['tottal_price'] }
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.new initials: params[:order][:initials], 
+                      telephone: params[:order][:telephone], 
+                         region: params[:order][:region], 
+                           city: params[:order][:city], 
+                        address: params[:order][:address], 
+                       postcode: params[:order][:postcode], 
+                        comment: params[:order][:comment], 
+                       timezone: params[:order][:timezone], 
+                          email: params[:order][:email], 
+                        confirm: params[:order][:confirm], 
+                   tottal_price: tottal_price_from_cart
 
     if @order.save
       session[:cart]['products'].each do |product_id, product|
@@ -18,36 +26,18 @@ class Shop::OrdersController < ApplicationController
                             product_id: product_id.to_i, 
                             count_products: product['count']
       end
+      session.delete(:cart)
 
-      # redirect_to
-      
+      redirect_to "#{root_path}#message=Заказ принят"
     else
       @products = products_from_cart
       @tottal_price = tottal_price_from_cart
       
       render :new
     end
-    # @order_product = OrderProduct.create()
-
-    # render html: session[:cart]
   end
   
   private
-
-  def order_params
-    params
-      .require(:order)
-        .permit :initials, 
-                :telephone, 
-                :region, 
-                :city, 
-                :address,
-                :postcode, 
-                :comment,
-                :timezone,
-                :email,
-                :confirm
-  end
 
   def products_from_cart
     products = []
@@ -63,20 +53,6 @@ class Shop::OrdersController < ApplicationController
     session[:cart]['tottal_price']
   end
 end
-
-# t.string  :initials
-# t.string  :telephone
-# t.string  :region
-# t.string  :city
-# t.string  :address
-# t.integer :postcode
-# t.string  :comment
-# t.string  :timezone
-# t.string  :email,     default: nil
-# t.text    :notes
-# t.boolean :completed, default: false
-# t.boolean :saved,     default: false
-# t.boolean :paid,      default: false
 
 # mrh_login = "demo"
 # mrh_pass1 = "password_1"

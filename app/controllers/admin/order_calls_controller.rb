@@ -10,7 +10,8 @@ class Admin::OrderCallsController < ApplicationController
   end
   def update
     @order_call = OrderCall.find(params[:id])
-    if @order_call.update_columns(notes: params[:notes])
+
+    if @order_call.update_columns(notes: params[:order_call][:notes])
       redirect_to "#{admin_order_calls_path}#message=Заявка обновлена"
     else
       render :edit

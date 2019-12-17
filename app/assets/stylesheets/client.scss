@@ -6,7 +6,6 @@
 @import 'includes/product_card.scss';
 @import 'includes/sidemenu.scss';
 @import 'includes/tap_target.scss';
-@import 'includes/to_order.scss';
 @import 'includes/bottom_modal_cart.scss';
 @import 'includes/sections/preview_block.scss';
 @import 'includes/sections/all_products_block.scss';
@@ -340,4 +339,14 @@ section#privacy_agreement {
 .privacy-agreement-path {
   color: #4a148c;
   border-bottom: 1px solid #4a148c;
+}
+
+@media (max-width: 505px) {
+  .order-header {
+    font-size: 25px;
+    &--form-order {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+  }
 }

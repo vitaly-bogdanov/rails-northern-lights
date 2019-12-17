@@ -4,12 +4,10 @@
 <% content_for :body do %>
   <section id="show_product_block" class="section">
     <div class="container">
-      <% if @product.unique %>
-        <div class="underlined-text underlined-text-product-show">
-          <h3 class="underlined-text-head underlined-text-product-show-head">Как заказать единичные в своем роде товары?</h3>
-          <p class="underlined-text-body underlined-text-product-show-head-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.luptatem.</p>
-        </div>
-      <% end %>
+      <div class="underlined-text underlined-text-product-show">
+        <h3 class="underlined-text-head underlined-text-product-show-head">Как заказать?</h3>
+        <p class="underlined-text-body underlined-text-product-show-head-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.luptatem.</p>
+      </div>
       <article>
         <div class="show-flexbox">
           <div class="show-product-image">
@@ -36,18 +34,18 @@
             <p><%= @product.description %></p>
             <div class="buttons-group">
               <% if params[:q] %>
-                <%= link_to shop_search_products_client_index_path(params[:q]), class: 'waves-effect waves-light btn-large blue-grey-hover-btn' do %>
+                <%= link_to shop_search_products_client_index_path(params[:q]), class: 'blue-grey darken-3 waves-effect waves-light btn-large blue-grey-hover-btn' do %>
                   <div><i class="tiny material-icons">arrow_back</i> <span>Поиск</span></div> 
                 <% end %>
               <% else %>
-                <%= link_to shop_category_products_url(@product.category.slug), class: 'waves-effect waves-light btn-large blue-grey-hover-btn' do %>
+                <%= link_to shop_category_products_url(@product.category.slug), class: 'blue-grey darken-3 waves-effect waves-light btn-large blue-grey-hover-btn' do %>
                   <div><i class="tiny material-icons">arrow_back</i> <span><%= @product.category.name %></span></div>
                 <% end %>
               <% end %>
               <% if @product.unique %>
                 <a class="waves-effect waves-light btn modal-trigger btn-large purple-hover-btn" href="#order-modal">Заказать</a>
               <% else %>
-                <%= link_to 'В корзину', add_product_path(@product), remote: true, class: 'waves-effect waves-light btn-large purple-hover-btn', method: :post %>
+                <%= link_to 'В корзину', add_product_path(@product.id), remote: true, class: 'purple darken-4 waves-effect waves-light btn-large purple-hover-btn', method: :post %>
               <% end %>
             </div>
           </div>
@@ -81,7 +79,7 @@
           </label>
         </div>
         <div class="input-field castom-form--margin-top">
-          <%= submit_tag('Отправить', class: 'center-submit waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white') %>
+          <%= submit_tag('Отправить', class: 'purple darken-4 center-submit waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white') %>
         </div>
       <% end %>
     </div>

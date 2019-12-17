@@ -87,17 +87,14 @@ function toogleAvailable() {
   }
 }
 
-
-
 document.addEventListener('turbolinks:load', function(event) {
   select();                    // поле select в админке
   selectErrorBottomBorderOn(); // вешаем класс invalid на поле select, если поле не проходит валидацию
   selectErrorStyleOff();       // снимаем стили ошибки валидации и убираем сообщение об ошибке
   M.updateTextFields();        // при загрузке перезагружает поля, на случай если форма не пуста
   disableLink();               // отключаем ссылку на удаление ради избежания повторных кликов и запросов
-  lettersCountInInput();       //
-  toogleAvailable();           //
-  toastActive();
+  lettersCountInInput();       // вывод числа символов
+  toogleAvailable();           // переключение доступности товара
 
   // поиск, метод находится в aplication.js
   seachFieldAutocomplete({

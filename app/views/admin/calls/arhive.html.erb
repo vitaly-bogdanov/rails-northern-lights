@@ -3,7 +3,7 @@
   <section class="section section--grey section--full-height">
     <div class="container">
       <h2 class="section__title">Архивные заявки</h2>
-      <%= link_to 'Назад', admin_calls_path, {class: 'waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
+      <%= link_to 'Назад', admin_calls_path, {class: 'purple darken-4 waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
       <% if @calls.any? %>
         <% @calls.each do |cl| %>
           <div class="horizontal-grid horizontal-grid--calls-elements-position horizontal-grid--margin-top-position">
@@ -16,17 +16,17 @@
               <% end %>
             </div>
             <div class="horizontal-grid__item-save">
-              <%= link_to admin_call_save_path(cl), method: :patch do %>
+              <%= link_to admin_call_save_path(cl.id), method: :patch do %>
                 <i class="material-icons">save</i>
               <% end %>
             </div>
             <div class="horizontal-grid__item-edit">
-              <%= link_to edit_admin_call_path(cl) do %>
+              <%= link_to edit_admin_call_path(cl.id) do %>
                 <i class="material-icons">contacts</i>
               <% end %>
             </div>
             <div class="horizontal-grid__item-delete">
-              <%= link_to admin_call_path(cl), method: :delete do %>
+              <%= link_to admin_call_path(cl.id), method: :delete do %>
                 <i class="material-icons">delete_forever</i>
               <% end %>
             </div>
