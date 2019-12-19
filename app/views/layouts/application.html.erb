@@ -22,10 +22,11 @@
     <%= yield :body %>
     <%= render 'includes/footer_client' %>
     <%= render 'includes/tap_target' %>
-    <% unless current_page?(privacy_agreement_path) || current_page?(new_shop_order_path) # на двух страницах корзина не нужна %>
+    <% unless current_page?(privacy_agreement_path) || current_page?(new_shop_order_path) %>
       <div id="bottom-modal-cart" class="modal bottom-sheet">
         <div class="container"></div>
       </div>
     <% end %>
+    <%= render 'includes/full_screan_preloader' %>
   </body>
 </html>

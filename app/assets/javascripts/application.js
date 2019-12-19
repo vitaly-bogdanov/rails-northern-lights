@@ -15,6 +15,11 @@
 
 //require_tree .
 
+// прелоадер
+window.onload = function() {
+  document.getElementById('full-screan-preloader').style.display = 'none'
+}
+
 /**
  * Активируем dropdown в клиентской и админской части сайта.
  */
