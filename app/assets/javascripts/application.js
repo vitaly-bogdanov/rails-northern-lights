@@ -170,7 +170,9 @@ function seachFieldAutocomplete(params) {
 
 document.addEventListener('turbolinks:load', function() {
   // прелоадер сайта
-  document.getElementById('full-screan-preloader').style.display = 'none';
+  setTimeout(() => {
+    document.getElementById('full-screan-preloader').style.display = 'none';
+  }, 4000);
   
   toastActive();
   navbarDropdown();            // выпадающие меню
