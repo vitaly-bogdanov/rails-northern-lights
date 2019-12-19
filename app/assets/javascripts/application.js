@@ -171,7 +171,7 @@ function seachFieldAutocomplete(params) {
 document.addEventListener('turbolinks:load', function() {
   // прелоадер сайта
   document.getElementById('full-screan-preloader').style.display = 'none';
-
+  
   toastActive();
   navbarDropdown();            // выпадающие меню
   M.Modal._count = 0;          // иначе 
