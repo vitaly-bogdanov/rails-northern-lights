@@ -1,4 +1,3 @@
-<%= link_to 'Назад', admin_categories_path, {class: 'waves-effect waves-light btn castom-button castom-button--purple'} %>
 <%= form_with model: [:admin, @category], class: 'castom-form castom-form--purple castom-form--margin-top', local: true do |f| %>
   <div class="input-field">
     <%= f.text_field :name, class: "#{invalid_class(@category, :name)} letters-count-in-input" %>
