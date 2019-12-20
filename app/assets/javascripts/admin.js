@@ -77,7 +77,7 @@ function toogleAvailable() {
       formData.append('available', !this.checked);
       Rails.ajax({
         type: 'PATCH', 
-        url: `/admin/order_calls/${this.dataset.productId}/toogle-available`,
+        url: `/admin/order-calls/${this.dataset.productId}/toogle-available`,
         dataType: 'json',
         data: formData,
         success: (response) => {},

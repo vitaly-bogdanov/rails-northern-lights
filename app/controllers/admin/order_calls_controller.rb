@@ -49,6 +49,8 @@ class Admin::OrderCallsController < ApplicationController
   end
   def toogle_available
     @product = Product.find(params[:id])
-    @product.update_columns(available: params[:available])
+    unless @product.update_columns(available: params[:available])
+      render status: 404
+    end
   end
 end
