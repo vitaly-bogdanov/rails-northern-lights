@@ -47,7 +47,7 @@ end
 
 group :production do
   gem 'pg'
-  
+  gem 'aws-sdk-s3'
 end
 
 group :development do
