@@ -163,15 +163,20 @@ function seachFieldAutocomplete(params) {
         });
         searchFieldInstance.updateData(data);
       },
-      error: (errror) => {}
+      error: (error) => {}
     });
   }
 }
 
+function fullScreanPreloader() {
+  let preloader = document.getElementById('full-screan-preloader');
+  if (preloader) {
+    preloader.style.display = 'none';
+  }
+}
+
 document.addEventListener('turbolinks:load', function() {
-  // прелоадер сайта
-  document.getElementById('full-screan-preloader').style.display = 'none';
-  
+  fullScreanPreloader();       // прелоадер сайта
   toastActive();
   navbarDropdown();            // выпадающие меню
   M.Modal._count = 0;          // иначе 
