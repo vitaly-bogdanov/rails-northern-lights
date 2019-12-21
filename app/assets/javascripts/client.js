@@ -215,7 +215,7 @@ function minusProduct() {
           type: 'POST',
           url: this.getAttribute('href'),
           success: (response) => {
-            console.log(response['tottal_price']);
+            document.querySelector('#tottal-price').innerHTML = response['tottal_price'];
             if (response['count'] == 0) {
               this.closest('.product-flexbox').remove();
             } else {
@@ -290,7 +290,7 @@ function loadAjaxProducts() {
         plusProduct();     // уствнавливаем событие клика на зеачек +
         removeProducts();  // устанавливаем на собыите клика значек trash
         onEmptyCart();     // отслеживание DOM-элементов товаров в корзине
-      }, 100);
+      }, 200);
     },
     error: (error) => console.error(error),
   });
@@ -325,7 +325,7 @@ function onEmptyCart() {
           modal.innerHTML = html.join('');
           bottomModalClose();
         }
-      }, 200);
+      }, 300);
     }
   }
 }
