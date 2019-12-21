@@ -4,22 +4,32 @@ class Admin::OrdersController < ApplicationController
 
   def index
     orders = Order.where(completed: false)
-
     @orders_new = orders.select { |order| !order.saved }
     @orders_saved = orders.select { |order| order.saved }
   end
 
   def edit
     @order = Order.find(params[:id])
+    @tottal_price = @order.tottal_price
     @meta_products = []
     @order.order_products.each do |meta_product|
-      @meta_products << { product: meta_product.product, count: meta_product.count_products }
+
+      if meta_product.product.nil?
+        @tottal_price -= meta_product.products_price
+      end
+
+      @meta_products << { 
+        product: meta_product.product, 
+        count: meta_product.count_products,
+        products_price: meta_product.products_price,
+        unit_price: meta_product.unit_price,
+        product_name: meta_product.product_name
+      }
     end
   end
 
   def update
     @order = Order.find(params[:id])
-
     if @order.update_columns(notes: params[:order][:notes])
       redirect_to "#{admin_orders_path}#message=Заказ обновлен"
     else

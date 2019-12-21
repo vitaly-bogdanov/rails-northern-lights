@@ -34,7 +34,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
     if @product.update_attributes(product_params)
       redirect_to "#{admin_category_products_path(@product.category.id)}#message=Информация о товаре обновленно"
     else

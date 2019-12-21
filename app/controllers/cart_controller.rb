@@ -5,7 +5,11 @@ class CartController < ApplicationController
     @product = Product.find(params[:id])
     create_empty_cart if session[:cart].nil?
     unless session[:cart]['products'][@product.id.to_s]
-      session[:cart]['products'][@product.id.to_s] = { 'count' => 1, 'price' => @product.price }
+      session[:cart]['products'][@product.id.to_s] = { 
+                                                        'count' => 1, 
+                                                        'price' => @product.price, 
+                                                        'name'  => @product.name
+                                                      }
     else
       session[:cart]['products'][@product.id.to_s]['count'] += 1
     end

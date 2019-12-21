@@ -4,18 +4,27 @@
     <div class="container">
       <h2>Список товаров</h2>
       <div class="to_order">
-        <p>Общая сумма: <span id="tottal-price"><%= @order.tottal_price %></span>&nbsp;<span><%= image_tag('static/ruble-currency-sign.svg', { alt: 'rub' }) %></span></p>
+        <p>Общая сумма: <span id="tottal-price"><%= @tottal_price %></span>&nbsp;<span><%= image_tag('static/ruble-currency-sign.svg', { alt: 'rub' }) %></span></p>
       </div>
       <% @meta_products.each do |meta_product| %>
-        <div class="horizontal-grid horizontal-grid--margin-top-position horizontal-grid--product-elements-position">
-          <%= image_tag(meta_product[:product].thumb_picture, {class: 'horizontal-grid__item-image', alt: meta_product[:product].name  }) %>
-          <h3 class="horizontal-grid__item-title"><%= meta_product[:product].name %> (<%= meta_product[:count] %> шт. по <%= meta_product[:product].price %> руб. за ед. товара)</h3>
-          <div class="horizontal-grid__item-edit">
-            <%= link_to edit_admin_product_path(meta_product[:product].id), target: :_blank do %>
-              <i class="material-icons">contacts</i>
-            <% end %>
+        <% unless meta_product[:product].nil? %>
+          <div class="horizontal-grid horizontal-grid--margin-top-position horizontal-grid--product-elements-position">
+            <%= image_tag(meta_product[:product].thumb_picture, {class: 'horizontal-grid__item-image', alt: meta_product[:product].name  }) %>
+            <h3 class="horizontal-grid__item-title"><%= meta_product[:product].name %> (<%= meta_product[:count] %> шт. по <%= meta_product[:product].price %> руб. за ед. товара)</h3>
+            <div class="horizontal-grid__item-edit">
+              <%= link_to edit_admin_product_path(meta_product[:product].id), target: :_blank do %>
+                <i class="material-icons">contacts</i>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% else %>
+          <div class="horizontal-grid horizontal-grid--margin-top-position">
+            <h3 class="horizontal-grid__item-title">
+              <p>Товар был ранее удален.</p>
+              <p>Наименование: "<%= meta_product[:product_name] %>", количество: <%= meta_product[:count] %>шт., цена за штуку: <%= meta_product[:unit_price] %>руб., итого: <%= meta_product[:products_price] %>руб.</p>
+            </h3>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </section>

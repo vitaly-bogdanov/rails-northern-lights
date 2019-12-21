@@ -24,7 +24,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def update
-    @category = Category.find(params[:id])
+    @category = Category.friendly.find(params[:id])
     if @category.update_attributes(category_params)
       redirect_to "#{admin_categories_path}#message=Категория \"#{@category.name}\" обновленна"
     else

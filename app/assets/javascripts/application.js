@@ -168,15 +168,7 @@ function seachFieldAutocomplete(params) {
   }
 }
 
-function fullScreanPreloader() {
-  let preloader = document.getElementById('full-screan-preloader');
-  if (preloader) {
-    preloader.style.display = 'none';
-  }
-}
-
 document.addEventListener('turbolinks:load', function() {
-  fullScreanPreloader();       // прелоадер сайта
   toastActive();
   navbarDropdown();            // выпадающие меню
   M.Modal._count = 0;          // иначе 

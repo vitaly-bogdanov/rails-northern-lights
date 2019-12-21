@@ -24,7 +24,10 @@ class Shop::OrdersController < ApplicationController
       session[:cart]['products'].each do |product_id, product|
         OrderProduct.create order_id: @order.id, 
                             product_id: product_id.to_i, 
-                            count_products: product['count']
+                            count_products: product['count'],
+                            products_price: product['count'] * product['price'],
+                            unit_price: product['price'],
+                            product_name: product['name']
       end
       session.delete(:cart)
       redirect_to "#{root_path}#message=Заказ принят! Мы вам перезвоним в ближайшее время."

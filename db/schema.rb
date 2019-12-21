@@ -82,6 +82,9 @@ ActiveRecord::Schema.define(version: 2019_12_15_084330) do
     t.integer "product_id"
     t.integer "order_id"
     t.integer "count_products"
+    t.integer "products_price"
+    t.integer "unit_price"
+    t.string "product_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_products_on_order_id"
