@@ -49,9 +49,9 @@ group :production do
   gem 'pg'
   
 end
-gem "aws-sdk-s3", require: false
-# aws s3 для хранения картинок
 
+# aws s3 для хранения картинок
+gem "aws-sdk-s3", require: false
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
