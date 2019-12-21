@@ -27,8 +27,7 @@ class Shop::OrdersController < ApplicationController
                             count_products: product['count']
       end
       session.delete(:cart)
-
-      redirect_to "#{root_path}#message=Заказ принят"
+      redirect_to "#{root_path}#message=Заказ принят! Мы вам перезвоним в ближайшее время."
     else
       @products = products_from_cart
       @tottal_price = tottal_price_from_cart
