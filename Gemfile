@@ -50,7 +50,7 @@ group :production do
   
 end
 gem 'aws-sdk-rails', '~> 3'
-gem 'aws-sdk-s3', '~> 1'
+gem "aws-sdk-s3", require: false
 # aws s3 для хранения картинок
 
 

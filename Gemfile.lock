@@ -236,7 +236,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk-rails (~> 3)
-  aws-sdk-s3 (~> 1)
+  aws-sdk-s3
   babosa
   bootsnap (>= 1.1.0)
   byebug
