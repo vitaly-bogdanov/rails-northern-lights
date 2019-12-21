@@ -215,7 +215,7 @@ function minusProduct() {
           type: 'POST',
           url: this.getAttribute('href'),
           success: (response) => {
-            document.querySelector('#tottal-price').innerHTML = response['tottal_price'];
+            console.log(response['tottal_price']);
             if (response['count'] == 0) {
               this.closest('.product-flexbox').remove();
             } else {
