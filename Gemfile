@@ -49,7 +49,6 @@ group :production do
   gem 'pg'
   
 end
-gem 'aws-sdk-rails', '~> 3'
 gem "aws-sdk-s3", require: false
 # aws s3 для хранения картинок
 
