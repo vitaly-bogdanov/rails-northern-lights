@@ -47,6 +47,10 @@ end
 
 group :production do
   gem 'pg'
+
+  # aws s3 для хранения картинок
+  gem 'aws-sdk-rails', '~> 3'
+  gem 'aws-sdk-s3', '~> 1'
 end
 
 group :development do

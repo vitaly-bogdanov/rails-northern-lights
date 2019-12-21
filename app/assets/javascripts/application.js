@@ -169,7 +169,7 @@ function seachFieldAutocomplete(params) {
 }
 
 function fullScreanPreloader() {
-  let preloader = window.getElementById('full-screan-preloader');
+  let preloader = document.getElementById('full-screan-preloader');
   if (preloader) {
     preloader.style.display = 'none';
   }
