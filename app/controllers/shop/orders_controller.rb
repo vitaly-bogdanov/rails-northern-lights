@@ -31,7 +31,6 @@ class Shop::OrdersController < ApplicationController
     else
       @products = products_from_cart
       @tottal_price = tottal_price_from_cart
-      
       render :new
     end
   end

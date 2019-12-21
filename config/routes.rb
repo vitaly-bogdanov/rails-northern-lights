@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     patch '/order-calls/:id/toogle-available', to: 'order_calls#toogle_available', as: 'order_call_toogle_available'
     
     resources :products, except: [:show, :destroy]
-    delete '/products/:id/:from-place', to: 'products#destroy', as: 'product_destroy'
+    delete '/products/:id/:from_place', to: 'products#destroy', as: 'product_destroy'
 
     resources :categories, except: [:show]
     resources :portfolios, except: [:show]
