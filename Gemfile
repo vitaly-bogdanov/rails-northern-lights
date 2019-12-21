@@ -47,11 +47,12 @@ end
 
 group :production do
   gem 'pg'
-
-  # aws s3 для хранения картинок
   gem 'aws-sdk-rails', '~> 3'
   gem 'aws-sdk-s3', '~> 1'
 end
+
+# aws s3 для хранения картинок
+
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
