@@ -215,12 +215,16 @@ function minusProduct() {
           type: 'POST',
           url: this.getAttribute('href'),
           success: (response) => {
-            document.querySelector('#tottal-price').innerHTML = response['tottal_price'];
-            if (response['count'] == 0) {
-              this.closest('.product-flexbox').remove();
+            if (response['tottal_price'] == 0) {
+              onEmptyCart();
             } else {
-              this.nextElementSibling.innerHTML = response['count'];
               document.querySelector('#tottal-price').innerHTML = response['tottal_price'];
+              if (response['count'] == 0) {
+                this.closest('.product-flexbox').remove();
+              } else {
+                this.nextElementSibling.innerHTML = response['count'];
+                document.querySelector('#tottal-price').innerHTML = response['tottal_price'];
+              }
             }
           },
           error: (error) => {}
@@ -266,8 +270,12 @@ function removeProducts() {
           type: 'POST', 
           url: this.getAttribute('href'),
           success: (response) => {
-            document.querySelector('#tottal-price').innerHTML = response['tottal_price'];
-            this.closest('.product-flexbox').remove();
+            if (response['tottal_price'] == 0) {
+              onEmptyCart();
+            } else {
+              document.querySelector('#tottal-price').innerHTML = response['tottal_price'];
+              this.closest('.product-flexbox').remove();
+            }
           },
           error: (error) => console.error(error)
         });
@@ -289,7 +297,7 @@ function loadAjaxProducts() {
         minusProduct();    // устанавливаем события клика на значек -
         plusProduct();     // уствнавливаем событие клика на зеачек +
         removeProducts();  // устанавливаем на собыите клика значек trash
-        onEmptyCart();     // отслеживание DOM-элементов товаров в корзине
+        // onEmptyCart();     // отслеживание DOM-элементов товаров в корзине
       }, 200);
     },
     error: (error) => console.error(error),
@@ -319,14 +327,18 @@ function onEmptyCart() {
       '<h3>Корзина пуста</h3>',
       '<p class="empty-cart-message">Но у нас много классных изделий :-)</p>',
     ];
-    cart.onclick = function() {
-      setTimeout(() => {
-        if (this.childElementCount == 0) {
-          modal.innerHTML = html.join('');
-          bottomModalClose();
-        }
-      }, 300);
-    }
+    modal.innerHTML = html.join('');
+    setTimeout(() => {
+      bottomModalClose();
+    }, 200);
+    // cart.onclick = function() {
+    //   setTimeout(() => {
+    //     if (this.childElementCount == 0) {
+    //       
+    //       bottomModalClose();
+    //     }
+    //   
+    // }
   }
 }
 
