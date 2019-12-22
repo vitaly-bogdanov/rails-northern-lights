@@ -36,6 +36,8 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.friendly.find(params[:id])
     if @product.update_attributes(product_params)
+      # на случай если товар был ранее еденичным проданным, а потом стал нееденичным
+      @product.update_attributes(available: true) unless @product.available
       redirect_to "#{admin_category_products_path(@product.category.id)}#message=Информация о товаре обновленно"
     else
       @categories = Category.select("id, name") # на странице редактирования товаров нужен перечень категорий
@@ -45,9 +47,9 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     @product = Product.find(params[:id])
-    path = admin_products_path                             if params[:from_place] == 'all_products'
+    path = admin_products_path                                if params[:from_place] == 'all_products'
     path = admin_category_products_path(@product.category.id) if params[:from_place] == 'category_products'
-    path = nil                                             if params[:from_place] == 'search'
+    path = nil                                                if params[:from_place] == 'search'
     if @product.destroy
       redirect_to "#{path}#message=Товар \"#{@product.name}\" удален" unless path.nil? 
     else

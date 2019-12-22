@@ -30,8 +30,9 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+    path = @order.completed ? admin_orders_arhive_path : admin_orders_path
     if @order.update_columns(notes: params[:order][:notes])
-      redirect_to "#{admin_orders_path}#message=Заказ обновлен"
+      redirect_to "#{path}#message=Заказ обновлен"
     else
       render :edit
     end

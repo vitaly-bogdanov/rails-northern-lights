@@ -60,6 +60,8 @@
       <%= form_with(url: shop_order_calls_path, class: 'castom-form castom-form--purple') do %>
         <%= text_field_tag(:timezone_order_call, '', id: 'timezone-order-modal', type: 'hidden') %>
         <%= text_field_tag(:product_id_order_call, @product.id, type: 'hidden') %>
+        <%= text_field_tag(:product_name, @product.name, type: 'hidden') %>
+        <%= text_field_tag(:product_price, @product.price, type: 'hidden') %>
         <div class="input-field">
           <i class="material-icons prefix">account_circle</i>
           <%= text_field_tag(:name_order_call, '') %>

@@ -13,18 +13,7 @@
               <div class="title-block"><%= value[:product].name %></div>
               <div class="price-block"><span><%= value[:product].price %></span>&nbsp;<span><%= image_tag('static/ruble-currency-sign.svg', { alt: 'rub' }) %></span></div>
               <div class="count-block">
-                <%= link_to minus_product_path(value[:product].id), class: 'minus-product' do %>
-                  <i class="material-icons">remove</i>
-                <% end %>
-                <span class="product-type-count"><%= value[:count] %></span>
-                <%= link_to plus_product_path(value[:product].id), class: 'plus-product' do %>
-                  <i class="material-icons">add</i>
-                <% end %>
-              </div>
-              <div class="delete-block">
-                <%= link_to remove_products_path(value[:product].id), class: 'remove_products' do %>
-                  <i class="material-icons">delete_forever</i>
-                <% end %>
+                <span class="product-type-count"><%= value[:count] %> шт.</span>
               </div>
             </div>
           </div>

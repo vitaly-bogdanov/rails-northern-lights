@@ -227,7 +227,7 @@ function minusProduct() {
               }
             }
           },
-          error: (error) => {}
+          error: (error) => console.error(error)
         });
       }
     });

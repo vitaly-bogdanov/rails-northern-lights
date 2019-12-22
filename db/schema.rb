@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(version: 2019_12_15_084330) do
     t.text "notes"
     t.boolean "completed", default: false
     t.boolean "saved", default: false
+    t.string "product_name"
+    t.string "product_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_order_calls_on_product_id"
