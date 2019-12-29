@@ -16,9 +16,11 @@
           <div class="carousel carousel-slider service-slider">
             <% if @portfolios.any? %>
               <% @portfolios.each do |portfolio| %>
-                <div class="carousel-item">
-                  <%= image_tag(portfolio.large_picture, {alt: portfolio.name }) %>
-                </div>
+                <% cache(portfolio) do %>
+                  <div class="carousel-item">
+                    <%= image_tag(portfolio.large_picture, {alt: portfolio.name }) %>
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
           </div>
