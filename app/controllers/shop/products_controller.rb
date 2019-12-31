@@ -6,7 +6,7 @@ class Shop::ProductsController < ApplicationController
     @category = Rails.cache.fetch("index_category_#{params[:id]}") do
       Category.friendly.find(params[:id])
     end
-    @products = Rails.cache.fetch("index_products_#{params[:page]}") do
+    @products = Rails.cache.fetch("index_products_#{params[:id]}") do
       @category.products.where(available: true).paginate(page: params[:page], per_page: PER_PAGE)
     end
   end
