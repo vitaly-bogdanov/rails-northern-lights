@@ -12,7 +12,7 @@ class Shop::ProductsController < ApplicationController
   end
   
   def show
-    @product =  Rails.cache.fetch('show_product') do
+    @product =  Rails.cache.fetch("show_product_#{params[:id]}") do
       Product.friendly.find(params[:id])
     end
   end
