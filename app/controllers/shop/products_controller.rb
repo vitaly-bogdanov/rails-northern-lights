@@ -3,7 +3,7 @@ class Shop::ProductsController < ApplicationController
   PER_PAGE = 12
 
   def index
-    @category = Rails.cache.fetch('index_category') do
+    @category = Rails.cache.fetch("index_category_#{params[:id]}") do
       Category.friendly.find(params[:id])
     end
     @products = Rails.cache.fetch("index_products_#{params[:page]}") do
