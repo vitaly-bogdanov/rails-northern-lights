@@ -3,11 +3,17 @@ class Shop::ProductsController < ApplicationController
   PER_PAGE = 12
 
   def index
-    @category = Category.friendly.find(params[:id])
-    @products = @category.products.where(available: true).paginate(page: params[:page], per_page: PER_PAGE)
+    @category = Rails.cache.fetch('index_category') do
+      Category.friendly.find(params[:id])
+    end
+    @products = Rails.cache.fetch("index_products_#{params[:page]}") do
+      @category.products.where(available: true).paginate(page: params[:page], per_page: PER_PAGE)
+    end
   end
   
   def show
-    @product = Product.friendly.find(params[:id])
+    @product =  Rails.cache.fetch('show_product') do
+      Product.friendly.find(params[:id])
+    end
   end
 end
