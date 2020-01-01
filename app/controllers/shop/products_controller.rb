@@ -1,7 +1,7 @@
 class Shop::ProductsController < ApplicationController
   before_action :set_contacts
   before_action :set_category
-  before_action :set_will_like_products, :only => :show
+  before_action :set_last_create_products, :only => :show
   PER_PAGE = 12
 
   # GET /shop/products-category/:id

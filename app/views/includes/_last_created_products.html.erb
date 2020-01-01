@@ -1,9 +1,9 @@
-<% unless @count_products == 0 %>
+<% unless @last_created_products.empty? %>
   <section class="section" id="will_like">
     <div class="container">
-      <h2 class="section__title">Возможно вам понравится</h2>
+      <h2 class="section__title">Новинки</h2>
       <div class="products_grid products_grid--will_like">
-        <% @rand_will_like_product.each do |product| %>
+        <% @last_created_products.each do |product| %>
           <% cache(product) do %>
             <%= render partial: 'includes/product_card', locals: { product_card: product } %>
           <% end %>

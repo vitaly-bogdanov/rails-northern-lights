@@ -20,20 +20,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def set_will_like_products
-    available_products = Rails.cache.fetch('available_products') do 
-      Product.where(available: true, unique: false)
-    end
-
-    @count_products = available_products.count
-
-    @rand_will_like_product = Rails.cache.fetch('rand_will_like_product') do
-      Product.where(available: true, unique: false).limit(4).offset(rand(0..@count_products - 4))
+  def set_last_create_products
+    @last_created_products = Rails.cache.fetch('last_create_products') do
+      Product.where(available: true, unique: false).order(created_at: :desc).limit(4)
     end
   end
-
-  # def render_404
-  #   render file: '', status: 404
-  # end
-
 end
