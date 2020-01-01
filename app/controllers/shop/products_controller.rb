@@ -2,6 +2,7 @@ class Shop::ProductsController < ApplicationController
 
   PER_PAGE = 12
 
+  # GET /shop/products-category/:id
   def index
     @category = Rails.cache.fetch("index_category_#{params[:id]}") do
       Category.friendly.find(params[:id])
@@ -11,6 +12,7 @@ class Shop::ProductsController < ApplicationController
     end
   end
   
+  # GET /shop/products/:id
   def show
     @product =  Rails.cache.fetch("show_product_#{params[:id]}") do
       Product.friendly.find(params[:id])

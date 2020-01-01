@@ -1,6 +1,7 @@
 class CartController < ApplicationController
   before_action :get_id, only: [:remove_products, :plus_product, :minus_product]
 
+  # POST /cart/:id/add-product
   def add_product
     @product = Product.find(params[:id])
     create_empty_cart if session[:cart].nil?
@@ -18,7 +19,7 @@ class CartController < ApplicationController
     render json: { action: 'add_product', name: @product.name }
   end
 
-  # подгружаем содержимое корзины
+  # POST /cart
   def show_cart
     products = []
     create_empty_cart if session[:cart].nil?
@@ -31,8 +32,7 @@ class CartController < ApplicationController
     render 'show', locals: { products: products, tottal_price: session[:cart]['tottal_price'] }, :layout => false
   end
 
-  # cart/:id/remove-products 
-  # remove_products_path(product)
+  # POST cart/:id/remove-products 
   def remove_products
     session[:cart]['tottal_count'] -= session[:cart]['products'][@id]['count']
     session[:cart]['tottal_price'] -= session[:cart]['products'][@id]['price'] * session[:cart]['products'][@id]['count']
@@ -40,8 +40,7 @@ class CartController < ApplicationController
     render :json => { tottal_price: session[:cart]['tottal_price'] }
   end
 
-  # cart/:id/plus-product
-  # plus_product_path(product)
+  # POST cart/:id/plus-product
   def plus_product
     session[:cart]['products'][@id]['count'] += 1
     session[:cart]['tottal_count']           += 1
@@ -52,8 +51,7 @@ class CartController < ApplicationController
     }
   end
 
-  # cart/:id/minus-product
-  # minus_product_path(product)
+  # POST cart/:id/minus-product
   def minus_product
     session[:cart]['products'][@id]['count'] -= 1
     session[:cart]['tottal_count']           -= 1
