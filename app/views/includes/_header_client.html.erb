@@ -1,8 +1,7 @@
 <header>
   <ul id="dropdown1" class="dropdown-content dropdown-content--blue-grey">
-    <% categories = Category.all %>
-    <% unless categories.empty? %>
-      <% categories.all.each do |category| %>
+    <% unless @categories.empty? %>
+      <% @categories.each do |category| %>
         <% cache(category) do %>
           <li><%= link_to category.name, shop_category_products_path(category) %></li>
         <% end %>
@@ -55,7 +54,7 @@
       <% end %>
     </li>
     <hr>
-    <% categories.each do |category| %>
+    <% @categories.each do |category| %>
       <% cache(category) do %>
         <li><%= link_to category.name, shop_category_products_path(category), { class: 'side-link' } %></li>
       <% end %>

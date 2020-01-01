@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :set_contacts, only: [:index, :privacy_agreement, :new, :show]
   include Devise::Controllers::Rememberable
 
   def set_contacts
@@ -13,6 +12,24 @@ class ApplicationController < ActionController::Base
     end
     @instagram = contacts['instagram']
     @email = contacts['email']
+  end
+
+  def set_category
+    @categories = Rails.cache.fetch('all_categories') do
+      Category.all
+    end
+  end
+
+  def set_will_like_products
+    available_products = Rails.cache.fetch('available_products') do 
+      Product.where(available: true, unique: false)
+    end
+
+    @count_products = available_products.count
+
+    @rand_will_like_product = Rails.cache.fetch('rand_will_like_product') do
+      Product.where(available: true, unique: false).limit(4).offset(rand(0..@count_products - 4))
+    end
   end
 
   # def render_404

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   
   # магазин
   namespace :shop do
-    get '/products-category/:id' => 'products#index', as: 'category_products'
+    get '/products/:id/category' => 'products#index', as: 'category_products'
     resources :products, only: [:show]
     resources :orders, only: [:new, :create]
     resources :order_calls, only: [:create]
@@ -64,6 +64,4 @@ Rails.application.routes.draw do
     post '/search-products',          to: 'search_products#search',   as: 'search_products_search'
     post '/search-products/:request', to: 'search_products#detected', as: 'search_products_detected'
   end
-
-  
 end

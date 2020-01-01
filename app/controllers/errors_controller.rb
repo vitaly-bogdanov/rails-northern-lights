@@ -1,4 +1,6 @@
 class ErrorsController < ApplicationController
+  before_action :set_contacts
+  before_action :set_category
 
   # GET /404
   def not_found

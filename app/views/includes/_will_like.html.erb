@@ -1,13 +1,9 @@
-<% 
-  count_products = Product.where(available: true, unique: false).count
-  unless count_products == 0
-%>
-
+<% unless @count_products == 0 %>
   <section class="section" id="will_like">
     <div class="container">
       <h2 class="section__title">Возможно вам понравится</h2>
       <div class="products_grid products_grid--will_like">
-        <% Product.where(available: true, unique: false).limit(4).offset(rand(0..count_products - 4)).each do |product| %>
+        <% @rand_will_like_product.each do |product| %>
           <% cache(product) do %>
             <%= render partial: 'includes/product_card', locals: { product_card: product } %>
           <% end %>

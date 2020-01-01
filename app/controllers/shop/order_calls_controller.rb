@@ -15,26 +15,9 @@ class Shop::OrderCallsController < ApplicationController
     end
   end
 
-  # сделать private метод 
-  # params_form
-end
+  private 
 
-# action: "create"
-# ​​​​
-# authenticity_token: "XlyFJSJsb7sTxTUQLh8MrNE69kQ2gFQ/8X/06aICfRd32srkfZrCh2Sr6d8DiIRVVAr1QBUDA4wa4etBPUBN/g=="
-# ​​​​
-# commit: "Отправить"
-# ​​​​
-# confirm: "1"
-# ​​​​
-# controller: "shop/order_calls"
-# ​​​​
-# name: "Виталий"
-# ​​​​
-# product_id: "26"
-# ​​​​
-# telephone: "+79990849417"
-# ​​​​
-# timezone: "Якутск"
-# ​​​​
-# utf8: "✓"
+  # def order_call_params
+  #   params.require(:product).
+  # end
+end

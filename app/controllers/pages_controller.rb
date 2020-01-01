@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+  before_action :set_contacts
+  before_action :set_category
+  before_action :set_will_like_products, :only => :index
 
   # GET /
   def index
