@@ -47,7 +47,7 @@ end
 
 group :production do
   gem 'pg'
-  
+
 end
 
 # aws s3 для хранения картинок
@@ -75,6 +75,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # дополнительные гемы
 gem 'materialize-sass', '~> 1.0.0'
+
 gem 'whenever', require: false
 gem 'sitemap_generator'
 gem 'friendly_id', '~> 5.2.4'
