@@ -9,9 +9,9 @@
     <%= stylesheet_link_tag 'materialize' %>
     <%= stylesheet_link_tag 'client' %>
     <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag 'materialize' %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag 'client' %>
+    <%= javascript_include_tag 'materialize', defer: true %>
+    <%= javascript_include_tag 'application', defer: true  %>
+    <%= javascript_include_tag 'client', defer: true %>
     <meta name="description" content="<%= yield :description %>">
     <meta name="keywords" content="<%= yield :keywords %>">
     <%= csrf_meta_tags %>
