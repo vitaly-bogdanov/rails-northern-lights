@@ -270,6 +270,11 @@ section#privacy_agreement {
     height: 150px;
   }
 }
+@media (max-width: 600px) {
+  .parallax-container {
+    display: none;
+  }
+}
 
 .error-box {
   padding-left: 5px;

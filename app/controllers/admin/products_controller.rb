@@ -36,8 +36,8 @@ class Admin::ProductsController < ApplicationController
   def update
     @product = Product.friendly.find(params[:id])
     if @product.update_attributes(product_params)
-      # на случай если товар был ранее еденичным проданным, а потом стал нееденичным
       Rails.cache.delete("show_product_#{params[:id]}")
+      # на случай если товар был ранее еденичным проданным, а потом стал нееденичным
       @product.update_attributes(available: true) unless @product.available
       redirect_to "#{admin_category_products_path(@product.category.id)}#message=Информация о товаре обновленно"
     else
