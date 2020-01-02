@@ -110,6 +110,7 @@ function productCardImagePreloader() {
         if (entry.isIntersecting) {
           const lazyImage = entry.target;
           lazyImage.src = lazyImage.dataset.src;
+          console.log('Ленивая загрузка сработала');
           lazyImage.classList.remove("lzy_img");
           lazyImage.removeAttribute('data-src');
           imgObserver.unobserve(lazyImage);
