@@ -90,6 +90,8 @@ function productCardImagePreloader() {
   if (products) {
     products.forEach((product) => {
       let img = product.firstElementChild.firstElementChild;
+      img.setAttribute('src', img.dataset.src);
+      img.removeAttribute('data-src');
       if (img.complete) {
         product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
       } else {

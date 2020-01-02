@@ -6,10 +6,13 @@ class Shop::ProductsController < ApplicationController
 
   # GET /shop/products-category/:id
   def index
+
+    # удалить весь связанный кеш
+    # при удалении категории
     @category = Rails.cache.fetch("index_category_#{params[:id]}") do
       Category.friendly.find(params[:id])
     end
-    @products = Rails.cache.fetch("index_products_#{params[:id]}") do
+    @products = Rails.cache.fetch("index_products_#{params[:id]}_#{params[:page]}") do
       @category.products.where(available: true).paginate(page: params[:page], per_page: PER_PAGE)
     end
   end
