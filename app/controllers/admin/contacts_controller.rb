@@ -11,6 +11,8 @@ class Admin::ContactsController < ApplicationController
   def update
     File.write(file_path, file.update(contact_params).to_yaml)
     flash['contacts_update'] = 'Контактная информация обновлена'
+    Rails.cache.delete('contacts')
+    Rails.cache.delete('phone_call')
     redirect_to admin_contacts_path
   end
 

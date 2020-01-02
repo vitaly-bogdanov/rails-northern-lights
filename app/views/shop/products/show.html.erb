@@ -9,49 +9,47 @@
         <p class="underlined-text-body underlined-text-product-show-head-body">По умолчанию заказы отправляются "Почтой России" с наложенным платежом. Уточняйте оплату за доставку на главном сайте "Почты России". Возможно обсудить иные способы доставки. После оформления заказа мы вам перезвоним.</p>
       </div>
       <article>
-        <% cache do %>
-          <div class="show-flexbox">
-            <div class="show-product-image">
-              <%= image_tag @product.large_picture, { alt: @product.name } %>
-              <div class="preloader-box preloader-box--product-show preloader-box--white blue-grey darken-3">
-                <div class="lds-roller">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
-              </div>
-            </div>
-            <div class="show-product-description">
-              <div class="price">
-                <span><%= @product.price %></span>
-                <span><%= image_tag 'static/ruble-currency-sign.svg', { alt: 'rub' } %></span>
-              </div>
-              <h2><%= @product.name %></h2>
-              <p><%= @product.description %></p>
-              <div class="buttons-group">
-                <% if params[:q] %>
-                  <%= link_to shop_search_products_client_index_path(params[:q]), class: 'blue-grey darken-3 waves-effect waves-light btn-large blue-grey-hover-btn' do %>
-                    <div><i class="tiny material-icons">arrow_back</i> <span>Поиск</span></div> 
-                  <% end %>
-                <% else %>
-                  <%= link_to shop_category_products_url(@product.category.slug), class: 'blue-grey darken-3 waves-effect waves-light btn-large blue-grey-hover-btn' do %>
-                    <div><i class="tiny material-icons">arrow_back</i> <span><%= @product.category.name %></span></div>
-                  <% end %>
-                <% end %>
-                <% if @product.unique %>
-                  <a class="waves-effect waves-light btn modal-trigger btn-large purple-hover-btn" href="#order-modal">Заказать</a>
-                <% else %>
-                  <%= link_to 'В корзину', add_product_path(@product.id), remote: true, class: 'purple darken-4 waves-effect waves-light btn-large purple-hover-btn', method: :post %>
-                <% end %>
+        <div class="show-flexbox">
+          <div class="show-product-image">
+            <%= image_tag @product.large_picture, { alt: @product.name } %>
+            <div class="preloader-box preloader-box--product-show preloader-box--white blue-grey darken-3">
+              <div class="lds-roller">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
               </div>
             </div>
           </div>
-        <% end %>
+          <div class="show-product-description">
+            <div class="price">
+              <span><%= @product.price %></span>
+              <span><%= image_tag 'static/ruble-currency-sign.svg', { alt: 'rub' } %></span>
+            </div>
+            <h2><%= @product.name %></h2>
+            <p><%= @product.description %></p>
+            <div class="buttons-group">
+              <% if params[:q] %>
+                <%= link_to shop_search_products_client_index_path(params[:q]), class: 'blue-grey darken-3 waves-effect waves-light btn-large blue-grey-hover-btn' do %>
+                  <div><i class="tiny material-icons">arrow_back</i> <span>Поиск</span></div> 
+                <% end %>
+              <% else %>
+                <%= link_to shop_category_products_url(@product.category.slug), class: 'blue-grey darken-3 waves-effect waves-light btn-large blue-grey-hover-btn' do %>
+                  <div><i class="tiny material-icons">arrow_back</i> <span><%= @product.category.name %></span></div>
+                <% end %>
+              <% end %>
+              <% if @product.unique %>
+                <a class="waves-effect waves-light btn modal-trigger btn-large purple-hover-btn" href="#order-modal">Заказать</a>
+              <% else %>
+                <%= link_to 'В корзину', add_product_path(@product.id), remote: true, class: 'purple darken-4 waves-effect waves-light btn-large purple-hover-btn', method: :post %>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </article>
     </div>
   </section>
