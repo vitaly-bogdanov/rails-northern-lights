@@ -1,6 +1,6 @@
 <div class="product_card">
   <%= link_to shop_product_path(product_card) + (if defined? q then q else '' end), class: 'product_card--image-link' do %>
-    <%= image_tag('', data: { src: request.base_url + url_for(product_card.middle_picture) }, alt: product_card.name, class: 'product_card__image') %>
+    <%= image_tag('', data: { src: request.base_url + url_for(product_card.middle_picture) }, alt: product_card.name, class: 'product_card__image lzy_img') %>
     <div class="preloader-box preloader-box--product-card preloader-box--white blue-grey darken-3">
       <div class="lds-roller">
         <div></div>

@@ -82,15 +82,45 @@ function deleteSerchedProduct() {
 
 /* ********* ПРЕЛОАДЕРЫ ********* */
 
+// function lazyLoadImageForCardProduct() {
+//   const imageObserver = new IntersectionObserver((entries, imgObserver) => {
+//     entries.forEach((entry) => {
+//         if (entry.isIntersecting) {
+//           const lazyImage = entry.target
+//           console.log("lazy loading ", lazyImage)
+//           lazyImage.src = lazyImage.dataset.src
+//           lazyImage.classList.remove("lzy_img");
+//           imgObserver.unobserve(lazyImage);
+//         }
+//     })
+//   });
+//   const arr = document.querySelectorAll('img.lzy_img')
+//   arr.forEach((v) => {
+//       imageObserver.observe(v);
+//   })
+// }
+
+
 /**
  * Прелоадер для картинок карточек товаров
  */
 function productCardImagePreloader() {
+  const imageObserver = new IntersectionObserver((entries, imgObserver) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.classList.remove("lzy_img");
+          lazyImage.removeAttribute('data-src');
+          imgObserver.unobserve(lazyImage);
+        }
+    })
+  });
   const products = document.querySelectorAll('.product_card');
   if (products) {
     products.forEach((product) => {
       let img = product.firstElementChild.firstElementChild;
-      img.setAttribute('src', img.dataset.src);
+      imageObserver.observe(img);
       if (img.complete) {
         product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
       } else {
@@ -98,7 +128,7 @@ function productCardImagePreloader() {
           product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
         }
       }
-      img.removeAttribute('data-src');
+      // img.removeAttribute('data-src');
     });
   }
 }
@@ -171,6 +201,8 @@ function seachFieldAutocomplete(params) {
 }
 
 document.addEventListener('turbolinks:load', function() {
+  // lazyLoadImageForCardProduct();
+
   toastActive();
   navbarDropdown();            // выпадающие меню
   M.Modal._count = 0;          // иначе 
