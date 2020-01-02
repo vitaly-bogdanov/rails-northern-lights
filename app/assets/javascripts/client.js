@@ -429,6 +429,15 @@ function closeModal(callback) {
   }
 }
 
+function noLoadParallaxImageOnMobile() {
+  document.querySelectorAll('.parallax').forEach(parallaxBlock => {
+    if (screen.width >= 600) {
+      parallaxBlock.lastChild.setAttribute('src', parallaxBlock.lastChild.dataset.src);
+      parallaxBlock.lastChild.removeAttribute('data-src');
+    }
+  });
+}
+
 document.addEventListener('ajax:success', function(event) {
   callCreateAjaxSend(event);      // отправляем круглую форму
   addProductSuccess(event);
@@ -441,6 +450,7 @@ document.addEventListener('ajax:error', function(event) {
 });
 
 document.addEventListener('turbolinks:load', function() {
+  noLoadParallaxImageOnMobile();
   headerCarousel();                                          // слайдере с картинами
   modalFooter();                                             // модальное окно корзины
   featureDiscoveryCreate();                                  // включаем круглую форму в нижнем правом угле
