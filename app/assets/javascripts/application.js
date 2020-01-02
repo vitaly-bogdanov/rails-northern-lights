@@ -90,8 +90,7 @@ function productCardImagePreloader() {
   if (products) {
     products.forEach((product) => {
       let img = product.firstElementChild.firstElementChild;
-      // img.setAttribute('src', img.dataset.src);
-      // img.removeAttribute('data-src');
+      img.setAttribute('src', img.dataset.src);
       if (img.complete) {
         product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
       } else {
@@ -99,6 +98,7 @@ function productCardImagePreloader() {
           product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
         }
       }
+      img.removeAttribute('data-src');
     });
   }
 }
