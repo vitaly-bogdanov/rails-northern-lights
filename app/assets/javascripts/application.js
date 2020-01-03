@@ -121,7 +121,6 @@ function productCardImagePreloader() {
               lazyImage.nextElementSibling.classList.add('preloader-box--hidden');
             }
           }
-          console.log('Ленивая загрузка сработала');
           lazyImage.classList.remove("lzy_img");
           lazyImage.removeAttribute('data-src');
           imgObserver.unobserve(lazyImage);
@@ -133,7 +132,6 @@ function productCardImagePreloader() {
     products.forEach((product) => {
       let img = product.firstElementChild.firstElementChild;
       imageObserver.observe(img);
-      // img.removeAttribute('data-src');
     });
   }
 }

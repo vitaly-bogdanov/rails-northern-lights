@@ -2,7 +2,7 @@
 
 User-agent: *
 
-Dissalow: /privacy-agreement
+Disallow: /privacy-agreement
 Disallow: /shop/search-products/
 Disallow: /users/sign_in
 Disallow: /admin/
