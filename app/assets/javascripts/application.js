@@ -109,7 +109,18 @@ function productCardImagePreloader() {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const lazyImage = entry.target;
+
+          console.dir(lazyImage.nextElementSibling);
+          // closest
+
           lazyImage.src = lazyImage.dataset.src;
+          if (lazyImage.complete) {
+            lazyImage.nextElementSibling.classList.add('preloader-box--hidden');
+          } else {
+            lazyImage.onload = () => {
+              lazyImage.nextElementSibling.classList.add('preloader-box--hidden');
+            }
+          }
           console.log('Ленивая загрузка сработала');
           lazyImage.classList.remove("lzy_img");
           lazyImage.removeAttribute('data-src');
@@ -122,13 +133,6 @@ function productCardImagePreloader() {
     products.forEach((product) => {
       let img = product.firstElementChild.firstElementChild;
       imageObserver.observe(img);
-      if (img.complete) {
-        product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
-      } else {
-        img.onload = () => {
-          product.firstElementChild.lastElementChild.classList.add('preloader-box--hidden');
-        }
-      }
       // img.removeAttribute('data-src');
     });
   }
