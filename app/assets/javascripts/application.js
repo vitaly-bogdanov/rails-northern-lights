@@ -109,10 +109,7 @@ function productCardImagePreloader() {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const lazyImage = entry.target;
-
-          console.dir(lazyImage.nextElementSibling);
-          // closest
-
+          console.log(lazyImage.src);
           lazyImage.src = lazyImage.dataset.src;
           if (lazyImage.complete) {
             lazyImage.nextElementSibling.classList.add('preloader-box--hidden');
@@ -127,11 +124,10 @@ function productCardImagePreloader() {
         }
     })
   });
-  const products = document.querySelectorAll('.product_card');
-  if (products) {
-    products.forEach((product) => {
-      let img = product.firstElementChild.firstElementChild;
-      imageObserver.observe(img);
+  const images = document.querySelectorAll('.lzy_img');
+  if (images) {
+    images.forEach((image) => {
+      imageObserver.observe(image);
     });
   }
 }
