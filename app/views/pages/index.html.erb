@@ -18,7 +18,7 @@
               <% @portfolios.each do |portfolio| %>
                 <% cache(portfolio) do %>
                   <div class="carousel-item">
-                    <%= image_tag(portfolio.large_picture, {alt: portfolio.name }) %>
+                    <%= image_tag(portfolio.large_picture, alt: portfolio.name) %>
                   </div>
                 <% end %>
               <% end %>
