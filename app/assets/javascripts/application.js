@@ -109,7 +109,6 @@ function productCardImagePreloader() {
     entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const lazyImage = entry.target;
-          console.log(lazyImage.src);
           lazyImage.src = lazyImage.dataset.src;
           if (lazyImage.complete) {
             lazyImage.nextElementSibling.classList.add('preloader-box--hidden');

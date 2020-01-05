@@ -14,19 +14,6 @@ function headerCarousel() {
 }
 
 /**
- * Активируем с низу выезжающее окно корзины.
- */
-function modalFooter() {
-  const modalFooter = document.querySelector('#bottom-modal-cart');
-  if (modalFooter) {
-    M.Modal.init(modalFooter, {
-      inDuration: 500,
-      outDuration: 500
-    });
-  }
-}
-
-/**
  * Активируем плагин Feature Discovery (круглая форма в нижнем правом углу).
  */
 function featureDiscoveryCreate() { 
@@ -284,6 +271,15 @@ function removeProducts() {
   }
 }
 
+function onClickToOrderCloseCart() {
+  const modalFooter = document.querySelector('#bottom-modal-cart');
+  const toOrderBotton = document.querySelector('#to-order');
+  if (modalFooter && toOrderBotton) {
+    const instanceModalFooter = M.Modal.getInstance(modalFooter);
+    toOrderBotton.onclick = () => instanceModalFooter.close();
+  }
+}
+
 /**
  * Подгружаем товары в корзину AJAX'ом
  */
@@ -297,6 +293,7 @@ function loadAjaxProducts() {
         minusProduct();    // устанавливаем события клика на значек -
         plusProduct();     // уствнавливаем событие клика на зеачек +
         removeProducts();  // устанавливаем на собыите клика значек trash
+        onClickToOrderCloseCart();
         // onEmptyCart();     // отслеживание DOM-элементов товаров в корзине
       }, 200);
     },
@@ -311,7 +308,9 @@ function bottomModalClose() {
   const modalFooter = document.querySelector('#bottom-modal-cart');
   if (modalFooter) {
     const instanceModalFooter = M.Modal.getInstance(modalFooter);
-    modalFooter.querySelector('.modal-close').onclick = () => instanceModalFooter.close();
+    modalFooter.querySelector('.modal-close').onclick = () => { 
+      instanceModalFooter.close(); 
+    }
   }
 }
 
@@ -331,14 +330,6 @@ function onEmptyCart() {
     setTimeout(() => {
       bottomModalClose();
     }, 200);
-    // cart.onclick = function() {
-    //   setTimeout(() => {
-    //     if (this.childElementCount == 0) {
-    //       
-    //       bottomModalClose();
-    //     }
-    //   
-    // }
   }
 }
 
@@ -352,6 +343,7 @@ function modalFooter() {
       inDuration: 500,
       outDuration: 500,
       onOpenStart: function() {
+        
         let html = '<div class="preloader-box preloader-box--purple"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>'
         document.querySelector('#bottom-modal-cart .container').innerHTML = html;
         loadAjaxProducts();

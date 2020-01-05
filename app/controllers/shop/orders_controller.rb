@@ -1,7 +1,7 @@
 class Shop::OrdersController < ApplicationController
 
   before_action :set_contacts, :only => :new
-  before_action :set_category, :only => :new
+  before_action :set_category, only: [:new, :create]
 
   def new
     @order = Order.new
