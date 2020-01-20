@@ -3,7 +3,7 @@
 SitemapGenerator::Sitemap.default_host = "http://www.severnoe-siyanie.ru"
 SitemapGenerator::Sitemap.sitemaps_host = 'https://severnoe-siyanie.s3.ap-northeast-2.amazonaws.com'
 SitemapGenerator::Sitemap.public_path = 'public/'
-SitemapGenerator::Sitemap.sitemaps_path = '/'
+SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new('severnoe-siyanie')
 
 SitemapGenerator::Sitemap.create do
