@@ -6,16 +6,17 @@ SitemapGenerator::Sitemap.public_path = 'tmp/sitemap'
 
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
   fog_provider: 'AWS',
-  fog_directory: ENV['S3_BUCKET_NAME'],
-  fog_region: ENV['AWS_REGION'],
-  aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-  aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+  fog_directory: 'severnoe-siyanie',
+  fog_region: 'ap-northeast-2',
+  aws_access_key_id: 'AKIAYGSNYTI4LFK3FJK4',
+  aws_secret_access_key: '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'
 )
 
-SitemapGenerator::Sitemap.sitemaps_host = "https://#{ENV['S3_BUCKET_NAME']}.s3.amazonaws.com"
+SitemapGenerator::Sitemap.sitemaps_host = "http://severnoe-siyanie.s3.amazonaws.com/"
+SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/' 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
-  #
+
   # The root path '/' and sitemap index file are added automatically for you.
   # Links are added to the Sitemap in the order they are specified.
   #
