@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: 'sessions' }
-  get 'sitemap.xml.gz', to: redirect('https://severnoe-siyanie.s3.ap-northeast-2.amazonaws.com/sitemap.xml.gz')
+  get 'sitemap.xml.gz', to: redirect('https://severnoe-siyanie.s3.ap-northeast-2.amazonaws.com/sitemaps/sitemap.xml.gz')
   root 'pages#index'
 
   get  'privacy-agreement', to: 'pages#privacy_agreement', as: 'privacy_agreement'
