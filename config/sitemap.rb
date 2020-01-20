@@ -3,7 +3,7 @@ SitemapGenerator::Sitemap.default_host = "http://www.severnoe-siyanie.ru"
 SitemapGenerator::Sitemap.public_path = 'tmp/'
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new
 SitemapGenerator::Sitemap.sitemaps_host = "http://#{ENV['S3_BUCKET_NAME']}.s3.amazonaws.com/"
-# SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+SitemapGenerator::Sitemap.sitemaps_path = 'public/'
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
   #
