@@ -1,3 +1,5 @@
+require 'aws-sdk'
+
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "http://www.severnoe-siyanie.ru"
 SitemapGenerator::Sitemap.sitemaps_host = 'https://severnoe-siyanie.s3.ap-northeast-2.amazonaws.com'
