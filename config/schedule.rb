@@ -25,7 +25,10 @@
 # !!!
 # whenever --update-crontab
 # set :output, "/path/to/my/cron_log.log"
-set :environment, "development"
-every 1.minute do
-  rake '-s sitemap:refresh'
-end
+# set :environment, "development"
+
+# job_type :update_sitemap, 'bundle exec rake -s :task'
+
+# every 1.minute do
+#   update_sitemap 'sitemap:refresh'
+# end
