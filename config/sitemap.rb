@@ -1,7 +1,7 @@
 
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "http://www.severnoe-siyanie.ru"
-SitemapGenerator::Sitemap.sitemaps_host = 'https://severnoe-siyanie.s3.ap-northeast-2.amazonaws.com'
+SitemapGenerator::Sitemap.sitemaps_host = 'https://severnoe-siyanie.s3.amazonaws.com'
 SitemapGenerator::Sitemap.public_path = 'public/'
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new({
