@@ -5,7 +5,7 @@
 
 # Example:
 #
-# set :output, "/path/to/my/cron_log.log"
+
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
@@ -21,6 +21,11 @@
 # every 1.day, :at => '5:00 am' do
 #   rake "-s sitemap:refresh"
 # end
+# 
+# !!!
+# whenever --update-crontab
+# set :output, "/path/to/my/cron_log.log"
+set :environment, "development"
 every 1.minute do
   rake '-s sitemap:refresh'
 end
