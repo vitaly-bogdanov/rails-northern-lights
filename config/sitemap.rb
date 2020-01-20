@@ -1,19 +1,18 @@
-
+require 'aws-sdk'
+SitemapGenerator.verbose = false
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "http://www.severnoe-siyanie.ru"
 
 SitemapGenerator::Sitemap.public_path = 'tmp/sitemap'
 
-SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
-  fog_provider: 'AWS',
-  fog_directory: 'severnoe-siyanie',
-  fog_region: 'ap-northeast-2',
+SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new('severnoe-siyanie',
+  aws_region: 'ap-northeast-2',
   aws_access_key_id: 'AKIAYGSNYTI4LFK3FJK4',
   aws_secret_access_key: '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'
 )
-
-SitemapGenerator::Sitemap.sitemaps_host = "http://severnoe-siyanie.s3.amazonaws.com/"
+SitemapGenerator::Sitemap.sitemaps_host = "https://severnoe-siyanie.s3.ap-northeast-2.amazonaws.com/sitemap-generator/"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/' 
+
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
 
