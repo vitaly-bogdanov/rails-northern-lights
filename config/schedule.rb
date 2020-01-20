@@ -22,5 +22,5 @@
 #   rake "-s sitemap:refresh"
 # end
 every 1.minute do
-  rake 'sitemap:refresh'
+  rake '-s sitemap:refresh'
 end
