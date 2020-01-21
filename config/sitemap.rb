@@ -4,7 +4,7 @@ require 'aws-sdk-s3'
 SitemapGenerator::Sitemap.default_host = "http://www.severnoe-siyanie.ru"
 
 # SitemapGenerator::Sitemap.public_path = 'tmp/sitemap'
-SitemapGenerator::Sitemap.sitemaps_host = "https://severnoe-siyanie.s3.ap-northeast-2.amazonaws.com/"
+SitemapGenerator::Sitemap.sitemaps_host = "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['AWS_REGION']}.amazonaws.com/"
 # SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/' 
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
   ENV['S3_BUCKET_NAME'],
