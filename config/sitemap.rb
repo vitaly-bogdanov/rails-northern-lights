@@ -1,6 +1,6 @@
 require 'aws-sdk-s3'
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://www.severnoe-siyanie.ru"
+SitemapGenerator::Sitemap.default_host = 'https://www.severnoe-siyanie.ru'
 
 # SitemapGenerator::Sitemap.public_path = 'tmp/sitemap'
 SitemapGenerator::Sitemap.sitemaps_host = "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['AWS_REGION']}.amazonaws.com/"
