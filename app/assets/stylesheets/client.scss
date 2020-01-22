@@ -135,7 +135,7 @@ section#shop {
     .block-description {
       padding: 25px;
       box-sizing: border-box;
-      h3 {
+      .block-title {
         font-size: 25px;
         font-weight: 700;
         line-height: 27px;
@@ -195,7 +195,7 @@ section#shop {
     .about-shop-grid {
       .block-description {
         padding: 10px;
-        h3 {
+        .block-title {
           font-size: 20px;
           margin-bottom: 10px;
         }

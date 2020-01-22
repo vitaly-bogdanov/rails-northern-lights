@@ -1,11 +1,11 @@
-<% content_for :title, @product.name %>
+<% content_for :title, "\"#{@product.name}\" - купить #{@product.category.name}" %>
 <% content_for :description, @product.description %>
 <% content_for :keywords, @product.keywords %>
 <% content_for :body do %>
   <section id="show_product_block" class="section">
     <div class="container">
       <div class="underlined-text underlined-text-product-show">
-        <h3 class="underlined-text-head underlined-text-product-show-head">Как заказать?</h3>
+        <p class="underlined-text-head underlined-text-product-show-head">Как заказать?</p>
         <p class="underlined-text-body underlined-text-product-show-head-body">По умолчанию заказы отправляются "Почтой России" с наложенным платежом. Уточняйте оплату за доставку на главном сайте "Почты России". Возможно обсудить иные способы доставки. После оформления заказа мы вам перезвоним.</p>
       </div>
       <article>
@@ -28,9 +28,9 @@
           <div class="show-product-description">
             <div class="price">
               <span><%= @product.price %></span>
-              <span><%= image_tag 'static/ruble-currency-sign.svg', { alt: 'rub' } %></span>
+              <span><%= image_tag('static/ruble-currency-sign.svg', { alt: 'rub' }) %></span>
             </div>
-            <h2><%= @product.name %></h2>
+            <h1 class="product-name"><%= @product.name %></h1>
             <p><%= @product.description %></p>
             <div class="buttons-group">
               <% if params[:q] %>
