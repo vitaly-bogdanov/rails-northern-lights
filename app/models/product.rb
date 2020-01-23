@@ -15,7 +15,7 @@ class Product < ApplicationRecord
     name_changed?
   end
 
-  NAME_MAX_LENGTH = 18
+  NAME_MAX_LENGTH = 22
 
   PREVIEW_MIN_LENGTH = 30
   PREVIEW_MAX_LENGTH = 60
