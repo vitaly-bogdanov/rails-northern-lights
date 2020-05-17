@@ -4,7 +4,6 @@
 @import 'includes/products_grid.scss';
 @import 'includes/product_flexbox.scss';
 @import 'includes/product_card.scss';
-@import 'includes/sidemenu.scss';
 @import 'includes/tap_target.scss';
 @import 'includes/bottom_modal_cart.scss';
 @import 'includes/sections/preview_block.scss';
@@ -211,7 +210,6 @@ section#shop {
         &:nth-child(3) {
           text-align: left;
         }
-
         // картинка
         &:nth-child(2) {
           padding-left: 10px;

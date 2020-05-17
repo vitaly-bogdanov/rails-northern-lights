@@ -45,7 +45,6 @@ $white: #4a148c;
 /*  LOADER
 ========================================== */
 $loader-speed: 1.6s;
-
 .loader {
   position: fixed;
   top: 0;
@@ -63,49 +62,40 @@ $loader-speed: 1.6s;
     border-radius: 50%;
     animation-timing-function: cubic-bezier(0.42, 0.0, 0.58, 1.0);
     backface-visibility: hidden;
-    
     &:nth-of-type(1) {
       top: calc(50% - 40px);
       left: calc(50% - 40px);
       @include animation(contract $loader-speed infinite);
-    }
-    
+    } 
     &:nth-of-type(2) {
       top: calc(50% - 40px);
       @include animation(contract $loader-speed infinite);
     }
-    
     &:nth-of-type(3) {
       top: calc(50% - 40px);
       left: calc(50% + 40px);
       @include animation(contract $loader-speed infinite);
     }
-    
     &:nth-of-type(4) {
       left: calc(50% - 40px);
       @include animation(contract $loader-speed infinite);
     }
-    
     &:nth-of-type(5) {
       @include animation(dot-size $loader-speed infinite);
     }
-    
     &:nth-of-type(6) {
       left: calc(50% + 40px);
       @include animation(contract $loader-speed infinite);
-    }
-    
+    }   
     &:nth-of-type(7) {
       top: calc(50% + 40px);
       left: calc(50% - 40px);
       @include animation(contract $loader-speed infinite);
     }
-    
     &:nth-of-type(8) {
       top: calc(50% + 40px);
       @include animation(contract $loader-speed infinite);
     }
-    
     &:nth-of-type(9) {
       top: calc(50% + 40px);
       left: calc(50% + 40px);
@@ -121,7 +111,6 @@ $loader-speed: 1.6s;
     width: 30px;
     height: 30px;
   }
- 
   46% {
     top: 50%;
     left: 50%;
@@ -135,7 +124,6 @@ $loader-speed: 1.6s;
     width: 40px;
     height: 40px;
   }
-  
   43% {
     width: 40px;
     height: 40px;
