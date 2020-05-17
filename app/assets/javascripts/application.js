@@ -82,25 +82,6 @@ function deleteSerchedProduct() {
 
 /* ********* ПРЕЛОАДЕРЫ ********* */
 
-// function lazyLoadImageForCardProduct() {
-//   const imageObserver = new IntersectionObserver((entries, imgObserver) => {
-//     entries.forEach((entry) => {
-//         if (entry.isIntersecting) {
-//           const lazyImage = entry.target
-//           console.log("lazy loading ", lazyImage)
-//           lazyImage.src = lazyImage.dataset.src
-//           lazyImage.classList.remove("lzy_img");
-//           imgObserver.unobserve(lazyImage);
-//         }
-//     })
-//   });
-//   const arr = document.querySelectorAll('img.lzy_img')
-//   arr.forEach((v) => {
-//       imageObserver.observe(v);
-//   })
-// }
-
-
 /**
  * Прелоадер для картинок карточек товаров
  */
@@ -199,8 +180,6 @@ function seachFieldAutocomplete(params) {
 }
 
 document.addEventListener('turbolinks:load', function() {
-  // lazyLoadImageForCardProduct();
-
   toastActive();
   navbarDropdown();            // выпадающие меню
   M.Modal._count = 0;          // иначе 

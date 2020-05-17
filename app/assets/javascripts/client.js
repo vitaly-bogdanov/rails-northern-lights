@@ -126,8 +126,6 @@ function callCreateAjaxSend(event) {
     closeFeatureDiscovery(function() {
       toastActive('Запрос отправлен');
       
-
-
       // чистим поля
       event.target[2].value = '';
       event.target[3].value = '';
@@ -343,15 +341,11 @@ function modalFooter() {
       inDuration: 500,
       outDuration: 500,
       onOpenStart: function() {
-        
         let html = '<div class="preloader-box preloader-box--purple"><div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>'
         document.querySelector('#bottom-modal-cart .container').innerHTML = html;
         loadAjaxProducts();
       }, 
-      onOpenEnd: function() {
-        
-      },
-      inDuration: 600,
+      inDuration: 600
     });
   }
 }
@@ -475,9 +469,7 @@ document.addEventListener('turbolinks:load', function() {
   minusProduct();    // устанавливаем события клика на значек -
   plusProduct();     // уствнавливаем событие клика на зеачек +
   removeProducts();  // устанавливаем на собыите клика значек trash
-
   insertTimeZoneInInput('#order_timezone'); // часовой пояс
-
   productCardImagePreloader(); // активируем preloader для картинки карточки товара
   productShowImagePreloader(); // активируем preloader для картинки на странице показа товара
 });
