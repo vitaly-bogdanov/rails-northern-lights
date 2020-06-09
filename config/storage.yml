@@ -34,7 +34,6 @@ google:
     token_uri: "https://oauth2.googleapis.com/token"
     auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs"
     client_x509_cert_url: <%= ENV['GCS_CLIENT_X509_CERT_URL'] %>
-
   # credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
