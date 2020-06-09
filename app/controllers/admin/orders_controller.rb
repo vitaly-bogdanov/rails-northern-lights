@@ -13,11 +13,9 @@ class Admin::OrdersController < ApplicationController
     @tottal_price = @order.tottal_price
     @meta_products = []
     @order.order_products.each do |meta_product|
-
       if meta_product.product.nil?
         @tottal_price -= meta_product.products_price
       end
-
       @meta_products << { 
         product: meta_product.product, 
         count: meta_product.count_products,
@@ -70,5 +68,4 @@ class Admin::OrdersController < ApplicationController
       render :index
     end
   end
-
 end

@@ -15,6 +15,6 @@ class Shop::SearchProductsController < ApplicationController
 
   def search
     @products = Product.select('name')
-    render :json => @products
+    render json: @products
   end
 end

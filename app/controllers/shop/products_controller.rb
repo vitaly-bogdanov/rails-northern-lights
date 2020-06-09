@@ -1,12 +1,11 @@
 class Shop::ProductsController < ApplicationController
   before_action :set_contacts
   before_action :set_category
-  before_action :set_last_create_products, :only => :show
-  PER_PAGE = 12
+  before_action :set_last_create_products, only: :show
+  PER_PAGE = 12 # количество плито товара на стрнаице для пагинации
 
   # GET /shop/products-category/:id
   def index
-
     # удалить весь связанный кеш
     # при удалении категории
     @category = Rails.cache.fetch("index_category_#{params[:id]}") do
@@ -16,7 +15,7 @@ class Shop::ProductsController < ApplicationController
       @category.products.where(available: true).paginate(page: params[:page], per_page: PER_PAGE)
     end
   end
-  
+
   # GET /shop/products/:id
   def show
     @product = Rails.cache.fetch("show_product_#{params[:id]}") do

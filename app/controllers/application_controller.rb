@@ -5,9 +5,8 @@ class ApplicationController < ActionController::Base
     contacts = Rails.cache.fetch('contacts') do
       YAML.load_file("#{Rails.root}/contacts.yml")
     end
-    
     @phone = contacts['phone']
-    @phone_call = Rails.cache.fetch('phone_call') do 
+    @phone_call = Rails.cache.fetch('phone_call') do
       contacts['phone'].each_char.select { |item| item == '0' or item.to_i != 0 }.join
     end
     @instagram = contacts['instagram']

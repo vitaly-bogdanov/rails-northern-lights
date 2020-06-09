@@ -1,12 +1,15 @@
 class Admin::PortfoliosController < ApplicationController
   layout 'admin'
   before_action :authenticate_user!
+
   def index
     @portfolios = Portfolio.all.reverse
   end
+
   def new
     @portfolio = Portfolio.new
   end
+
   def create
     @portfolio = Portfolio.new(portfolio_params)
     if @portfolio.save
@@ -15,9 +18,11 @@ class Admin::PortfoliosController < ApplicationController
       render :new
     end
   end
+
   def edit
     @portfolio = Portfolio.find(params[:id])
   end
+
   def update
     @portfolio = Portfolio.find(params[:id])
     if @portfolio.update_attributes(portfolio_params)
@@ -26,6 +31,7 @@ class Admin::PortfoliosController < ApplicationController
       render :edit
     end
   end
+
   def destroy
     @porfolio = Portfolio.find(params[:id])
     if @porfolio.destroy

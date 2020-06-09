@@ -48,9 +48,9 @@ class Admin::ProductsController < ApplicationController
 
   def destroy
     @product = Product.friendly.find(params[:id])
-    path = admin_products_path                                if params[:from_place] == 'all_products'
+    path = admin_products_path if params[:from_place] == 'all_products'
     path = admin_category_products_path(@product.category.id) if params[:from_place] == 'category_products'
-    path = nil                                                if params[:from_place] == 'search'
+    path = nil if params[:from_place] == 'search'
     if @product.destroy
       Rails.cache.delete("show_product_#{params[:id]}")
       redirect_to "#{path}#message=Товар \"#{@product.name}\" удален" unless path.nil? 
@@ -62,6 +62,15 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit :picture, :category_id, :name, :price, :description, :preview, :keywords, :unique
+    params.require(:product).permit(
+      :picture,
+      :category_id,
+      :name,
+      :price,
+      :description,
+      :preview,
+      :keywords,
+      :unique
+    )
   end
 end
