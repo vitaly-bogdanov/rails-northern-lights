@@ -47,11 +47,13 @@ end
 
 group :production do
   gem 'pg'
-
 end
 
-# aws s3 для хранения картинок
-gem "aws-sdk-s3", require: false
+# AWS S3 для хранения картинок
+#gem "aws-sdk-s3", require: false
+# ИЛИ
+# Google Cloud Storage для хранения картинок
+gem 'google-cloud-storage'
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
