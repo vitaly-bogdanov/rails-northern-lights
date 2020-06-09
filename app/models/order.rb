@@ -31,12 +31,6 @@ class Order < ApplicationRecord
 
   validates :confirm,
     acceptance: {
-      accept: '1',
-      message: 'Необходимо принять политику приватности'
-    }
-
-  validates :confirm,
-    acceptance: {
       allow_nil: false,
       message: 'Необходимо принять политику приватности'
     }
