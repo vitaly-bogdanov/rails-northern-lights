@@ -70,7 +70,7 @@ class Product < ApplicationRecord
 
   validate :validate_picture # метод находится в ApplicationRecord
 
-  def has_picture?
+  def has_picture? # имеется ли картинка?
     File.exist?(ActiveStorage::Blob.service.path_for(picture.key))
   end
 

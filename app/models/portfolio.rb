@@ -19,6 +19,10 @@ class Portfolio < ApplicationRecord
 
   validate :validate_picture # метод находится в ApplicationRecord
 
+  def has_picture? # имеется ли картинка?
+    File.exist?(ActiveStorage::Blob.service.path_for(picture.key))
+  end
+
   def large_picture # большая картинка
     picture.variant(resize: '570x357!').processed
   end
