@@ -11,7 +11,11 @@
       <article>
         <div class="show-flexbox">
           <div class="show-product-image">
-            <%= image_tag @product.large_picture, { alt: @product.name } %>
+            <% if @product.has_picture? %>
+              <%= image_tag(@product.large_picture, { alt: @product.name }) %>
+            <% else %>
+              <p>No image</p>
+            <% end %>
             <div class="preloader-box preloader-box--product-show preloader-box--white blue-grey darken-3">
               <div class="lds-roller">
                 <div></div>

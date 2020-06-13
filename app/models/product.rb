@@ -70,6 +70,10 @@ class Product < ApplicationRecord
 
   validate :validate_picture # метод находится в ApplicationRecord
 
+  def has_picture?
+    File.exist?(ActiveStorage::Blob.service.path_for(picture.key))
+  end
+
   def large_picture # метод вызова большой картинки
     picture.variant(resize: '540x426!').processed
   end
