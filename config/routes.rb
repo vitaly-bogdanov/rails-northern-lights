@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  root 'pages#index'
+  
   devise_for :users, controllers: { sessions: 'sessions' }
   get 'sitemap.xml.gz', to: redirect("https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['AWS_REGION']}.amazonaws.com/sitemap.xml.gz")
-  root 'pages#index'
+  
   get  'privacy-agreement', to: 'pages#privacy_agreement', as: 'privacy_agreement'
   resources :calls, only: [:create]
   post 'cart', to: 'cart#show_cart', as: 'show_cart'

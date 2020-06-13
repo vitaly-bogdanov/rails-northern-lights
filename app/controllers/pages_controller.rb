@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   before_action :set_contacts
   before_action :set_category
-  before_action :set_last_create_products, :only => :index
+  before_action :set_last_create_products, only: :index
 
   # GET /
   def index

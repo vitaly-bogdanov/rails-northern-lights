@@ -10,26 +10,30 @@ class Shop::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new initials: params[:order][:initials], 
-                      telephone: params[:order][:telephone], 
-                         region: params[:order][:region], 
-                           city: params[:order][:city], 
-                        address: params[:order][:address], 
-                       postcode: params[:order][:postcode], 
-                        comment: params[:order][:comment], 
-                       timezone: params[:order][:timezone], 
-                          email: params[:order][:email], 
-                        confirm: params[:order][:confirm], 
-                   tottal_price: tottal_price_from_cart
+    @order = Order.new(
+      initials: params[:order][:initials],
+      telephone: params[:order][:telephone],
+      region: params[:order][:region],
+      city: params[:order][:city],
+      address: params[:order][:address],
+      postcode: params[:order][:postcode],
+      comment: params[:order][:comment],
+      timezone: params[:order][:timezone],
+      email: params[:order][:email],
+      confirm: params[:order][:confirm],
+      tottal_price: tottal_price_from_cart
+    )
 
     if @order.save
       session[:cart]['products'].each do |product_id, product|
-        OrderProduct.create order_id: @order.id, 
-                            product_id: product_id.to_i, 
-                            count_products: product['count'],
-                            products_price: product['count'] * product['price'],
-                            unit_price: product['price'],
-                            product_name: product['name']
+        OrderProduct.create(
+          order_id: @order.id,
+          product_id: product_id.to_i,
+          count_products: product['count'],
+          products_price: product['count'] * product['price'],
+          unit_price: product['price'],
+          product_name: product['name']
+        )
       end
       session.delete(:cart)
       redirect_to "#{root_path}#message=Заказ принят! Мы вам перезвоним в ближайшее время."
@@ -39,7 +43,7 @@ class Shop::OrdersController < ApplicationController
       render :new
     end
   end
-  
+
   private
 
   def products_from_cart
@@ -48,7 +52,6 @@ class Shop::OrdersController < ApplicationController
       product = Product.find(id.to_i)
       products << { product: product, count: value['count'] }
     end
-
     return products
   end
 

@@ -1,7 +1,11 @@
 <% if products.any? %>
   <% products.each do |product| %>
     <div class="horizontal-grid horizontal-grid--margin-top-position horizontal-grid--product-elements-position">
-      <%= image_tag(product.thumb_picture, {class: 'horizontal-grid__item-image', alt: product.name  }) %>
+      <% if product.has_image? %>
+        <%= image_tag(product.thumb_picture, { class: 'horizontal-grid__item-image', alt: product.name }) %>
+      <% else %>
+        <p>No image</p>
+      <% end %>
       <h3 class="horizontal-grid__item-title"><%= product.name %> (<%= product.category.name %>)</h3>
       <div class="horizontal-grid__item-edit">
         <%= link_to edit_admin_product_path(product.id) do %>

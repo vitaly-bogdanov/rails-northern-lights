@@ -1,10 +1,9 @@
 class Admin::CallsController < ApplicationController
   layout 'admin'
   before_action :authenticate_user!
-  
+
   def index
     calls = Call.where(completed: false)
-    
     @calls_new = calls.select { |call| !call.saved }
     @calls_saved = calls.select { |call| call.saved }
   end

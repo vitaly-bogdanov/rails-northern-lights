@@ -6,14 +6,24 @@
   Имеет три поля: picture, name, description.
 =end
 class Portfolio < ApplicationRecord
-  has_one_attached :picture,  :dependent => :purge_later
+  # связь с картинкой, удаление картинки при удалении записи
+  has_one_attached :picture, dependent: :purge_later
 
-  validates :name,        presence: { message: 'Название проекта обязательно' }
-  validates :description, presence: { message: 'Описание проекта обязательно' }
+  # валидация названия записи в портфолио
+  validates :name,
+    presence: { message: 'Название проекта обязательно' } 
+
+  # валидация описания записи в портфолио
+  validates :description,
+    presence: { message: 'Описание проекта обязательно' }
 
   validate :validate_picture # метод находится в ApplicationRecord
 
-  def large_picture
+  def has_picture? # имеется ли картинка?
+    File.exist?(ActiveStorage::Blob.service.path_for(picture.key))
+  end
+
+  def large_picture # большая картинка
     picture.variant(resize: '570x357!').processed
   end
 end

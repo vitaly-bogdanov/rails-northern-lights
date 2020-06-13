@@ -6,7 +6,7 @@ class Admin::CategoriesController < ApplicationController
     @categories = Category.order(created_at: :asc)
   end
 
-  def new 
+  def new
     @category = Category.new
   end
 
@@ -42,8 +42,8 @@ class Admin::CategoriesController < ApplicationController
   end
 
   private
+
   def category_params
     params.require(:category).permit(:name, :description, :keywords)
   end
-
 end
