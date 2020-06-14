@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  
+
   devise_for :users, controllers: { sessions: 'sessions' }
-  get 'sitemap.xml.gz', to: redirect("https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['AWS_REGION']}.amazonaws.com/sitemap.xml.gz")
-  
-  get  'privacy-agreement', to: 'pages#privacy_agreement', as: 'privacy_agreement'
+  # get 'sitemap.xml.gz', to: redirect("https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['AWS_REGION']}.amazonaws.com/sitemap.xml.gz")
+  get 'sitemap.xml.gz', to: redirect("https://console.cloud.google.com/storage/browser/#{ENV['GCS_BUCKET']}/sitemap.xml.gz")
+
+  get 'privacy-agreement', to: 'pages#privacy_agreement', as: 'privacy_agreement'
   resources :calls, only: [:create]
   post 'cart', to: 'cart#show_cart', as: 'show_cart'
   post 'cart/:id/add-product', to: 'cart#add_product', as: 'add_product'

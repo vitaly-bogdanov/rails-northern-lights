@@ -15,7 +15,7 @@ gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'materialize-sass', '~> 1.0.0'
 gem 'whenever', require: false
-gem 'sitemap_generator'
+gem 'sitemap_generator', '~> 6.1', '>= 6.1.2'
 gem 'friendly_id', '~> 5.2.4'
 gem 'babosa'
 
@@ -23,8 +23,8 @@ gem 'babosa'
 #gem "aws-sdk-s3", require: false
 # ИЛИ
 # Google Cloud Storage для хранения картинок
-gem 'google-cloud-storage'
-
+gem 'google-cloud-storage', require: false
+gem 'carrierwave'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'sqlite3'

@@ -1,11 +1,13 @@
-#require 'aws-sdk-s3'
-require 'google-cloud-storage'
+require 'google/cloud/storage'
+
+# require 'aws-sdk-s3'
+
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = 'http://www.severnoe-siyanie.ru'
+SitemapGenerator::Sitemap.default_host = 'https://www.severnoe-siyanie.ru'
 # SitemapGenerator::Sitemap.public_path = 'tmp/sitemap'
 # hosts for sitemap
 #aws_s3_host = "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['AWS_REGION']}.amazonaws.com/"
-google_clud_storage_host = "https://console.cloud.google.com/storage/browser/#{ENV['GCS_BUCKET']}"
+google_clud_storage_host = "https://console.cloud.google.com/storage/browser/#{ENV['GCS_BUCKET']}/"
 
 SitemapGenerator::Sitemap.sitemaps_host = google_clud_storage_host
 # SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
@@ -63,10 +65,10 @@ SitemapGenerator::Sitemap.create do
   add root_path, priority: 0.7, changefreq: 'weekly'
 
   Category.find_each do |category|
-    add shop_category_products_path(category), :lastmod => category.updated_at
+    add shop_category_products_path(category), lastmod: category.updated_at
   end
 
   Product.find_each do |product|
-    add shop_product_path(product), :lastmod => product.updated_at
+    add shop_product_path(product), lastmod: product.updated_at
   end
 end
