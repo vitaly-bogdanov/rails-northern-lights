@@ -1,6 +1,8 @@
 class Admin::OrdersController < ApplicationController
-  layout "admin" # назначаем шаблон
-  before_action :authenticate_user!
+  layout 'admin' # назначаем шаблон
+  include ProtectRoutesConcern
+  # before_action :authenticate_user!
+  before_action :signed_in?
 
   def index
     orders = Order.where(completed: false)

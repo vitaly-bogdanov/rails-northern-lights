@@ -1,6 +1,8 @@
 class Admin::CategoriesController < ApplicationController
-  layout "admin" # назначаем шаблон
-  before_action :authenticate_user!
+  layout 'admin' # назначаем шаблон
+  include ProtectRoutesConcern
+  # before_action :authenticate_user!
+  before_action :signed_in?
 
   def index
     @categories = Category.order(created_at: :asc)

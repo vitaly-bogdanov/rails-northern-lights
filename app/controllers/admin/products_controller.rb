@@ -1,6 +1,8 @@
 class Admin::ProductsController < ApplicationController
   layout 'admin'
-  before_action :authenticate_user!
+  include ProtectRoutesConcern
+  # before_action :authenticate_user!
+  before_action :signed_in?
 
   # страница со всем товарами
   def index

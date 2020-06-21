@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root 'pages#index'
 
-  devise_for :users, controllers: { sessions: 'sessions' }
+  devise_for(
+    :users,
+    path: '',
+    path_names: { sign_in: 'login', sign_out: 'logout' },
+    controllers: { sessions: 'sessions' }
+  )
   # get 'sitemap.xml.gz', to: redirect("https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['AWS_REGION']}.amazonaws.com/sitemap.xml.gz")
   get 'sitemap.xml.gz', to: redirect("https://console.cloud.google.com/storage/browser/#{ENV['GCS_BUCKET']}/sitemap.xml.gz")
 
@@ -12,9 +17,12 @@ Rails.application.routes.draw do
   post 'cart/:id/remove-products', to: 'cart#remove_products', as: 'remove_products'
   post 'cart/:id/plus-product', to: 'cart#plus_product', as: 'plus_product'
   post 'cart/:id/minus-product', to: 'cart#minus_product', as: 'minus_product'
-  match "/404", to: "errors#not_found", via: :all
-  match "/422", to: "errors#unacceptable", via: :all
-  match "/500", to: "errors#internal_server_error", via: :all
+
+  match '/403', to: 'errors#forbidden', via: :all
+  match '/404', to: 'errors#not_found', via: :all
+  match '/422', to: 'errors#unacceptable', via: :all
+  match '/500', to: 'errors#internal_server_error', via: :all
+
   # магазин
   namespace :shop do
     get '/products/:id/category' => 'products#index', as: 'category_products'

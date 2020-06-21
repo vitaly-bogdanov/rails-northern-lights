@@ -17,4 +17,8 @@ class ErrorsController < ApplicationController
     render '500', layout: 'application', status: 500
   end
 
+  # GET /403
+  def forbidden
+    render '403', layout: 'application', status: 403
+  end
 end

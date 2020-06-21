@@ -1,6 +1,8 @@
 class Admin::PortfoliosController < ApplicationController
   layout 'admin'
-  before_action :authenticate_user!
+  include ProtectRoutesConcern
+  # before_action :authenticate_user!
+  before_action :signed_in?
 
   def index
     @portfolios = Portfolio.all.reverse

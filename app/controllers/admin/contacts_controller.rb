@@ -1,8 +1,10 @@
 require 'yaml'
 
 class Admin::ContactsController < ApplicationController
-  layout "admin"
-  before_action :authenticate_user!
+  layout 'admin'
+  include ProtectRoutesConcern
+  # before_action :authenticate_user!
+  before_action :signed_in?
 
   def index
     @contact = file

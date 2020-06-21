@@ -1,0 +1,17 @@
+<% content_for :title, 'В доступе отказанно' %>
+<% content_for :description, 'access denied' %>
+<% content_for :keywords, 'error 403' %>
+<% content_for :body do %>
+  <section>
+    <div class="container">
+      <div class="error-box">
+        <div class="error-box--message">
+          <h1>403</h1><span>Нет доступа</span>
+          <p>Вам нужно авторизоваться...</p>
+          <p>...перед тем как продолжить.</p>
+          <%= link_to 'Авторзоваться', new_user_session_path %>
+        </div>
+      </div>
+    </div>
+  </section>
+<% end %>
