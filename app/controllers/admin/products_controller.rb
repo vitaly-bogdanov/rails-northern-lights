@@ -16,7 +16,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new
-    @categories = Category.select("id, name")
+    @categories = Category.select('id, name')
     @product = Product.new
   end
 
@@ -25,13 +25,13 @@ class Admin::ProductsController < ApplicationController
     if @product.save
       redirect_to "#{admin_category_products_path(@product.category.id)}#message=Товар \"#{@product.name}\" создан"
     else
-      @categories = Category.select("id, name") # на странице создания товаров нужен перечень категорий
+      @categories = Category.select('id, name') # на странице создания товаров нужен перечень категорий
       render :new
     end
   end
 
   def edit
-    @categories = Category.select("id, name")
+    @categories = Category.select('id, name')
     @product = Product.friendly.find(params[:id])
   end
 
@@ -43,7 +43,7 @@ class Admin::ProductsController < ApplicationController
       @product.update_attributes(available: true) unless @product.available
       redirect_to "#{admin_category_products_path(@product.category.id)}#message=Информация о товаре обновленно"
     else
-      @categories = Category.select("id, name") # на странице редактирования товаров нужен перечень категорий
+      @categories = Category.select('id, name') # на странице редактирования товаров нужен перечень категорий
       render :edit
     end
   end
@@ -55,7 +55,7 @@ class Admin::ProductsController < ApplicationController
     path = nil if params[:from_place] == 'search'
     if @product.destroy
       Rails.cache.delete("show_product_#{params[:id]}")
-      redirect_to "#{path}#message=Товар \"#{@product.name}\" удален" unless path.nil? 
+      redirect_to "#{path}#message=Товар \"#{@product.name}\" удален" unless path.nil?
     else
       render :index
     end
