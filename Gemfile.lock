@@ -84,6 +84,11 @@ GEM
     digest-crc (0.5.1)
     erubi (1.8.0)
     execjs (2.7.0)
+    factory_bot (6.0.2)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.0.0)
+      factory_bot (~> 6.0.0)
+      railties (>= 5.0.0)
     faker (2.12.0)
       i18n (>= 1.6, < 2)
     faraday (1.0.1)
@@ -287,6 +292,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   devise
+  factory_bot_rails (~> 6.0)
   faker (~> 2.12)
   friendly_id (~> 5.2.4)
   google-cloud-storage
