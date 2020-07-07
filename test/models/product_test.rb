@@ -49,4 +49,10 @@ class ProductTest < ActiveSupport::TestCase
   test 'невалидно, если поле keywords пусто' do
     assert_not build(:product, :apple, keywords: '').valid?
   end
+  test 'невалидно, если поле price имеет значение слишком большое' do
+    assert_not build(:product, :apple, price: 999_999_999).valid?
+  end
+  test 'невалидно, если поле price пусто' do
+    assert_not build(:product, :apple, price: nil).valid?
+  end
 end
