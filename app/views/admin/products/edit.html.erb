@@ -4,11 +4,7 @@
     <div class="container">
       <h2 class="section__title">Редактировать товар</h2>
       <%= link_to 'Назад', :back, {class: 'purple darken-4 waves-effect waves-light btn castom-button castom-button--purple castom-button--margin-bottom'} %>
-      <% if @product.has_picture? %>
-        <%= image_tag(@product.large_picture, alt: @product.name, class: 'image-block image-block--margin-top') %>
-      <% else %>
-        <p>No image</p>
-      <% end %>
+      <%= image_tag(@product.large_picture, alt: @product.name, class: 'image-block image-block--margin-top') %>
       <%= render 'includes/product_form' %>
     </div>
   </section>

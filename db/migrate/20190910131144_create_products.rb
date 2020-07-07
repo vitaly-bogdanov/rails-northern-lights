@@ -1,18 +1,17 @@
 class CreateProducts < ActiveRecord::Migration[5.2]
   def change
     create_table :products do |t|
-      t.belongs_to :category, null: false
-      t.string :picture, null: true
-      t.string :name, null: false
-      t.integer :price, null: false
-      t.text :description, null: false
-      t.string :preview, null: false
-      t.text :keywords, null: false
+      t.belongs_to :category
+      t.string :name, null: false, default: ''
+      t.string :picture, null: true, default: 'no image'
+      t.integer :price, null: false, default: 0
+      t.text :description, null: false, default: ''
+      t.string :preview, null: false, default: ''
+      t.text :keywords, null: false, default: ''
       t.boolean :available, default: true
-      t.boolean :unique
+      t.boolean :unique, null: false, default: false
       t.timestamps
     end
-
     add_index :products, :name # для ускорения поиска
   end
 end

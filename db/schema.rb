@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2019_12_15_084330) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "initials"
+    t.string "initials", default: "", null: false
     t.string "telephone"
     t.string "region"
     t.string "city"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2019_12_15_084330) do
     t.string "comment"
     t.string "timezone"
     t.integer "tottal_price"
-    t.string "email"
+    t.string "email", default: ""
     t.text "notes"
     t.boolean "completed", default: false
     t.boolean "saved", default: false
@@ -122,23 +122,24 @@ ActiveRecord::Schema.define(version: 2019_12_15_084330) do
 
   create_table "products", force: :cascade do |t|
     t.integer "category_id"
-    t.string "picture"
-    t.string "name"
-    t.integer "price"
-    t.text "description"
-    t.string "preview"
-    t.text "keywords"
+    t.string "name", default: "", null: false
+    t.string "picture", default: "no image"
+    t.integer "price", default: 0, null: false
+    t.text "description", default: "", null: false
+    t.string "preview", default: "", null: false
+    t.text "keywords", default: "", null: false
     t.boolean "available", default: true
-    t.boolean "unique"
+    t.boolean "unique", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["category_id"], name: "index_products_on_category_id"
+    t.index ["name"], name: "index_products_on_name"
     t.index ["slug"], name: "index_products_on_slug", unique: true
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
+    t.string "email"
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0, null: false
