@@ -18,11 +18,6 @@ Rails.application.routes.draw do
   post 'cart/:id/plus-product', to: 'cart#plus_product', as: 'plus_product'
   post 'cart/:id/minus-product', to: 'cart#minus_product', as: 'minus_product'
 
-  match '/403', to: 'errors#forbidden', via: :all
-  match '/404', to: 'errors#not_found', via: :all
-  match '/422', to: 'errors#unacceptable', via: :all
-  match '/500', to: 'errors#internal_server_error', via: :all
-
   # магазин
   namespace :shop do
     get '/products/:id/category' => 'products#index', as: 'category_products'
@@ -60,4 +55,9 @@ Rails.application.routes.draw do
     post '/search-products', to: 'search_products#search', as: 'search_products_search'
     post '/search-products/:request', to: 'search_products#detected', as: 'search_products_detected'
   end
+
+  match '/403', to: 'errors#forbidden', via: :all
+  match '/404', to: 'errors#not_found', via: :all
+  match '/422', to: 'errors#unacceptable', via: :all
+  match '/500', to: 'errors#internal_server_error', via: :all
 end
