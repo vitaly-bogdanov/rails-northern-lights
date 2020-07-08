@@ -25,10 +25,8 @@ class Product < ApplicationRecord
       maximum: NAME_MAX_LENGTH,
       message: "Название товара должно иметь длинну максимум #{NAME_MAX_LENGTH} символа"
     }
-
   # валидация наличия категории у товара
   validates :category_id, presence: { message: 'Укажите категорию' }
-
   # валидация цены продукта
   validates :price,
     presence: {

@@ -8,15 +8,10 @@
 class Portfolio < ApplicationRecord
   # связь с картинкой, удаление картинки при удалении записи
   has_one_attached :picture, dependent: :purge_later
-
   # валидация названия записи в портфолио
-  validates :name,
-    presence: { message: 'Название проекта обязательно' } 
-
+  validates :name, presence: { message: 'Название проекта обязательно' } 
   # валидация описания записи в портфолио
-  validates :description,
-    presence: { message: 'Описание проекта обязательно' }
-
+  validates :description, presence: { message: 'Описание проекта обязательно' }
   validate :validate_picture # метод находится в ApplicationRecord
 
   def large_picture # большая картинка

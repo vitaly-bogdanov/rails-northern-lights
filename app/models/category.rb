@@ -15,7 +15,6 @@ class Category < ApplicationRecord
   def normalize_friendly_id(input)
     input.to_s.to_slug.normalize(transliterations: :russian).to_s
   end
-
   def should_generate_new_friendly_id?
     name_changed?
   end
@@ -26,10 +25,8 @@ class Category < ApplicationRecord
   validates :name,
     presence: { message: 'Название категории обязательно' },
     length: { maximum: NAME_MAX_LENGTH, message: 'Законы геометрии не позволяют втеснить такое название' }
-
   validates :description,
     presence: { message: 'Описание категории обязательно' }
-
   validates :keywords,
     presence: { message: 'Парочка ключевых слов пригодятся для для SEO оптимизации' }
 

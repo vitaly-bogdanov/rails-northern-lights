@@ -8,7 +8,6 @@ class Order < ApplicationRecord
 
   # валидация инициалов
   validates :initials, presence: { message: 'Укажите ваши данные' }
-
   # валидация номера телефона
   validates :telephone,
     presence: { message: 'Укажите ваш телефон' },
@@ -16,7 +15,6 @@ class Order < ApplicationRecord
       with: /(\+7|8)[- _]*\(?[- _]*(\d{3}[- _]*\)?([- _]*\d){7}|\d\d[- _]*\d\d[- _]*\)?([- _]*\d){6})/,
       message: 'Не корректный номер'
     }
-
   # валидация адреса доставки
   validates :region, presence: { message: 'Поле обязательно для заполнения' }
   validates :city, presence: { message: 'Поле обязательно для заполнения' }
@@ -28,7 +26,6 @@ class Order < ApplicationRecord
       less_than_or_equal_to: 999_999,
       message: 'Некорректный почтовый индекс'
     }
-
   validates :confirm,
     acceptance: {
       allow_nil: false,
