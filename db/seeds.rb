@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(email: 'test@test.com', password: '123456789')
+
+5.times do |item|
+  Category.create(
+    id: item,
+    name: Faker::Name.first_name, 
+    description: Faker::Lorem.sentence(word_count: 5), 
+    keywords: Faker::Lorem.sentence(word_count: 3)
+  )
+end
+
+100.times do |item|
+  Product.create(
+    id: item,
+    name: Faker::Space.planet,
+    price: rand(999),
+    description: Faker::Lorem.sentence(word_count: 50),
+    preview: Faker::Lorem.sentence(word_count: 10),
+    keywords: Faker::Lorem.sentence(word_count: 3),
+    unique: false,
+    category_id: rand(5),
+  )
+end
