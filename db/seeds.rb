@@ -26,6 +26,6 @@ end
     preview: Faker::Lorem.sentence(word_count: 10),
     keywords: Faker::Lorem.sentence(word_count: 3),
     unique: false,
-    category_id: rand(5),
+    category_id: rand(5)
   )
 end

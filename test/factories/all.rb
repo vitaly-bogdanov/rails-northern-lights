@@ -19,6 +19,28 @@ FactoryBot.define do
     end
   end
 
+  factory :order_call do
+    trait :new_order_call do
+      id { 1 }
+      name { 'Viktor' }
+      telephone { '89990849417' }
+      timezone { 'Tokio' }
+      notes { '' }
+      product_name { 'Unique Product' }
+      product_price { 2000 }
+      confirm { true }
+      association :product, factory: [ :product, :unique_product ]
+    end
+  end
+
+  factory :portfolio do
+    trait :new_portfolio do
+      id { 1 }
+      name { 'New Portfolio' }
+      description { 'test test test test' }
+    end
+  end
+
   factory :product do
     trait :apple do
       id { 1 }
@@ -42,25 +64,32 @@ FactoryBot.define do
     end
   end
 
-  factory :order_call do
-    trait :new_order_call do
+  factory :order do
+    trait :new_order do
       id { 1 }
-      name { 'Viktor' }
-      telephone { '89990849417' }
-      timezone { 'Tokio' }
-      notes { '' }
-      product_name { 'Unique Product' }
-      product_price { 2000 }
+      initials { Faker::Name.name_with_middle }
+      telephone { "8#{Faker::Number.number(digits: 10)}" }
+      region { Faker::Address.state }
+      city { Faker::Address.city }
+      address { Faker::Address.street_address }
+      postcode { 678960 }
+      comment { '' }
+      timezone { Faker::Address.time_zone }
+      tottal_price { 0 }
+      email { Faker::Internet.email }
       confirm { true }
-      association :product, factory: [ :product, :unique_product ]
     end
   end
 
-  factory :portfolio do
-    trait :new_portfolio do
+  factory :order_product do
+    trait :new_order_product do
       id { 1 }
-      name { 'New Portfolio' }
-      description { 'test test test test' }
+      product_name { Faker::Space.planet }
+      unit_price { 100 }
+      products_price { 100 }
+      count_products { 1 }
+      association :order, factory: [:order, :new_order]
+      association :product, factory: [:product, :apple]
     end
   end
 end
