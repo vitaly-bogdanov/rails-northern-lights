@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :call do
     trait :roxanne do
-      id { 1 }
+      id { Faker::Number.number(digits: 10) }
       name { 'Roxanne' }
       telephone { '89990849417' }
       timezone { 'New-York' }
@@ -12,7 +12,7 @@ FactoryBot.define do
   
   factory :category do
     trait :rockets do
-      id { 1 }
+      id { Faker::Number.number(digits: 10) }
       name { 'rockets' }
       description { 'simple rockets' }
       keywords { 'test, rockets, sky' }
@@ -21,7 +21,7 @@ FactoryBot.define do
 
   factory :order_call do
     trait :new_order_call do
-      id { 1 }
+      id { Faker::Number.number(digits: 10) }
       name { 'Viktor' }
       telephone { '89990849417' }
       timezone { 'Tokio' }
@@ -35,7 +35,7 @@ FactoryBot.define do
 
   factory :portfolio do
     trait :new_portfolio do
-      id { 1 }
+      id { Faker::Number.number(digits: 10) }
       name { 'New Portfolio' }
       description { 'test test test test' }
     end
@@ -43,7 +43,7 @@ FactoryBot.define do
 
   factory :product do
     trait :apple do
-      id { 1 }
+      id { Faker::Number.number(digits: 10) }
       name { 'Apple' }
       preview { 'test test test test test test test test test test' }
       description { 'test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test test' }
@@ -66,7 +66,7 @@ FactoryBot.define do
 
   factory :order do
     trait :new_order do
-      id { 1 }
+      id { Faker::Number.number(digits: 10) }
       initials { Faker::Name.name_with_middle }
       telephone { "8#{Faker::Number.number(digits: 10)}" }
       region { Faker::Address.state }
@@ -83,7 +83,7 @@ FactoryBot.define do
 
   factory :order_product do
     trait :new_order_product do
-      id { 1 }
+      id { Faker::Number.number(digits: 10) }
       product_name { Faker::Space.planet }
       unit_price { 100 }
       products_price { 100 }
