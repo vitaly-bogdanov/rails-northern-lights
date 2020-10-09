@@ -18,7 +18,11 @@
               <% @portfolios.each do |portfolio| %>
                 <% cache(portfolio) do %>
                   <div class="carousel-item">
-                    <%= image_tag(portfolio.large_picture, alt: portfolio.name) %>
+                    <% if portfolio.has_picture? %>
+                      <%= image_tag(portfolio.large_picture, alt: portfolio.name) %>
+                    <% else %>
+                      <p>No image</p>
+                    <% end %>
                   </div>
                 <% end %>
               <% end %>

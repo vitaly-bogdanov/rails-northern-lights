@@ -10,7 +10,11 @@
       <% products.each do |value| %>
         <div class="product-flexbox">
           <div class="image-block">
-            <%= image_tag value[:product].thumb_picture, { alt: value[:product].name } %>
+            <% if value[:product].has_picture? %>
+              <%= image_tag value[:product].thumb_picture, { alt: value[:product].name } %>
+            <% else %>
+              <p>No image</p>
+            <% end %>
           </div>
           <div class="description-grid">
             <div class="title-block"><%= value[:product].name %></div>
