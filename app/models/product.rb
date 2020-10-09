@@ -61,11 +61,7 @@ class Product < ApplicationRecord
   validate :validate_picture # метод находится в ApplicationRecord
 
   def large_picture # метод вызова большой картинки
-    # begin
-      picture.variant(resize: '540x426!').processed
-    # rescue => exception
-    #   'No Image'
-    # end
+    picture.variant(resize: '540x426!').processed
   end
   def middle_picture # метод вызова средней картинки
     picture.variant(resize: '270x213!').processed
