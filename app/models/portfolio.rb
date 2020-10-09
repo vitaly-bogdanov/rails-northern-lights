@@ -15,6 +15,8 @@ class Portfolio < ApplicationRecord
   validate :validate_picture # метод находится в ApplicationRecord
 
   def large_picture # большая картинка
-    picture.variant(resize: '570x357!').processed
+    if picture.attached?
+      picture.variant(resize: '570x357!').processed
+    end
   end
 end
