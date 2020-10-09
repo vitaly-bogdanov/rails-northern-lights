@@ -59,27 +59,22 @@ class Product < ApplicationRecord
     }
   validates :keywords, presence: { message: 'Ключевые слова обязательны' }
   validate :validate_picture # метод находится в ApplicationRecord
-  
-  def large_picture # метод вызова большой картинки
-    if picture.attached?
-      picture.variant(resize: '540x426!').processed
-    else
 
-    end
+  def large_picture # метод вызова большой картинки
+    # begin
+      picture.variant(resize: '540x426!').processed
+    # rescue => exception
+    #   'No Image'
+    # end
   end
   def middle_picture # метод вызова средней картинки
-    if picture.attached?
-      picture.variant(resize: '270x213!').processed
-    else
-
-    end
+    picture.variant(resize: '270x213!').processed
   end
   def thumb_picture # метод вызова маленькой картинки
-    if picture.attached?
-      picture.variant(resize: '135x107!').processed
-    else
-      
-    end
+    picture.variant(resize: '135x107!').processed
+  end
+  def search_picture # маленькая картинка в поиске (выключенно)
+    picture.variant(resize: '50x50!').processed
   end
   def description_min_length
     DESCRIPTION_MIN_LENGTH
