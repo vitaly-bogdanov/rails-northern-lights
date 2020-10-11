@@ -9,18 +9,18 @@
       <% end %>
       <%= form_for :contacts, html: {class: 'castom-form castom-form--purple castom-form--margin-top'} do |f| %>
         <div class="input-field">
-          <%= f.text_field :phone, class: "form-control", value: @contact['phone'] %>
+          <%= f.text_field :phone, class: "form-control", value: @contact_info.phone %>
           <%= f.label :phone, class: 'validate' do %>
             Телефонный номер
           <% end %>
         <div class="input-field">
-          <%= f.text_field :instagram, class: "form-control",  value: @contact['instagram'] %>
+          <%= f.text_field :instagram, class: "form-control",  value: @contact_info.instagram %>
           <%= f.label :instagram, class: 'validate' do %>
             Instagram
           <% end %>
         </div>
         <div class="input-field">
-          <%= f.text_field :email, class: "form-control", value: @contact['email'] %>
+          <%= f.text_field :email, class: "form-control", value: @contact_info.email %>
           <%= f.label :email, class: 'validate' do %>
             Email
           <% end %>

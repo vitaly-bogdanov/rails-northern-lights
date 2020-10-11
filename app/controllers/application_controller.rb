@@ -2,15 +2,11 @@ class ApplicationController < ActionController::Base
   include Devise::Controllers::Rememberable
 
   def set_contacts
-    contacts = Rails.cache.fetch('contacts') do
-      YAML.load_file("#{Rails.root}/contacts.yml")
-    end
-    @phone = contacts['phone']
-    @phone_call = Rails.cache.fetch('phone_call') do
-      contacts['phone'].each_char.select { |item| item == '0' or item.to_i != 0 }.join
-    end
-    @instagram = contacts['instagram']
-    @email = contacts['email']
+    contacts = Rails.cache.fetch('contacts') { Contact.info }
+    @phone = contacts.phone
+    @phone_call = contacts.call_format_phone
+    @instagram = contacts.instagram
+    @email = contacts.email
   end
 
   def set_category

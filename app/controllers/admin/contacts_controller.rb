@@ -7,11 +7,12 @@ class Admin::ContactsController < ApplicationController
   before_action :signed_in?
 
   def index
-    @contact = file
+    @contact_info = Contact.info
   end
 
   def update
-    File.write(file_path, file.update(contact_params).to_yaml)
+    @contact_info = Contact.info
+    @contact_info.update_attributes(contact_params)
     flash['contacts_update'] = 'Контактная информация обновлена'
     Rails.cache.delete('contacts')
     Rails.cache.delete('phone_call')
@@ -22,13 +23,5 @@ class Admin::ContactsController < ApplicationController
 
   def contact_params
     params.require(:contacts).permit(:phone, :instagram, :email)
-  end
-
-  def file
-    YAML.load_file("#{Rails.root}/contacts.yml")
-  end
-
-  def file_path
-    "#{Rails.root}/contacts.yml"
   end
 end

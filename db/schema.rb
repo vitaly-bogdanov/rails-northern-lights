@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_15_084330) do
+ActiveRecord::Schema.define(version: 2020_10_11_102533) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 2019_12_15_084330) do
     t.datetime "updated_at", null: false
     t.string "slug"
     t.index ["slug"], name: "index_categories_on_slug", unique: true
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "phone", default: ""
+    t.string "email", default: ""
+    t.string "instagram", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -114,8 +122,8 @@ ActiveRecord::Schema.define(version: 2019_12_15_084330) do
 
   create_table "portfolios", force: :cascade do |t|
     t.string "picture"
-    t.string "name"
-    t.string "description"
+    t.string "name", default: "", null: false
+    t.string "description", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -123,7 +131,7 @@ ActiveRecord::Schema.define(version: 2019_12_15_084330) do
   create_table "products", force: :cascade do |t|
     t.integer "category_id"
     t.string "name", default: "", null: false
-    t.string "picture", default: "no image"
+    t.string "picture"
     t.integer "price", default: 0, null: false
     t.text "description", default: "", null: false
     t.string "preview", default: "", null: false
