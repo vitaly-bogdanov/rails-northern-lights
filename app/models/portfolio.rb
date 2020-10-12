@@ -14,6 +14,12 @@ class Portfolio < ApplicationRecord
   validates :description, presence: { message: 'Описание проекта обязательно' }
   validate :validate_picture # метод находится в ApplicationRecord
 
+  class << self
+    def cached_all
+      Rails.cache.fetch('pages_partfolio') { self.all }
+    end
+  end
+
   def large_picture # большая картинка
     picture.variant(resize: '570x357!').processed
   end

@@ -3,6 +3,12 @@ class Product < ApplicationRecord
   has_many :order_calls # связь с заказами
   has_one_attached :picture, dependent: :purge_later # связь с картинкой, происходит удаление картинки при удалении продукта
 
+  NAME_MAX_LENGTH = 22 # максимальная длинна названия продукта
+  PREVIEW_MIN_LENGTH = 30 # минимальная длинна краткого описания товара
+  PREVIEW_MAX_LENGTH = 60 # максимальная длинна краткого описания товара
+  DESCRIPTION_MIN_LENGTH = 100 # минимальная длинна описания товара
+  DESCRIPTION_MAX_LENGTH = 650 # максимальная длинна описания товара
+
   # настройки slug
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
@@ -12,11 +18,6 @@ class Product < ApplicationRecord
   def should_generate_new_friendly_id?
     name_changed?
   end
-  NAME_MAX_LENGTH = 22 # максимальная длинна названия продукта
-  PREVIEW_MIN_LENGTH = 30 # минимальная длинна краткого описания товара
-  PREVIEW_MAX_LENGTH = 60 # максимальная длинна краткого описания товара
-  DESCRIPTION_MIN_LENGTH = 100 # минимальная длинна описания товара
-  DESCRIPTION_MAX_LENGTH = 650 # максимальная длинна описания товара
 
   # валидация названия товара
   validates :name,
@@ -60,6 +61,11 @@ class Product < ApplicationRecord
   validates :keywords, presence: { message: 'Ключевые слова обязательны' }
   validate :validate_picture # метод находится в ApplicationRecord
 
+  class << self # статические методы
+    def last_create_products_cached
+      Rails.cache.fetch('last_create_products') { self.where(available: true, unique: false).order(created_at: :desc).limit(4) }
+    end
+  end
   def large_picture # метод вызова большой картинки
     picture.variant(resize: '540x426!').processed
   end

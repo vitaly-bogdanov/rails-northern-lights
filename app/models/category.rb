@@ -9,6 +9,8 @@ class Category < ApplicationRecord
   # связь "один ко многим"
   has_many :products, dependent: :destroy
 
+  NAME_MAX_LENGTH = 12 # максимальная длинна названия категории
+
   # настройки slug
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -18,8 +20,6 @@ class Category < ApplicationRecord
   def should_generate_new_friendly_id?
     name_changed?
   end
-
-  NAME_MAX_LENGTH = 12 # максимальная длинна названия категории
 
   # обязательные поля
   validates :name,
@@ -32,5 +32,11 @@ class Category < ApplicationRecord
 
   def name_max_length
     NAME_MAX_LENGTH
+  end
+
+  class << self # статические методы
+    def cached_all
+      Rails.cache.fetch('all_categories') { self.all }
+    end
   end
 end

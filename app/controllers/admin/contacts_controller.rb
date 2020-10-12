@@ -1,5 +1,3 @@
-require 'yaml'
-
 class Admin::ContactsController < ApplicationController
   layout 'admin'
   include ProtectRoutesConcern
@@ -12,10 +10,8 @@ class Admin::ContactsController < ApplicationController
 
   def update
     @contact_info = Contact.info
-    @contact_info.update_attributes(contact_params)
+    @contact_info.update_attributes contact_params
     flash['contacts_update'] = 'Контактная информация обновлена'
-    Rails.cache.delete('contacts')
-    Rails.cache.delete('phone_call')
     redirect_to admin_contacts_path
   end
 

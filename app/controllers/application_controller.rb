@@ -2,22 +2,17 @@ class ApplicationController < ActionController::Base
   include Devise::Controllers::Rememberable
 
   def set_contacts
-    contacts = Rails.cache.fetch('contacts') { Contact.info }
-    @phone = contacts.phone
-    @phone_call = contacts.call_format_phone
-    @instagram = contacts.instagram
-    @email = contacts.email
+    # нужно очистить кеш при изменении данных
+    @contacts = Contact.info
   end
 
   def set_category
-    @categories = Rails.cache.fetch('all_categories') do
-      Category.all
-    end
+    # нужно очистить кеш при создании новой категории
+    @categories = Category.cached_all
   end
 
   def set_last_create_products
-    @last_created_products = Rails.cache.fetch('last_create_products') do
-      Product.where(available: true, unique: false).order(created_at: :desc).limit(4)
-    end
+    # нужно очистить кеш при добавлении нового товара
+    @last_created_products = Product.last_create_products_cached
   end
 end
