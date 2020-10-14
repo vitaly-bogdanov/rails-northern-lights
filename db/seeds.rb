@@ -17,9 +17,9 @@ User.create(email: 'test@test.com', password: '123456789')
   )
 end
 
-100.times do |item|
+100.times do
   Product.create(
-    id: item,
+    id: Faker::Number.number(digits: 10),
     name: Faker::Space.planet,
     price: rand(999),
     description: Faker::Lorem.sentence(word_count: 50),
@@ -27,5 +27,13 @@ end
     keywords: Faker::Lorem.sentence(word_count: 3),
     unique: false,
     category_id: rand(5)
+  )
+end
+
+10.times do
+  Portfolio.create(
+    id: Faker::Number.number(digits: 10),
+    name: Faker::Space.planet,
+    description: Faker::Lorem.sentence(word_count: 5)
   )
 end

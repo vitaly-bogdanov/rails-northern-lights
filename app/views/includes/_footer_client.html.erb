@@ -4,8 +4,8 @@
       <div class="col l4 s12">
         <p class="white-text">Контакты</p>
         <p class="grey-text text-lighten-4">Россия, Республика Саха (Якутия), г.Нерюнгри, пр.Дружбы Народов, 29/1</p>
-        <p><a href="mailto:<%= @email %>"><%= @email %></a></p>
-        <p><a href="https://www.instagram.com/<%= @instagram %>"><%= image_tag('static/instagram.svg', {class: 'instagram_logo', alt: 'instagram'}) %></a></p>
+        <p><a href="mailto:<%= @contacts.email %>"><%= @contacts.email %></a></p>
+        <p><a href="https://www.instagram.com/<%= @contacts.instagram %>"><%= image_tag('static/instagram.svg', {class: 'instagram_logo', alt: 'instagram'}) %></a></p>
       </div>
       <div class="col l4 s12 block-phone">
         <p>
@@ -16,7 +16,7 @@
           Сб-Вс – с 11:00 до 17:00 <br/>
           Пн – выходной
         </p>
-        <p><a href="tel:+<%= @phone_call %>"><%= @phone %></a></p>
+        <p><a href="tel:+<%= @contacts.call_format_phone %>"><%= @contacts.phone %></a></p>
       </div>
       <div class="col l4 s12 logo2">
         <%= image_tag('static/logo.svg', {alt: 'logo'}) %>

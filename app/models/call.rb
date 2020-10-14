@@ -16,7 +16,7 @@ class Call < ApplicationRecord
       message: 'Необходимо принять политику приватности'
     }
 
-  def get_confirm
-    self.confirm
-  end
+  # def get_confirm
+  #   self.confirm
+  # end
 end

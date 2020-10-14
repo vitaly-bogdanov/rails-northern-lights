@@ -10,7 +10,7 @@ class Admin::ContactsController < ApplicationController
 
   def update
     @contact_info = Contact.info
-    @contact_info.update_attributes contact_params
+    @contact_info.update_info(contact_params)
     flash['contacts_update'] = 'Контактная информация обновлена'
     redirect_to admin_contacts_path
   end
