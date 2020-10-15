@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Мы</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= stylesheet_link_tag 'materialize', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'instalinks', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'materialize', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'particles', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'instalinks', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <div id="particles-js" class="links blue-grey darken-3">
+      <div class="links-buttons">
+        <%= image_tag('static/logo.svg', {alt: 'logo', class: 'links-buttons-logo'}) %>
+        <%= link_to root_path, class: 'waves-effect waves-light btn links-buttons-item links-buttons-site' do %>
+          <%= fa_icon 'globe' %>
+          <span>наш сайт</span>
+        <% end %>
+        <a href="https://www.instagram.com/facebook/" class="waves-effect waves-light btn links-buttons-item links-buttons-instagram">
+          <%= fa_icon 'instagram' %>
+          <span>instagram</span>
+        </a>
+        <a href="https://ru-ru.facebook.com/" class="waves-effect waves-light btn links-buttons-item links-buttons-facebook">
+          <%= fa_icon 'facebook' %>
+          <span>facebook</span>
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=79518276053&text=%D0%94%D0%BE%D0%B1%D1%80%D1%8B%D0%B9%20%D0%B4%D0%B5%D0%BD%D1%8C%2C%20%D0%AE%D0%BB%D0%B8%D1%8F%29%0A%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%D0%B0%D1%82%D1%8C%20%D0%BD%D0%B0%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D1%83%20Taplink%21" class="waves-effect waves-light btn links-buttons-item links-buttons-whatsapp">
+          <%= fa_icon 'whatsapp' %>
+          <span>whatsapp</span>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

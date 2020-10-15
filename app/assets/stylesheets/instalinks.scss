@@ -1,0 +1,58 @@
+@import "font-awesome";
+
+$site_color: #4a148c;
+$whatsapp_color: #00e676;
+$instagram_color: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+$facebook: #3e5b99;
+
+$light: 15%;
+
+.links {
+  height: 100vh !important;
+  &-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      width: 150px;
+      margin-bottom: 15px;
+      &:hover {
+        text-shadow: 0px 0px 2px #fff, ;
+      }
+    }
+    &-logo {
+      height: 80px;
+      margin-bottom: 10px;
+    }
+    &-site {
+      background-color: $site_color;
+      &:hover {
+        background-color: $site_color;
+      }
+    }
+    &-instagram {
+      background: $instagram_color;
+      &:hover {
+        background-color: $instagram_color;
+      }
+    }
+    &-facebook {
+      background-color: $facebook;
+      &:hover {
+        background-color: $facebook;
+      }
+    }
+    &-whatsapp {
+      background-color: $whatsapp_color;
+      &:hover {
+        background-color: $whatsapp_color;
+      }
+    }
+  }
+}

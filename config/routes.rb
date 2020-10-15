@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#index'
-  get 'privacy-agreement', to: 'pages#privacy_agreement', as: 'privacy_agreement'
+  get '/privacy-agreement', to: 'pages#privacy_agreement', as: 'privacy_agreement'
+  get '/instalinks', to: 'pages#instalinks', as: 'instalinks'
 
   devise_for(
     :users,
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
     resources :products, only: [:show]
     resources :orders, only: [:new, :create]
     resources :order_calls, only: [:create]
-
     scope '/search-products' do
       post '/', to: 'search_products#search', as: 'search_products_client_search'
       post '/:request', to: 'search_products#detected', as: 'search_products_client_detected'

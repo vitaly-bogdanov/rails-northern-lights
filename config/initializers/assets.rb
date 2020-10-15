@@ -16,7 +16,7 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( materialize.css materialize.js )
 Rails.application.config.assets.precompile += %w( client.css client.js )
 Rails.application.config.assets.precompile += %w( admin.css admin.js )
-
+Rails.application.config.assets.precompile += %w( instalinks.css instalinks.js )
 Rails.application.config.assets.precompile += %w( authentication.css authentication.js )
 
 Rails.application.config.assets.precompile += %w( particles.js )
