@@ -18,6 +18,7 @@ gem 'whenever', require: false
 gem 'sitemap_generator', '~> 6.1', '>= 6.1.2'
 gem 'friendly_id', '~> 5.2.4'
 gem 'babosa'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 # AWS S3 для хранения картинок
 #gem "aws-sdk-s3", require: false
 # ИЛИ

@@ -94,6 +94,8 @@ GEM
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
     globalid (0.4.2)
@@ -294,6 +296,7 @@ DEPENDENCIES
   devise
   factory_bot_rails (~> 6.0)
   faker (~> 2.12)
+  font-awesome-rails (~> 4.7, >= 4.7.0.5)
   friendly_id (~> 5.2.4)
   google-cloud-storage
   jbuilder (~> 2.5)
