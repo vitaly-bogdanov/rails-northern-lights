@@ -35,6 +35,10 @@
           <%= fa_icon 'whatsapp' %>
           <span>whatsapp</span>
         </a>
+        <a href="tel:+<%= @contacts.call_format_phone %>" class="waves-effect waves-light btn links-buttons-item links-buttons-call">
+          <%= fa_icon 'phone' %>
+          <span>позвонить</span>
+        </a>
       </div>
     </div>
   </body>

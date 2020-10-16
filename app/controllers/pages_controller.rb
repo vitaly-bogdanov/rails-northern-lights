@@ -12,6 +12,7 @@ class PagesController < ApplicationController
   def privacy_agreement; end
 
   def instalinks
+    
     render layout: false
   end
 end

@@ -3,7 +3,7 @@
 $site_color: #4a148c;
 $whatsapp_color: #00e676;
 $telegram_color: #36a9e4;
-$facebook: #3e5b99;
+$facebook_color: #3e5b99;
 
 .links {
   height: 100vh !important;
@@ -54,12 +54,12 @@ $facebook: #3e5b99;
       }
     }
     &-facebook {
-      background-color: $facebook;
+      background-color: $facebook_color;
       &:hover {
-        background-color: $facebook;
+        background-color: $facebook_color;
       }
       &:focus {
-        background-color: $facebook;
+        background-color: $facebook_color;
       }
     }
     &-whatsapp {
@@ -70,6 +70,9 @@ $facebook: #3e5b99;
       &:focus {
         background-color: $whatsapp_color;
       }
+    }
+    &-call {
+
     }
   }
 }
