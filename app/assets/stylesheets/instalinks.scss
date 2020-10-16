@@ -2,10 +2,8 @@
 
 $site_color: #4a148c;
 $whatsapp_color: #00e676;
-$instagram_color: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+$telegram_color: #36a9e4;
 $facebook: #3e5b99;
-
-$light: 15%;
 
 .links {
   height: 100vh !important;
@@ -35,7 +33,7 @@ $light: 15%;
     }
     &-logo {
       height: 120px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
     &-site {
       background-color: $site_color;
@@ -43,10 +41,10 @@ $light: 15%;
         background-color: $site_color;
       }
     }
-    &-instagram {
-      background: $instagram_color;
+    &-telegram {
+      background: $telegram_color;
       &:hover {
-        background-color: $instagram_color;
+        background-color: $telegram_color;
       }
     }
     &-facebook {
