@@ -17,7 +17,7 @@ $facebook: #3e5b99;
     transform: translate(-50%, 50%);
     &-item {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       align-items: center;
       height: 50px;
       width: 250px;
@@ -40,10 +40,16 @@ $facebook: #3e5b99;
       &:hover {
         background-color: $site_color;
       }
+      &:focus {
+        background-color: $site_color;
+      }
     }
     &-telegram {
       background: $telegram_color;
       &:hover {
+        background-color: $telegram_color;
+      }
+      &:focus {
         background-color: $telegram_color;
       }
     }
@@ -52,10 +58,16 @@ $facebook: #3e5b99;
       &:hover {
         background-color: $facebook;
       }
+      &:focus {
+        background-color: $facebook;
+      }
     }
     &-whatsapp {
       background-color: $whatsapp_color;
       &:hover {
+        background-color: $whatsapp_color;
+      }
+      &:focus {
         background-color: $whatsapp_color;
       }
     }
