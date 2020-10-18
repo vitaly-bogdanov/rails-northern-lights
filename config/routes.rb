@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#index'
   get '/privacy-agreement', to: 'pages#privacy_agreement', as: 'privacy_agreement'
-  get '/instalinks', to: 'pages#instalinks', as: 'instalinks'
+  get '/instalinks', to: 'instalinks#index', as: 'instalinks'
 
   devise_for(
     :users,
@@ -72,6 +72,7 @@ Rails.application.routes.draw do
       post '/', to: 'search_products#search', as: 'search_products_search'
       post '/:request', to: 'search_products#detected', as: 'search_products_detected'
     end
+    resources :instalinks, only: [:index, :edit, :update]
   end
 
   match '/403', to: 'errors#forbidden', via: :all
