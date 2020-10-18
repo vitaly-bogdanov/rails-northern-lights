@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+# bundle install --without=production - запускаем в режиме разработки
+
 gem 'rails', '~> 5.2.3'
 gem 'puma', '~> 3.12'
 gem 'sass-rails', '~> 5.0'
