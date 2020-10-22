@@ -1,0 +1,24 @@
+<% content_for :title, 'Instalinks' %>
+
+<% content_for :body do %>
+  <section class="section section--grey section--full-height">
+    <h1>Edit</h1>
+    <div class="container">
+      <% form_with mode: [] do |f| %>
+        <div class="input-field">
+          <%= f.text_field :whatsapp %>
+          <%= f.label :whatsapp, 'whatsapp' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :telegram %>
+          <%= f.label :telegram, 'telegram' %>
+        </div>
+        <div class="input-field">
+          <%= f.text_field :facebook %>
+          <%= f.label :facebook, 'facebook' %>
+        </div>
+        <%= f.submit 'Сохранить' %>
+      <% end %>
+    </div>
+  </section>
+<% end %>

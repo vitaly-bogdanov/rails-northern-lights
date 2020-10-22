@@ -1,8 +1,8 @@
 class Admin::InstalinksController < ApplicationController
-
-  def index
-  end
-
+  layout 'admin'
+  include ProtectRoutesConcern
+  before_action :signed_in?
+  
   def edit
   end
 

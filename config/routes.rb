@@ -54,25 +54,22 @@ Rails.application.routes.draw do
       patch '/:id/save', to: 'order_calls#save', as: 'order_call_save'
       patch '/:id/toogle-available', to: 'order_calls#toogle_available', as: 'order_call_toogle_available'
     end
-
     resources :products, except: [:show, :destroy]
     delete '/products/:id/:from_place', to: 'products#destroy', as: 'product_destroy'
     resources :categories, except: [:show]
     resources :portfolios, except: [:show]
     resources :orders, except: [:new, :create, :show]
-
     scope '/orders' do
       get '/arhive', to: 'orders#arhive', as: 'orders_arhive'
       patch '/:id/complete', to: 'orders#complete', as: 'order_complete'
       patch '/:id/save', to: 'orders#save', as: 'order_save'
     end
-
     scope '/search-products' do
       get '/', to: 'search_products#index', as: 'search_products_index'
       post '/', to: 'search_products#search', as: 'search_products_search'
       post '/:request', to: 'search_products#detected', as: 'search_products_detected'
     end
-    resources :instalinks, only: [:index, :edit, :update]
+    get '/instalinks', to: 'instalinks#edit', as: 'instalinks'
   end
 
   match '/403', to: 'errors#forbidden', via: :all
