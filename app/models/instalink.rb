@@ -1,0 +1,2 @@
+class Instalink < ApplicationRecord
+end
