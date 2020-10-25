@@ -2,9 +2,9 @@
 
 <% content_for :body do %>
   <section class="section section--grey section--full-height">
-    <h1>Edit</h1>
     <div class="container">
-      <% form_with mode: [] do |f| %>
+      <h2 class="section__title">Редактировать ссылки</h2>
+      <%= form_with model: [:admin, @instalinks], class: 'castom-form castom-form--purple castom-form--margin-top' do |f| %>
         <div class="input-field">
           <%= f.text_field :whatsapp %>
           <%= f.label :whatsapp, 'whatsapp' %>
@@ -17,7 +17,7 @@
           <%= f.text_field :facebook %>
           <%= f.label :facebook, 'facebook' %>
         </div>
-        <%= f.submit 'Сохранить' %>
+        <%= f.submit 'Сохранить', class: 'purple darken-4 waves-effect waves-light btn castom-button castom-button--purple castom-button--input-text-white' %>
       <% end %>
     </div>
   </section>

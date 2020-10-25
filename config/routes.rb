@@ -69,7 +69,8 @@ Rails.application.routes.draw do
       post '/', to: 'search_products#search', as: 'search_products_search'
       post '/:request', to: 'search_products#detected', as: 'search_products_detected'
     end
-    get '/instalinks', to: 'instalinks#edit', as: 'instalinks'
+    get '/instalinks', to: 'instalinks#edit', as: 'instalink'
+    patch '/instalinks', to: 'instalinks#update', as: 'instalink_update'
   end
 
   match '/403', to: 'errors#forbidden', via: :all
