@@ -1,3 +1,5 @@
+require 'google/cloud/storage'
+
 storage = Google::Cloud::Storage.new(
   credentials: {
     "type": "service_account",
