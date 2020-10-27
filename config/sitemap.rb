@@ -44,15 +44,15 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::GoogleStorageAdapter.new(
   bucket: "severnoe_siyanie",
   credentials: {
     "type": "service_account",
-    "project_id": Rails.application.credentials.project_id,
-    "private_key_id": Rails.application.credentials.private_key_id,
-    "private_key": Rails.application.credentials.private_key,
-    "client_email": Rails.application.credentials.client_email,
-    "client_id": Rails.application.credentials.client_id,
+    "project_id": Rails.application.credentials.gcs[:project_id],
+    "private_key_id": Rails.application.credentials.gcs[:private_key_id],
+    "private_key": Rails.application.credentials.gcs[:private_key],
+    "client_email": Rails.application.credentials.gcs[:client_email],
+    "client_id": Rails.application.credentials.gcs[:client_id],
     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
     "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": Rails.application.credentials.auth_provider_x509_cert_url,
-    "client_x509_cert_url": Rails.application.credentials.client_x509_cert_url
+    "auth_provider_x509_cert_url": Rails.application.credentials.gcs[:auth_provider_x509_cert_url],
+    "client_x509_cert_url": Rails.application.credentials.gcs[client_x509_cert_url]
   }
 )
 
