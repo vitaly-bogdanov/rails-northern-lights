@@ -22,6 +22,8 @@ SitemapGenerator::Sitemap.sitemaps_host = google_clud_storage_host
 
 # для Google Cloud Storage
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::GoogleStorageAdapter.new(
+  project_id: ENV['GCS_PROJECT_ID'],
+  bucket: ENV['GCS_BUCKET'],
   credentials: {
     "type": "service_account",
     "project_id": ENV['GCS_PROJECT_ID'],
@@ -33,9 +35,7 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::GoogleStorageAdapter.new(
     "token_uri": "https://oauth2.googleapis.com/token",
     "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
     "client_x509_cert_url": ENV['GCS_CLIENT_X509_CERT_URL']
-  },
-  project_id: ENV['GCS_PROJECT_ID'],
-  bucket: ENV['GCS_BUCKET']
+  }
 )
 
 SitemapGenerator::Sitemap.create do

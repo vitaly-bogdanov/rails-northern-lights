@@ -1,25 +1,3 @@
-require 'google/cloud/storage'
-
-storage = Google::Cloud::Storage.new(
-  credentials: {
-    "type": "service_account",
-    "project_id": ENV['GCS_PROJECT_ID'],
-    "private_key_id": ENV['GCS_PRIVATE_KEY_ID'],
-    "private_key": ENV['GCS_PRIVATE_KEY'],
-    "client_email": ENV['GCS_CLIENT_EMAIL'],
-    "client_id": ENV['GCS_CLIENT_ID'],
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": ENV['GCS_CLIENT_X509_CERT_URL']
-  },
-  project_id: ENV['GCS_PROJECT_ID']
-)
-
-bucket = storage.bucket(ENV['GCS_BUCKET'])
-
-sitemap = bucket.file('sitemap.xml.gz')
-
 Rails.application.routes.draw do
   root 'pages#index'
   get '/privacy-agreement', to: 'pages#privacy_agreement', as: 'privacy_agreement'
@@ -33,7 +11,6 @@ Rails.application.routes.draw do
   )
   # get 'sitemap.xml.gz', to: redirect("https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['AWS_REGION']}.amazonaws.com/sitemap.xml.gz")
   # get 'sitemap.xml.gz', to: redirect("https://console.cloud.google.com/storage/browser/#{ENV['GCS_BUCKET']}/sitemap.xml.gz")
-  get 'sitemap.xml.gz', to: redirect(sitemap)
 
   resources :calls, only: [:create]
 
