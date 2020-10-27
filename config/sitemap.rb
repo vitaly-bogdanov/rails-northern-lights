@@ -52,7 +52,7 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::GoogleStorageAdapter.new(
     "auth_uri": "https://accounts.google.com/o/oauth2/auth",
     "token_uri": "https://oauth2.googleapis.com/token",
     "auth_provider_x509_cert_url": Rails.application.credentials.gcs[:auth_provider_x509_cert_url],
-    "client_x509_cert_url": Rails.application.credentials.gcs[client_x509_cert_url]
+    "client_x509_cert_url": Rails.application.credentials.gcs[:client_x509_cert_url]
   }
 )
 
