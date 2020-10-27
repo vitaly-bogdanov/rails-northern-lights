@@ -1,3 +1,4 @@
+require 'openssl'
 require 'google/cloud/storage'
 
 # require 'aws-sdk-s3'
