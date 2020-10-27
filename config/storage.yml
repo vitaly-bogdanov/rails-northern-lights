@@ -13,7 +13,6 @@ local:
 #   secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
 #   bucket: <%= ENV['S3_BUCKET_NAME'] %>
 #   region: <%= ENV['AWS_REGION'] %>
-  
   # access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
   # secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
   # bucket: severnoe-siyanie
@@ -21,20 +20,21 @@ local:
 # Remember not to checkin your GCS keyfile to a repository
 google:
   service: GCS
-  project: "<%= Rails.application.credentials.gcs[:project] %>"
-  bucket: "<%= Rails.application.credentials.gcs[:bucket] %>"
   credentials:
     type: "service_account"
-    project_id: "<%= Rails.application.credentials.gcs[:project_id] %>"
-    private_key_id: "<%= Rails.application.credentials.gcs[:private_key_id] %>"
-    private_key: "<%= Rails.application.credentials.gcs[:private_key] %>"
-    client_email: "<%= Rails.application.credentials.gcs[:client_email] %>"
-    client_id: "<%= Rails.application.credentials.gcs[:client_id] %>"
+    project_id: <%= Rails.application.credentials.dig(:gcs, :project_id) %>
+    private_key_id: <%= Rails.application.credentials.dig(:gcs, :private_key_id) %>
+    # экранируем все не мечатные символы (метод String#dump)
+    private_key: <%= Rails.application.credentials.dig(:gcs, :private_key).dump %>
+    client_email: <%= Rails.application.credentials.dig(:gcs, :client_email) %>
+    client_id: <%= Rails.application.credentials.dig(:gcs, :client_id) %>
     auth_uri: "https://accounts.google.com/o/oauth2/auth"
     token_uri: "https://oauth2.googleapis.com/token"
-    auth_provider_x509_cert_url: "<%= Rails.application.credentials.gcs[:auth_provider_x509_cert_url] %>"
-    client_x509_cert_url: "<%= Rails.application.credentials.gcs[:client_x509_cert_url] %>"
-  # credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
+    auth_provider_x509_cert_url: <%= Rails.application.credentials.dig(:gcs, :auth_provider_x509_cert_url) %>
+    client_x509_cert_url: <%= Rails.application.credentials.dig(:gcs, :client_x509_cert_url) %>
+  project: <%= Rails.application.credentials.dig(:gcs, :project) %>
+  bucket: <%= Rails.application.credentials.dig(:gcs, :bucket) %>
+# credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
 
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
