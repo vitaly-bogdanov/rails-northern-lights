@@ -58,25 +58,25 @@
       <i class="small material-icons order-modal-close modal-close">close</i>
       <h5>Оставьте нам свои данные</h5>
       <%= form_with(url: shop_order_calls_path, class: 'castom-form castom-form--purple') do %>
-        <%= text_field_tag(:timezone_order_call, '', id: 'timezone-order-modal', type: 'hidden') %>
-        <%= text_field_tag(:product_id_order_call, @product.id, type: 'hidden') %>
+        <%= text_field_tag(:timezone, '', id: 'timezone-order-modal', type: 'hidden') %>
+        <%= text_field_tag(:product_id, @product.id, type: 'hidden') %>
         <%= text_field_tag(:product_name, @product.name, type: 'hidden') %>
         <%= text_field_tag(:product_price, @product.price, type: 'hidden') %>
         <div class="input-field">
           <i class="material-icons prefix">account_circle</i>
-          <%= text_field_tag(:name_order_call, '') %>
-          <%= label_tag(:name_order_call, 'Ваше имя') %>
+          <%= text_field_tag(:name, '') %>
+          <%= label_tag(:name, 'Ваше имя') %>
           <span id="errors-order-call-name" class="helper-text" data-error=""></span>
         </div>
         <div class="input-field">
           <i class="material-icons prefix">phone</i>
-          <%= text_field_tag(:telephone_order_call, '') %>
-          <%= label_tag(:telephone_order_call, 'Ваш телефонный номер') %>
+          <%= text_field_tag(:telephone, '') %>
+          <%= label_tag(:telephone, 'Ваш телефонный номер') %>
           <span id="errors-order-call-telephone" class="helper-text" data-error=""></span>
         </div>
         <div class="input-field">
           <label class="castom-form__checkbox castom-form--checkbox-padding-left">
-            <%= check_box_tag(:confirm_order_call, value = "1", checked = false, options = {class: 'filled-in'}) %>
+            <%= check_box_tag(:confirm, value = "1", checked = false, options = {class: 'filled-in'}) %>
             <span id="errors-order-call-confirm" class="order-modal-font">Принять <a target="_blank" href="<%= privacy_agreement_path %>">политику приватности</a></span>
           </label>
         </div>
