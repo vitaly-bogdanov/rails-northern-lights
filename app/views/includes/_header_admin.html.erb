@@ -1,4 +1,9 @@
 <header data-turbolinks-permanent>
+  <ul id="dropdown0" class="dropdown-content dropdown-content--blue-grey">
+    <li><%= link_to 'На корзину товаров', admin_orders_path %></li>
+    <li><%= link_to 'На уникальный товар', admin_order_calls_path %></li>
+    <li><%= link_to 'На консультацию', admin_calls_path %></li>
+  </ul>
   <ul id="dropdown1" class="dropdown-content dropdown-content--blue-grey">
     <li><%= link_to 'Портфолио', new_admin_portfolio_path %></li>
     <li><%= link_to 'Категорию', new_admin_category_path %></li>
@@ -12,23 +17,28 @@
       <li><%= link_to category.name, admin_category_products_path(category.id) %></li>
     <% end %>
   </ul>
+  <ul id="dropdown3" class="dropdown-content dropdown-content--blue-grey">
+    <li><%= link_to 'Контакты', admin_contacts_path %></li>
+    <li><%= link_to 'Ссылки', admin_instalink_path %></li>
+  </ul>
   <nav class="blue-grey darken-3">
     <div class="nav-wrapper">
       <div class="container">
         <ul class="left hide-on-small-only">
-          <li><%= link_to 'Заказы', admin_orders_path %></li>
-          <li><%= link_to 'Заявки на товары', admin_order_calls_path %></li>
-          <li><%= link_to 'Заявки на консультацию', admin_calls_path %></li>
+          <li>
+            <a class="dropdown-trigger" data-target="dropdown0" href="#">Заявки от клиентов<i class="material-icons right">arrow_drop_down</i></a>
+          </li> 
           <li>
             <a class="dropdown-trigger" data-target="dropdown1" href="#">Создать<i class="material-icons right">arrow_drop_down</i></a>
           </li>
           <li>
             <a class="dropdown-trigger" data-target="dropdown2" href="#">Товары<i class="material-icons right">arrow_drop_down</i></a>
           </li>
+          <li>
+            <a class="dropdown-trigger" data-target="dropdown3" href="#">Настройки<i class="material-icons right">arrow_drop_down</i></a>
+          </li>
           <li><%= link_to 'Категории', admin_categories_path %></li>
           <li><%= link_to 'Портфолио', admin_portfolios_path %></li>
-          <li><%= link_to 'Контакты', admin_contacts_path %></li>
-          <li><%= link_to 'Ссылки', admin_instalink_path %></li>
         </ul>
         <ul class="right">
           <% if user_signed_in? %>
