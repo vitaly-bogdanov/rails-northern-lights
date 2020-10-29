@@ -52,6 +52,11 @@
     <span class="helper-text error" data-error="<%= error_message(@product, :keywords) %>">Например: полудрагоценные камни якутск, купить изделия из дерева, купить украшения. Нужно для поисковых роботов.</span>
   </div>
   <div class="input-field">
+    <%= f.text_field :code %>
+    <%= f.label :code, 'Код товара' %>
+    <span class="helper-text">Параметр не обязательный, нужен для внутренней логистики</span>
+  </div>
+  <div class="input-field">
     <label class="castom-form__checkbox">
       <%= f.check_box :unique, class: 'filled-in' %>
       <span>Не серийное изделие</span>

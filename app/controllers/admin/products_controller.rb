@@ -68,6 +68,7 @@ class Admin::ProductsController < ApplicationController
       :picture,
       :category_id,
       :name,
+      :code,
       :price,
       :description,
       :preview,
