@@ -8,7 +8,7 @@ SitemapGenerator::Sitemap.default_host = 'https://www.severnoe-siyanie.ru'
 # SitemapGenerator::Sitemap.public_path = 'tmp/sitemap'
 # hosts for sitemap
 #aws_s3_host = "https://#{ENV['S3_BUCKET_NAME']}.s3.#{ENV['AWS_REGION']}.amazonaws.com/"
-google_clud_storage_host = "https://console.cloud.google.com/storage/browser/#{ENV['GCS_BUCKET']}/"
+google_clud_storage_host = "https://console.cloud.google.com/storage/browser/#{Rails.application.credentials.gcs[:bucket]}/"
 
 SitemapGenerator::Sitemap.sitemaps_host = google_clud_storage_host
 # SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
