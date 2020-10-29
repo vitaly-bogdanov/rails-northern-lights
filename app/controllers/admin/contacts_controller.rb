@@ -1,7 +1,6 @@
 class Admin::ContactsController < ApplicationController
-  layout 'admin'
   include ProtectRoutesConcern
-  # before_action :authenticate_user!
+  layout 'admin'
   before_action :signed_in?
 
   def index
@@ -11,8 +10,7 @@ class Admin::ContactsController < ApplicationController
   def update
     @contact_info = Contact.info
     @contact_info.update_info(contact_params)
-    flash['contacts_update'] = 'Контактная информация обновлена'
-    redirect_to admin_contacts_path
+    redirect_to "#{admin_contacts_path}#message=\"Контактная информация обновлена\""
   end
 
   private

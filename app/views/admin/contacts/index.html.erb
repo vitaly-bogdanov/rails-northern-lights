@@ -2,11 +2,7 @@
 <% content_for :body do %>
   <section class="section section--grey section--full-height">
     <div class="container">
-      <% unless flash[:contacts_update].nil? %>
-        <h2 class="section__title" style="color: green;"><%= flash[:contacts_update] %></h2>
-      <% else %>
-        <h2 class="section__title">Редактирование контактной информации на сайте</h2>
-      <% end %>
+      <h2 class="section__title">Редактирование контактной информации на сайте</h2>
       <%= form_for :contacts, html: {class: 'castom-form castom-form--purple castom-form--margin-top'} do |f| %>
         <div class="input-field">
           <%= f.text_field :phone, class: "form-control", value: @contact_info.phone %>

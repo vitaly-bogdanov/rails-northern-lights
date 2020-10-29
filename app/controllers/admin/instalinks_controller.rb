@@ -1,6 +1,6 @@
 class Admin::InstalinksController < ApplicationController
-  layout 'admin'
   include ProtectRoutesConcern
+  layout 'admin'
   before_action :signed_in?
   
   def edit
@@ -10,8 +10,7 @@ class Admin::InstalinksController < ApplicationController
   def update
     @instalinks = Instalink.info
     @instalinks.update_info(instalinks_params)
-    flash['links_update'] = 'Перечень ссылок обновлен'
-    redirect_to admin_instalink_path
+    redirect_to "#{admin_instalink_path}#message=\"Перечень ссылок обновлен\""
   end
 
   private
