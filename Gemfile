@@ -38,6 +38,7 @@ group :development do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'faker', '~> 2.12'
   gem 'sqlite3'
+  gem "bullet", "~> 6.1"
 end
 group :test do
   gem 'capybara', '>= 2.15'
