@@ -2,12 +2,12 @@
   <h1>Авторизация</h1>
   <div class="input-field input-field--margin">
     <i class="material-icons prefix">account_circle</i>
-    <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: alert ? 'invalid' : '' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: 'off', class: alert ? 'invalid' : '' %>
     <%= f.label :email, 'Логин' %>
   </div>
   <div class="input-field input-field--margin">
     <i class="material-icons prefix">lock</i>
-    <%= f.password_field :password, autocomplete: 'current-password', class: alert ? 'invalid' : '' %>
+    <%= f.password_field :password, autocomplete: 'off', class: alert ? 'invalid' : '' %>
     <%= f.label :password, 'Пароль' %>
     <span class="helper-text error" data-error="<%= alert ? alert : '' %>"></span>
   </div>
