@@ -173,7 +173,8 @@ GEM
       ast (~> 2.4.0)
     pg (1.1.4)
     public_suffix (3.1.1)
-    puma (3.12.6)
+    puma (4.3.12)
+      nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -311,7 +312,7 @@ DEPENDENCIES
   materialize-sass (~> 1.0.0)
   mini_magick (~> 4.8)
   pg
-  puma (~> 3.12)
+  puma (~> 4.3)
   rails (~> 5.2.3)
   rubocop
   sass-rails (~> 5.0)
